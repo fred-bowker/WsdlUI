@@ -1,0 +1,7 @@
+Release/
+[Oo]bj/
+[Bb]in/
+*.suo
+*.cache
+*.csproj.user
+Thumbs.db

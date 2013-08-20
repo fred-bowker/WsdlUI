@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AF547FA4-2BA4-4C47-98FB-3749422484C5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WsdlUI.App.Process</RootNamespace>
+    <AssemblyName>WsdlUI.App.Process</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\WsdlUI.App.External\log4net-1.2.11\bin\net\3.5\release\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Logger.cs" />
+    <Compile Include="WebSvcAsync\CancelObject.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebSvcAsync\MonitorObject.cs" />
+    <Compile Include="WebSvcAsync\EventParams\TimeoutAsyncArgs.cs" />
+    <Compile Include="WebSvcAsync\Operations\DefaultProxy.cs" />
+    <Compile Include="WebSvcAsync\EventParams\AsyncArgs.cs" />
+    <Compile Include="WebSvcAsync\EventParams\CallCompleteAsyncArgs.cs" />
+    <Compile Include="WebSvcAsync\EventParams\ExceptionAsyncArgs.cs" />
+    <Compile Include="WebSvcAsync\EventParams\RetrieveCompleteAsyncArgs.cs" />
+    <Compile Include="WebSvcAsync\EventParams\UpdateAsyncArgs.cs" />
+    <Compile Include="WebSvcAsync\Operations\AsyncOp.cs" />
+    <Compile Include="WebSvcAsync\Operations\CallAsyncOp.cs" />
+    <Compile Include="WebSvcAsync\Operations\UpdateAsyncOp.cs" />
+    <Compile Include="WebSvcAsync\Operations\RetrieveAsyncOp.cs" />
+    <Compile Include="WebSvcAsync\Result\CallAsyncResult.cs" />
+    <Compile Include="WebSvcAsync\Result\RetrieveAsyncResult.cs" />
+    <Compile Include="WebSvcAsync\TimeoutObject.cs" />
+    <Compile Include="WebSvcGenerate\Generator.cs" />
+    <Compile Include="WebSvcGenerate\Sample\SampleGenerator.cs" />
+    <Compile Include="WebSvcGenerate\Sample\SampleGeneratorWebSvc.cs" />
+    <Compile Include="WsdlDownload.cs" />
+    <Compile Include="WebSvcGenerate\GenMetaData.cs" />
+    <Compile Include="WebSvcGenerate\Sample\GenSampleData.cs" />
+    <Compile Include="WebSvcGenerate\GenWsdlData.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WsdlUI.App.Model\WsdlUI.App.Model.csproj">
+      <Project>{6D501389-8AAD-4A0D-BFA3-F7A61EB0DE90}</Project>
+      <Name>WsdlUI.App.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
