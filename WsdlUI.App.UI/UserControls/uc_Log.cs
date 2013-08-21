@@ -45,5 +45,9 @@ namespace WsdlUI.App.UI.UserControls {
             rtb_log.ResetText();
         }
 
+        private void uc_Log_Load(object sender, EventArgs e) {
+            Font = DefaultFonts.Instance.Small;
+        }
+
     }
 }

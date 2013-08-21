@@ -46,9 +46,11 @@ namespace WsdlUI.App.UI.UserControls
             // 
             // rtb_log
             // 
+            this.rtb_log.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtb_log.ContextMenuStrip = this.cms_main;
             this.rtb_log.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtb_log.Location = new System.Drawing.Point(0, 0);
+            this.rtb_log.Margin = new System.Windows.Forms.Padding(0);
             this.rtb_log.Name = "rtb_log";
             this.rtb_log.ReadOnly = true;
             this.rtb_log.Size = new System.Drawing.Size(150, 150);
@@ -69,13 +71,15 @@ namespace WsdlUI.App.UI.UserControls
             this.clearToolStripMenuItem.Text = "Clear";
             this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
             // 
-            // uc_log
+            // uc_Log
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ContextMenuStrip = this.cms_main;
             this.Controls.Add(this.rtb_log);
-            this.Name = "uc_log";
+            this.Margin = new System.Windows.Forms.Padding(0);
+            this.Name = "uc_Log";
+            this.Load += new System.EventHandler(this.uc_Log_Load);
             this.cms_main.ResumeLayout(false);
             this.ResumeLayout(false);
 

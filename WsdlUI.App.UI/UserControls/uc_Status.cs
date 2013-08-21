@@ -14,16 +14,24 @@ namespace WsdlUI.App.UI.UserControls {
     public partial class uc_Status : UserControl {
         public uc_Status() {
             InitializeComponent();
+
+            ss_Progress.BackColor = Color.FromArgb(215, 228, 242); 
         }
 
         internal void StatusInProgress() {
             tslbl_Status.Text = "In Progress";
-            ss_Progress.BackColor = Color.Orange;
+            ss_Progress.BackColor = Color.LightPink;
         }
 
         internal void StatusReady() {
             tslbl_Status.Text = "Ready";
-            ss_Progress.BackColor = Color.Blue;
+
+            ss_Progress.BackColor = Color.FromArgb(215, 228, 242); 
+        }
+
+        private void uc_Status_Load(object sender, System.EventArgs e) {
+            Font = DefaultFonts.Instance.Small;
+            tslbl_Status.Font = DefaultFonts.Instance.Small;
         }
 
     }

@@ -50,11 +50,11 @@ namespace WsdlUI.App.UI.Dialogs
             // 
             // txt_License
             // 
-            this.txt_License.Location = new System.Drawing.Point(12, 83);
+            this.txt_License.Location = new System.Drawing.Point(14, 89);
             this.txt_License.Multiline = true;
             this.txt_License.Name = "txt_License";
             this.txt_License.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txt_License.Size = new System.Drawing.Size(391, 189);
+            this.txt_License.Size = new System.Drawing.Size(455, 203);
             this.txt_License.TabIndex = 0;
             this.txt_License.TextChanged += new System.EventHandler(this.txt_License_TextChanged);
             this.txt_License.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_License_KeyPress);
@@ -62,9 +62,9 @@ namespace WsdlUI.App.UI.Dialogs
             // lbl_WebSite
             // 
             this.lbl_WebSite.AutoSize = true;
-            this.lbl_WebSite.Location = new System.Drawing.Point(92, 31);
+            this.lbl_WebSite.Location = new System.Drawing.Point(107, 33);
             this.lbl_WebSite.Name = "lbl_WebSite";
-            this.lbl_WebSite.Size = new System.Drawing.Size(25, 13);
+            this.lbl_WebSite.Size = new System.Drawing.Size(21, 14);
             this.lbl_WebSite.TabIndex = 11;
             this.lbl_WebSite.TabStop = true;
             this.lbl_WebSite.Text = "WS";
@@ -72,63 +72,63 @@ namespace WsdlUI.App.UI.Dialogs
             // lbl_Developer
             // 
             this.lbl_Developer.AutoSize = true;
-            this.lbl_Developer.Location = new System.Drawing.Point(92, 9);
+            this.lbl_Developer.Location = new System.Drawing.Point(107, 10);
             this.lbl_Developer.Name = "lbl_Developer";
-            this.lbl_Developer.Size = new System.Drawing.Size(22, 13);
+            this.lbl_Developer.Size = new System.Drawing.Size(21, 14);
             this.lbl_Developer.TabIndex = 10;
             this.lbl_Developer.Text = "DE";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 31);
+            this.label2.Location = new System.Drawing.Point(14, 33);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 13);
+            this.label2.Size = new System.Drawing.Size(70, 14);
             this.label2.TabIndex = 9;
             this.label2.Text = "Web Site:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(14, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 13);
+            this.label1.Size = new System.Drawing.Size(77, 14);
             this.label1.TabIndex = 8;
             this.label1.Text = "Developer:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 56);
+            this.label4.Location = new System.Drawing.Point(14, 60);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(45, 13);
+            this.label4.Size = new System.Drawing.Size(63, 14);
             this.label4.TabIndex = 12;
             this.label4.Text = "Version:";
             // 
             // lbl_Version
             // 
             this.lbl_Version.AutoSize = true;
-            this.lbl_Version.Location = new System.Drawing.Point(92, 56);
+            this.lbl_Version.Location = new System.Drawing.Point(107, 60);
             this.lbl_Version.Name = "lbl_Version";
-            this.lbl_Version.Size = new System.Drawing.Size(21, 13);
+            this.lbl_Version.Size = new System.Drawing.Size(21, 14);
             this.lbl_Version.TabIndex = 13;
             this.lbl_Version.Text = "VE";
             // 
-            // pictureBox1
+            // pb_AppIcon
             // 
             this.pb_AppIcon.Image = global::WsdlUI.App.UI.Properties.Resources.applications_internet_3_png;
-            this.pb_AppIcon.Location = new System.Drawing.Point(333, 9);
-            this.pb_AppIcon.Name = "pictureBox1";
-            this.pb_AppIcon.Size = new System.Drawing.Size(70, 70);
+            this.pb_AppIcon.Location = new System.Drawing.Point(388, 10);
+            this.pb_AppIcon.Name = "pb_AppIcon";
+            this.pb_AppIcon.Size = new System.Drawing.Size(82, 75);
             this.pb_AppIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pb_AppIcon.TabIndex = 14;
             this.pb_AppIcon.TabStop = false;
             // 
             // dg_HelpAbout
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(419, 284);
+            this.ClientSize = new System.Drawing.Size(489, 306);
             this.Controls.Add(this.pb_AppIcon);
             this.Controls.Add(this.lbl_Version);
             this.Controls.Add(this.label4);
@@ -137,7 +137,9 @@ namespace WsdlUI.App.UI.Dialogs
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txt_License);
+            this.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "dg_HelpAbout";
+            this.Load += new System.EventHandler(this.dg_HelpAbout_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pb_AppIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

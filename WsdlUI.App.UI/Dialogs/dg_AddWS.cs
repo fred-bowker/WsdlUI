@@ -87,5 +87,7 @@ namespace WsdlUI.App.UI.Dialogs {
                 cb_Wsdl.Text = uri;
             }
         }
+
+     
     }
 }

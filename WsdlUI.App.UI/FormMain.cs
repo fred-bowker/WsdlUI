@@ -59,8 +59,7 @@ namespace WsdlUI.App.UI {
         }
 
         //The async add call can not be cancelled
-        void uc_treeView1_AddClicked() 
-  {
+        void uc_treeView1_AddClicked() {
 
             Dialogs.dg_AddWS _dialog = new Dialogs.dg_AddWS();
             _dialog.PopulateForm();
@@ -139,9 +138,9 @@ namespace WsdlUI.App.UI {
 
         void asyncCall_OnRerieveWebException(object sender, websvcasync.EventParams.ExceptionAsyncArgs e) {
 
-   process.Logger.Instance.Log.Info("Start " + e.Name);
+            process.Logger.Instance.Log.Info("Start " + e.Name);
 
-   _addedWsdls.Remove(e.Name);
+            _addedWsdls.Remove(e.Name);
 
             Invoke((MethodInvoker)(() => {
 
@@ -169,7 +168,7 @@ namespace WsdlUI.App.UI {
 
         public void asyncCall_OnRerieveException(object sender, websvcasync.EventParams.ExceptionAsyncArgs e) {
 
-   process.Logger.Instance.Log.Info("Start " + e.Name);
+            process.Logger.Instance.Log.Info("Start " + e.Name);
 
             exceptionOccurred = true;
 
@@ -297,12 +296,16 @@ namespace WsdlUI.App.UI {
 
         void helpUpdateToolStripMenuItem_Click(object sender, EventArgs e) {
             WsdlUI.App.UI.Dialogs.dg_HelpUpdate dialog = new Dialogs.dg_HelpUpdate();
-            dialog.ShowDialog();             
+            dialog.ShowDialog();
         }
 
         void configStartupWsdlsToolStripMenuItem_Click(object sender, EventArgs e) {
             WsdlUI.App.UI.Dialogs.dg_ConfigStartupWsdls dialog = new Dialogs.dg_ConfigStartupWsdls();
             dialog.ShowDialog();
+        }
+
+        private void FormMain_Load(object sender, EventArgs e) {
+            menuStrip1.Font = DefaultFonts.Instance.Medium;
         }
 
 

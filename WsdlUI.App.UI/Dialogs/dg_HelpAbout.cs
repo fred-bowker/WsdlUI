@@ -31,5 +31,9 @@ namespace WsdlUI.App.UI.Dialogs
             txt_License.Undo();
             txt_License.ClearUndo();
         }
+
+        private void dg_HelpAbout_Load(object sender, System.EventArgs e) {
+            txt_License.Font = DefaultFonts.Instance.Smaller;
+        }
     }
 }

@@ -151,5 +151,11 @@ namespace WsdlUI.App.UI.UserControls
 
             _cancelToken.IsCancellationRequested = true;
         }
+
+       private void uc_Wm_Load(object sender, EventArgs e) {
+
+           Font = DefaultFonts.Instance.Small;
+          
+       }
     }
 }

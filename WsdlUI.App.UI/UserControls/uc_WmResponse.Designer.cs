@@ -49,6 +49,7 @@ namespace WsdlUI.App.UI.UserControls
             // 
             this.uc_responseMessage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uc_responseMessage.Location = new System.Drawing.Point(0, 0);
+            this.uc_responseMessage.Margin = new System.Windows.Forms.Padding(0);
             this.uc_responseMessage.Name = "uc_responseMessage";
             this.uc_responseMessage.Size = new System.Drawing.Size(558, 322);
             this.uc_responseMessage.TabIndex = 0;
@@ -82,13 +83,14 @@ namespace WsdlUI.App.UI.UserControls
             this.pg_responseHeaders.TabIndex = 0;
             this.pg_responseHeaders.ToolbarVisible = false;
             // 
-            // uc_wm_response
+            // uc_WmResponse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainer1);
-            this.Name = "uc_wm_response";
+            this.Name = "uc_WmResponse";
             this.Size = new System.Drawing.Size(558, 423);
+            this.Load += new System.EventHandler(this.uc_WmResponse_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.ResumeLayout(false);

@@ -42,6 +42,10 @@ namespace WsdlUI.App.UI.UserControls
             uc_responseMessage.Clear();
         }
 
+        private void uc_WmResponse_Load(object sender, EventArgs e) {
+            Font = DefaultFonts.Instance.Small;
+        }
+
 
     }
 

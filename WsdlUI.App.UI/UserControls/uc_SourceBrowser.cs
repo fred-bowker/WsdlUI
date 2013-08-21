@@ -34,6 +34,5 @@ namespace WsdlUI.App.UI.UserControls {
         public void Clear() {
             wb_source.DocumentText = null;
         }
-
     }
 }

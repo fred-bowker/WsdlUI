@@ -34,6 +34,7 @@ namespace WsdlUI.App.UI.Dialogs
                 updateCheck.Start()
                 );
             thread.Start();
+
         }
 
         void updateCheck_OnWebException(object sender, EventArgs e)

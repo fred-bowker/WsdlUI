@@ -13,5 +13,9 @@ namespace WsdlUI.App.UI.Dialogs {
         public dg_Base() {
             InitializeComponent();
         }
+
+        private void dg_Base_Load(object sender, System.EventArgs e) {
+            Font = DefaultFonts.Instance.Small;
+        }
     }
 }

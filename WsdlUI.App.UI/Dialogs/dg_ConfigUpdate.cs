@@ -19,6 +19,7 @@ namespace WsdlUI.App.UI.Dialogs {
 
         private void dg_ConfigUpdate_Load(object sender, System.EventArgs e) {
             cb_EnableUpdate.Checked = State.Instance.ConfigUpdate.Enabled;
+
         }
     }
 }

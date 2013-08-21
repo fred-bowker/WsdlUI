@@ -36,9 +36,6 @@ namespace WsdlUI.App.UI
             this.components = new System.ComponentModel.Container();
             this.scMain = new System.Windows.Forms.SplitContainer();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.uc_treeView1 = new WsdlUI.App.UI.UserControls.uc_TreeView();
-            this.uc_panelInfo1 = new WsdlUI.App.UI.UserControls.uc_PanelInfo();
-            this.uc_log1 = new WsdlUI.App.UI.UserControls.uc_Log();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fILEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,6 +47,9 @@ namespace WsdlUI.App.UI
             this.hELPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkForUpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uc_treeView1 = new WsdlUI.App.UI.UserControls.uc_TreeView();
+            this.uc_panelInfo1 = new WsdlUI.App.UI.UserControls.uc_PanelInfo();
+            this.uc_log1 = new WsdlUI.App.UI.UserControls.uc_Log();
             this.scMain.Panel1.SuspendLayout();
             this.scMain.Panel2.SuspendLayout();
             this.scMain.SuspendLayout();
@@ -66,6 +66,7 @@ namespace WsdlUI.App.UI
             | System.Windows.Forms.AnchorStyles.Right)));
             this.scMain.BackColor = System.Drawing.SystemColors.Control;
             this.scMain.Location = new System.Drawing.Point(0, 27);
+            this.scMain.Margin = new System.Windows.Forms.Padding(0);
             this.scMain.Name = "scMain";
             this.scMain.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -84,6 +85,7 @@ namespace WsdlUI.App.UI
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(0);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -96,30 +98,6 @@ namespace WsdlUI.App.UI
             this.splitContainer1.Size = new System.Drawing.Size(884, 330);
             this.splitContainer1.SplitterDistance = 294;
             this.splitContainer1.TabIndex = 0;
-            // 
-            // uc_treeView1
-            // 
-            this.uc_treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uc_treeView1.Location = new System.Drawing.Point(0, 0);
-            this.uc_treeView1.Name = "uc_treeView1";
-            this.uc_treeView1.Size = new System.Drawing.Size(294, 330);
-            this.uc_treeView1.TabIndex = 0;
-            // 
-            // uc_panelInfo1
-            // 
-            this.uc_panelInfo1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uc_panelInfo1.Location = new System.Drawing.Point(0, 0);
-            this.uc_panelInfo1.Name = "uc_panelInfo1";
-            this.uc_panelInfo1.Size = new System.Drawing.Size(586, 330);
-            this.uc_panelInfo1.TabIndex = 0;
-            // 
-            // uc_log1
-            // 
-            this.uc_log1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uc_log1.Location = new System.Drawing.Point(0, 0);
-            this.uc_log1.Name = "uc_log1";
-            this.uc_log1.Size = new System.Drawing.Size(884, 90);
-            this.uc_log1.TabIndex = 0;
             // 
             // statusStrip1
             // 
@@ -211,6 +189,33 @@ namespace WsdlUI.App.UI
             this.checkForUpdateToolStripMenuItem.Text = "Check For Update";
             this.checkForUpdateToolStripMenuItem.Click += new System.EventHandler(this.helpUpdateToolStripMenuItem_Click);
             // 
+            // uc_treeView1
+            // 
+            this.uc_treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uc_treeView1.Location = new System.Drawing.Point(0, 0);
+            this.uc_treeView1.Margin = new System.Windows.Forms.Padding(0);
+            this.uc_treeView1.Name = "uc_treeView1";
+            this.uc_treeView1.Size = new System.Drawing.Size(294, 330);
+            this.uc_treeView1.TabIndex = 0;
+            // 
+            // uc_panelInfo1
+            // 
+            this.uc_panelInfo1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uc_panelInfo1.Location = new System.Drawing.Point(0, 0);
+            this.uc_panelInfo1.Margin = new System.Windows.Forms.Padding(0);
+            this.uc_panelInfo1.Name = "uc_panelInfo1";
+            this.uc_panelInfo1.Size = new System.Drawing.Size(586, 330);
+            this.uc_panelInfo1.TabIndex = 0;
+            // 
+            // uc_log1
+            // 
+            this.uc_log1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uc_log1.Location = new System.Drawing.Point(0, 0);
+            this.uc_log1.Margin = new System.Windows.Forms.Padding(0);
+            this.uc_log1.Name = "uc_log1";
+            this.uc_log1.Size = new System.Drawing.Size(884, 90);
+            this.uc_log1.TabIndex = 0;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -220,10 +225,11 @@ namespace WsdlUI.App.UI
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.scMain);
             this.DoubleBuffered = true;
-            this.Icon = Properties.Resources.applications_internet_3;
+            this.Icon = global::WsdlUI.App.UI.Properties.Resources.applications_internet_3;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.scMain.Panel1.ResumeLayout(false);
             this.scMain.Panel2.ResumeLayout(false);
             this.scMain.ResumeLayout(false);

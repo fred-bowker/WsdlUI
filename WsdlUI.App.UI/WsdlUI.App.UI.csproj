@@ -60,8 +60,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net">
-      <HintPath>..\WsdlUI.App.External\log4net-1.2.11\bin\net\3.5\release\log4net.dll</HintPath>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WsdlUI.App.External\log4net-1.2.11\net\3.5\release\log4net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -76,6 +77,7 @@
     <Compile Include="AppConfig.cs" />
     <Compile Include="AppInfo.cs" />
     <Compile Include="Consts.cs" />
+    <Compile Include="DefaultFonts.cs" />
     <Compile Include="Dialogs\dg_ConfigStartupWsdls.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +120,9 @@
     </Compile>
     <Compile Include="UserControls\uc_Status.Designer.cs">
       <DependentUpon>uc_Status.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Widgets\wg_BaseToolStripButton.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="UserControls\Widgets\DictionaryPropertyGridAdapter.cs" />
     <Compile Include="Dialogs\dg_ConfigProxy.cs">
@@ -199,21 +204,60 @@
     <Compile Include="UserControls\Widgets\DictionaryPropertyGrid.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UserControls\Widgets\wg_BaseToolStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Dialogs\dg_AddWS.resx">
+      <DependentUpon>dg_AddWS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\dg_Base.resx">
+      <DependentUpon>dg_Base.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\dg_ConfigProxy.resx">
       <DependentUpon>dg_ConfigProxy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\dg_ConfigStartupWsdls.resx">
       <DependentUpon>dg_ConfigStartupWsdls.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\dg_HelpAbout.resx">
+      <DependentUpon>dg_HelpAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\dg_HelpUpdate.resx">
+      <DependentUpon>dg_HelpUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <SubType>Designer</SubType>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\uc_Log.resx">
+      <DependentUpon>uc_Log.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\uc_PanelInfo.resx">
+      <DependentUpon>uc_PanelInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\uc_SourceBrowser.resx">
+      <DependentUpon>uc_SourceBrowser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\uc_Status.resx">
+      <DependentUpon>uc_Status.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\uc_TreeView.resx">
       <DependentUpon>uc_TreeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\uc_Wm.resx">
+      <DependentUpon>uc_Wm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\uc_WmRequest.resx">
+      <DependentUpon>uc_WmRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\uc_WmResponse.resx">
+      <DependentUpon>uc_WmResponse.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

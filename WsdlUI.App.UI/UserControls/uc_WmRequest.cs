@@ -14,56 +14,45 @@ using System.Xml;
 
 using model = WsdlUI.App.Model;
 
-namespace WsdlUI.App.UI.UserControls
-{
-    public partial class uc_WmRequest : UserControl
-    {
+namespace WsdlUI.App.UI.UserControls {
+    public partial class uc_WmRequest : UserControl {
         model.WebSvcMethod _webSvcMethod;
-        
-        public void Enable()
-        {
+
+        public void Enable() {
             rtb_Request.BackColor = Consts.EnableBGColor;
             rtb_Request.ReadOnly = false;
         }
 
-        public void Disable()
-        {
+        public void Disable() {
             rtb_Request.BackColor = Consts.DisabledBGColor;
             rtb_Request.ReadOnly = true;
         }
 
         //returns null if valid else returns an error string, text passed in as we are then using a copy from other thread
-        public string ValidateForm(string url, string xml)
-        {
-            if (string.IsNullOrEmpty(url))
-            {
+        public string ValidateForm(string url, string xml) {
+            if (string.IsNullOrEmpty(url)) {
                 return "url is empty";
             }
 
-            if (string.IsNullOrEmpty(xml))
-            {
+            if (string.IsNullOrEmpty(xml)) {
                 return "xml text is empty";
             }
 
-            try
-            {
+            try {
                 new XmlDocument().LoadXml(xml);
 
                 return null;
             }
-            catch (XmlException ex)
-            {
+            catch (XmlException ex) {
                 return ex.Message;
             }
         }
 
-        public void Clear()
-        {
+        public void Clear() {
             rtb_Request.Text = "";
         }
 
-        public void PopulateForm(WsdlUI.App.Model.WebSvcMethod webSvcMethod)
-        {
+        public void PopulateForm(WsdlUI.App.Model.WebSvcMethod webSvcMethod) {
             _webSvcMethod = webSvcMethod;
 
             rtb_Request.Text = webSvcMethod.SampleRequestMessage;
@@ -77,9 +66,8 @@ namespace WsdlUI.App.UI.UserControls
         }
 
 
-        public WsdlUI.App.Model.WebSvcMethod RetrieveForm()
-        {
-   IDictionary<string, StringProperty> items = RetrieveItemsFromGrid();
+        public WsdlUI.App.Model.WebSvcMethod RetrieveForm() {
+            IDictionary<string, StringProperty> items = RetrieveItemsFromGrid();
 
             _webSvcMethod.ServiceURI = items["URL"].InternalValue;
             _webSvcMethod.SampleRequestMessage = rtb_Request.Text;
@@ -87,10 +75,8 @@ namespace WsdlUI.App.UI.UserControls
             return _webSvcMethod;
         }
 
-        public string ValidateForm()
-        {
-            try
-            {
+        public string ValidateForm() {
+            try {
                 IDictionary<string, StringProperty> items = RetrieveItemsFromGrid();
 
                 string uri = items["URL"].InternalValue;
@@ -98,27 +84,29 @@ namespace WsdlUI.App.UI.UserControls
                 new Uri(uri);
                 return null;
             }
-            catch (UriFormatException)
-            {
+            catch (UriFormatException) {
                 return "invalid url";
             }
         }
 
-        public uc_WmRequest()
-        {
+        public uc_WmRequest() {
             InitializeComponent();
         }
 
-  IDictionary<string, StringProperty> RetrieveItemsFromGrid()
-  {
-   //running on mono returns IDictionary<string, StringProperty>, the clr returns DictionaryPropertyGridAdapter
-   IDictionary<string, StringProperty> items = pg_headers.SelectedObject as IDictionary<string, StringProperty>;
-   if (items == null) {
-    DictionaryPropertyGridAdapter gridAdapter = (DictionaryPropertyGridAdapter)pg_headers.SelectedObject;
-    items = gridAdapter.PropGridValues;
-   }
+        IDictionary<string, StringProperty> RetrieveItemsFromGrid() {
+            //running on mono returns IDictionary<string, StringProperty>, the clr returns DictionaryPropertyGridAdapter
+            IDictionary<string, StringProperty> items = pg_headers.SelectedObject as IDictionary<string, StringProperty>;
+            if (items == null) {
+                DictionaryPropertyGridAdapter gridAdapter = (DictionaryPropertyGridAdapter)pg_headers.SelectedObject;
+                items = gridAdapter.PropGridValues;
+            }
 
-   return items;
-  }
+            return items;
+        }
+
+        private void uc_WmRequest_Load(object sender, EventArgs e) {
+            Font = DefaultFonts.Instance.Small;
+            rtb_Request.Font = DefaultFonts.Instance.Large;
+        }
     }
 }

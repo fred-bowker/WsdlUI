@@ -49,9 +49,11 @@ namespace WsdlUI.App.UI.UserControls
             // 
             this.rtb_Request.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtb_Request.Dock = System.Windows.Forms.DockStyle.Fill;
+            
             this.rtb_Request.Location = new System.Drawing.Point(0, 0);
+            this.rtb_Request.Margin = new System.Windows.Forms.Padding(0);
             this.rtb_Request.Name = "rtb_Request";
-            this.rtb_Request.Size = new System.Drawing.Size(495, 305);
+            this.rtb_Request.Size = new System.Drawing.Size(495, 306);
             this.rtb_Request.TabIndex = 1;
             this.rtb_Request.Text = "";
             // 
@@ -71,7 +73,7 @@ namespace WsdlUI.App.UI.UserControls
             // 
             this.splitContainer1.Panel2.Controls.Add(this.rtb_Request);
             this.splitContainer1.Size = new System.Drawing.Size(495, 400);
-            this.splitContainer1.SplitterDistance = 91;
+            this.splitContainer1.SplitterDistance = 90;
             this.splitContainer1.TabIndex = 3;
             // 
             // pg_headers
@@ -81,17 +83,19 @@ namespace WsdlUI.App.UI.UserControls
             this.pg_headers.Location = new System.Drawing.Point(0, 0);
             this.pg_headers.Margin = new System.Windows.Forms.Padding(0);
             this.pg_headers.Name = "pg_headers";
-            this.pg_headers.Size = new System.Drawing.Size(495, 91);
+            this.pg_headers.Size = new System.Drawing.Size(495, 90);
             this.pg_headers.TabIndex = 0;
             this.pg_headers.ToolbarVisible = false;
             // 
-            // uc_wm_request
+            // uc_WmRequest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainer1);
-            this.Name = "uc_wm_request";
+            this.Margin = new System.Windows.Forms.Padding(0);
+            this.Name = "uc_WmRequest";
             this.Size = new System.Drawing.Size(495, 400);
+            this.Load += new System.EventHandler(this.uc_WmRequest_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.ResumeLayout(false);

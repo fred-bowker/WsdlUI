@@ -26,7 +26,6 @@ namespace WsdlUI.App.UI.UserControls {
             imgList_All.Images.Add("wsdl.png", global::WsdlUI.App.UI.Properties.Resources.wsdl);
             imgList_All.Images.Add("bullet_purple.png", global::WsdlUI.App.UI.Properties.Resources.bullet_purple);
             imgList_All.Images.Add("bullet_green.png", global::WsdlUI.App.UI.Properties.Resources.bullet_green);
-           
         }
 
         void tsbButtonAdd_Click(object sender, EventArgs e) {
@@ -68,43 +67,43 @@ namespace WsdlUI.App.UI.UserControls {
         void tv_webServices_AfterSelect(object sender, TreeViewEventArgs e) {
             WSNodeType nodeType = (WSNodeType)e.Node.Tag;
 
-   //when running on mono removing a node fires the select event and causes an exception
-   //checking the action means that we only handle the event on ByMouse action
-   if (e.Action != TreeViewAction.Unknown) {
+            //when running on mono removing a node fires the select event and causes an exception
+            //checking the action means that we only handle the event on ByMouse action
+            if (e.Action != TreeViewAction.Unknown) {
 
-    if (nodeType == WSNodeType.WebServiceNode) {
+                if (nodeType == WSNodeType.WebServiceNode) {
 
-     process.Logger.Instance.Log.Info ("Start: Node Type WebServiceNode " + e.Node.Name);
+                    process.Logger.Instance.Log.Info("Start: Node Type WebServiceNode " + e.Node.Name);
 
-     if (WebServiceClicked != null) {
-      WebServiceClicked(e.Node.Name);
-     }
-    }
-    else if (nodeType == WSNodeType.WebMethodNode) {
+                    if (WebServiceClicked != null) {
+                        WebServiceClicked(e.Node.Name);
+                    }
+                }
+                else if (nodeType == WSNodeType.WebMethodNode) {
 
-     string webServiceName = e.Node.Parent.Name;
+                    string webServiceName = e.Node.Parent.Name;
 
-     process.Logger.Instance.Log.Info ("Start: Node Type WebMethodNode " + webServiceName + " " + e.Node.Name);
+                    process.Logger.Instance.Log.Info("Start: Node Type WebMethodNode " + webServiceName + " " + e.Node.Name);
 
-     if (WebMethodClicked != null) {
+                    if (WebMethodClicked != null) {
 
-      WebMethodClicked(webServiceName, e.Node.Name);
-     }
-    }
-   }
+                        WebMethodClicked(webServiceName, e.Node.Name);
+                    }
+                }
+            }
         }
 
         void tsBtnRemove_Click(object sender, EventArgs e) {
-  
+
             if (tv_webServices.SelectedNode == null) {
                 return;
             }
-      
+
             WSNodeType nodeType = (WSNodeType)tv_webServices.SelectedNode.Tag;
 
             if (nodeType == WSNodeType.WebServiceNode) {
 
-    process.Logger.Instance.Log.Info ("Start: Node Type WebServiceNode " + tv_webServices.SelectedNode.Name);
+                process.Logger.Instance.Log.Info("Start: Node Type WebServiceNode " + tv_webServices.SelectedNode.Name);
 
                 if (RemoveClicked != null) {
                     RemoveClicked(tv_webServices.SelectedNode.Name);
@@ -115,7 +114,7 @@ namespace WsdlUI.App.UI.UserControls {
             }
             else if (nodeType == WSNodeType.WebMethodNode) {
 
-    process.Logger.Instance.Log.Info ("Start: Node Type WebMethodNode " + tv_webServices.SelectedNode.Parent.Name);
+                process.Logger.Instance.Log.Info("Start: Node Type WebMethodNode " + tv_webServices.SelectedNode.Parent.Name);
 
                 if (RemoveClicked != null) {
                     RemoveClicked(tv_webServices.SelectedNode.Parent.Name);
@@ -131,6 +130,10 @@ namespace WsdlUI.App.UI.UserControls {
             var root = tv_webServices.Nodes[0];
             root.Tag = WSNodeType.RootNode;
             root.SelectedImageKey = "view-list-tree-4.png";
+
+            Font = DefaultFonts.Instance.Small;
+            tv_webServices.Font = DefaultFonts.Instance.Medium;
+
         }
     }
 }

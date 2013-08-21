@@ -47,7 +47,7 @@ namespace WsdlUI.App.UI.UserControls
             // tslbl_Status
             // 
             this.tslbl_Status.Name = "tslbl_Status";
-            this.tslbl_Status.Size = new System.Drawing.Size(39, 17);
+            this.tslbl_Status.Size = new System.Drawing.Size(39, 18);
             this.tslbl_Status.Text = "Ready";
             // 
             // uc_Status
@@ -55,8 +55,10 @@ namespace WsdlUI.App.UI.UserControls
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.ss_Progress);
+            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "uc_Status";
             this.Size = new System.Drawing.Size(150, 23);
+            this.Load += new System.EventHandler(this.uc_Status_Load);
             this.ss_Progress.ResumeLayout(false);
             this.ss_Progress.PerformLayout();
             this.ResumeLayout(false);

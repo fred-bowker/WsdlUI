@@ -44,17 +44,19 @@ namespace WsdlUI.App.UI.UserControls
             // 
             this.wb_source.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wb_source.Location = new System.Drawing.Point(0, 0);
+            this.wb_source.Margin = new System.Windows.Forms.Padding(0);
             this.wb_source.MinimumSize = new System.Drawing.Size(20, 20);
             this.wb_source.Name = "wb_source";
             this.wb_source.Size = new System.Drawing.Size(150, 150);
             this.wb_source.TabIndex = 0;
             // 
-            // uc_sourceBrowser
+            // uc_SourceBrowser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.wb_source);
-            this.Name = "uc_sourceBrowser";
+            this.Margin = new System.Windows.Forms.Padding(0);
+            this.Name = "uc_SourceBrowser";
             this.ResumeLayout(false);
 
         }
