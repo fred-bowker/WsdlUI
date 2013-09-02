@@ -22,7 +22,7 @@ namespace WsdlUI.App.Process.WebSvcAsync.Operations {
         WsdlDownload _downloader;
         string _webSvcPath;
 
-        public event EventHandler<websvcasync.EventParams.RetrieveCompleteAsyncArgs> OnComplete;
+        public event EventHandler<websvcasync.EventParams.AsyncArgsCompleteRetrieve> OnComplete;
 
         public RetrieveAsyncOp(string webSvcPath, model.Config.Proxy configProxy, int timeoutPeriod)
             : base(webSvcPath, configProxy, timeoutPeriod) {
@@ -33,7 +33,9 @@ namespace WsdlUI.App.Process.WebSvcAsync.Operations {
 
         protected override void Work() {
 
-   Logger.Instance.Log.Info("Start: " + _webSvcPath);
+            DateTime startTime = DateTime.Now;
+
+            Logger.Instance.Log.Info("Start: " + _webSvcPath);
 
             List<ServiceDescription> descriptions;
             List<XmlSchema> schemas;
@@ -53,7 +55,9 @@ namespace WsdlUI.App.Process.WebSvcAsync.Operations {
             //success
             if (OnComplete != null) {
 
-                OnComplete(this, new process.WebSvcAsync.EventParams.RetrieveCompleteAsyncArgs(_webSvcPath,
+                DateTime endTime = DateTime.Now;
+
+                OnComplete(this, new process.WebSvcAsync.EventParams.AsyncArgsCompleteRetrieve(_webSvcPath, startTime, endTime,
                         new process.WebSvcAsync.Result.RetrieveAsyncResult(webSvc)
                         ));
             }

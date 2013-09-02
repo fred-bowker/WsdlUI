@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+
+  <Product Id="*" Name="WsdlUI" Language="1033" Version="1.2.0" Manufacturer="OSS" UpgradeCode="1D899DE0-4940-4255-97F6-47F27D1DE9A9">
+
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+    <MajorUpgrade DowngradeErrorMessage="A later version of [ProductName] is already installed. Setup will now exit."/>
+
+    <MediaTemplate EmbedCab="yes" />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLDIR" Name="WsdlUI" >
+
+          <Component Id="MainExecutable" Guid='CFE2C81D-153D-4939-BE0F-680EB295F81B'>
+
+            <CreateFolder>
+              <Permission User="Users" GenericAll="yes"/>
+            </CreateFolder>
+
+            <File Id="WsdlUIEXE" Name="WsdlUI.exe" KeyPath="yes" Source="..\WsdlUI.App.UI\bin\Release\WsdlUI.exe">
+              <Shortcut Id="startmenuWsdlUI" Directory="ProgramMenuDir" Name="WsdlUI" WorkingDirectory='INSTALLDIR' Icon="WsdlUIIcon.exe" IconIndex="0" Advertise="yes" />
+              <Shortcut Id="desktopWsdlUI" Directory="DesktopFolder" Name="WsdlUI" WorkingDirectory='INSTALLDIR' Icon="WsdlUIIcon.exe" IconIndex="0" Advertise="yes" />
+            </File>
+            <File Id="log4netDLLFile" Name="log4net.dll" Source="..\WsdlUI.App.UI\bin\Release\log4net.dll" />
+            <File Id="ModelDLLFile" Name="WsdlUI.App.Model.dll" Source="..\WsdlUI.App.UI\bin\Release\WsdlUI.App.Model.dll" />
+            <File Id="ProcessDLLFile" Name="WsdlUI.App.Process.dll" Source="..\WsdlUI.App.UI\bin\Release\WsdlUI.App.Process.dll" />
+            <File Id="log4netXMLFile" Name="log4net.xml" Source="..\WsdlUI.App.UI\bin\Release\log4net.xml" />
+            <File Id="WsdlUIConfigFile" Name="WsdlUI.exe.config" Source="..\WsdlUI.App.UI\bin\Release\WsdlUI.exe.config" />
+
+          </Component>
+          <Directory Id="InstDir_Resources" Name="Resources" >
+
+            <Component Id="ResourcesFolder" Guid='45B8D976-0629-44E3-828D-AA286E612489'>
+
+              <CreateFolder>
+                <Permission User="Users" GenericAll="yes"/>
+              </CreateFolder>
+
+              <File Id="arrow_right_3_png" Name="arrow-right-3.png" KeyPath="yes" Source="..\WsdlUI.App.UI\bin\Release\Resources\arrow-right-3.png"/>
+              <File Id="bullet_green_png" Name="bullet_green.png" Source="..\WsdlUI.App.UI\bin\Release\Resources\bullet_green.png"/>
+              <File Id="bullet_purple_png" Name="bullet_purple.png" Source="..\WsdlUI.App.UI\bin\Release\Resources\bullet_purple.png"/>
+              <File Id="folder_png" Name="folder.png" Source="..\WsdlUI.App.UI\bin\Release\Resources\folder.png"/>
+              <File Id="list_add_3_png" Name="list-add-3.png" Source="..\WsdlUI.App.UI\bin\Release\Resources\list-add-3.png"/>
+              <File Id="list_remove_3_png" Name="list-remove-3.png" Source="..\WsdlUI.App.UI\bin\Release\Resources\list-remove-3.png"/>
+              <File Id="process_stop_3_png" Name="process-stop-3.png" Source="..\WsdlUI.App.UI\bin\Release\Resources\process-stop-3.png"/>
+              <File Id="view_list_tree_4_png" Name="view-list-tree-4.png" Source="..\WsdlUI.App.UI\bin\Release\Resources\view-list-tree-4.png"/>
+            </Component>
+          </Directory>
+
+          <Directory Id="InstDir_OutputFolders" Name="OutputFolders" >
+
+            <Directory Id="InstDir_OutputFolders_Config" Name="config" >
+              <Component Id="OutputFolderConfig" Guid='07882502-34F5-4B6D-9E23-4E43CA53368D'>
+                <CreateFolder>
+                  <Permission User="Users" GenericAll="yes"/>
+                </CreateFolder>
+                <File Id="prev_wsdl_data" Name="prev_wsdl.data" KeyPath="yes" Source="..\WsdlUI.App.UI\bin\Release\OutputFolders\config\prev_wsdl.data"/>
+                <File Id="proxy_data" Name="proxy.data" Source="..\WsdlUI.App.UI\bin\Release\OutputFolders\config\proxy.data"/>
+                <File Id="startupWsdls_data" Name="startupWsdls.data" Source="..\WsdlUI.App.UI\bin\Release\OutputFolders\config\startupWsdls.data"/>
+                <File Id="update_data" Name="update.data" Source="..\WsdlUI.App.UI\bin\Release\OutputFolders\config\update.data"/>
+              </Component>
+            </Directory>
+
+            <Directory Id="InstDir_OutputFolders_License" Name="license" >
+              <Component Id="OutputFolderLicense" Guid='E17A6AB8-5126-478E-8182-1F17053EB9E3'>
+                <CreateFolder>
+                  <Permission User="Users" GenericAll="yes"/>
+                </CreateFolder>
+                <File Id="LICENSE_md" Name="LICENSE.md" KeyPath="yes" Source="..\WsdlUI.App.UI\bin\Release\OutputFolders\license\LICENSE.md"/>
+              </Component>
+            </Directory>
+
+            <Directory Id="InstDir_OutputFolders_Temp" Name="temp" >
+              <Component Id="OutputFolderTemp" Guid='F6FE154E-DA98-48C8-83DE-F880017E7BB0'>
+                <CreateFolder>
+                  <Permission User="Users" GenericAll="yes"/>
+                </CreateFolder>
+              </Component>
+            </Directory>
+
+          </Directory>
+
+        </Directory>
+      </Directory>
+
+      <Directory Id="ProgramMenuFolder" Name="Programs">
+        <Directory Id="ProgramMenuDir" Name="WsdlU">
+          <Component Id="ProgramMenuDir" Guid="EC0D2600-66F6-4824-A032-0550701A86AA">
+            <RemoveFolder Id='ProgramMenuDir' On='uninstall' />
+            <RegistryValue Root='HKCU' Key='Software\[Manufacturer]\[ProductName]' Type='string' Value='' KeyPath='yes' />
+          </Component>
+        </Directory>
+      </Directory>
+
+      <Directory Id="DesktopFolder" Name="Desktop" />
+    </Directory>
+
+    <Feature Id="Complete" Level='1' >
+      <ComponentRef Id='MainExecutable' />
+      <ComponentRef Id='ResourcesFolder' />
+      <ComponentRef Id='OutputFolderConfig' />
+      <ComponentRef Id='OutputFolderLicense' />
+      <ComponentRef Id='OutputFolderTemp' />
+      <ComponentRef Id='ProgramMenuDir' />
+    </Feature>
+
+     <WixVariable Id="WixUIBannerBmp" Value="WixUIBannerBmp.bmp" />
+     <WixVariable Id="WixUIDialogBmp" Value="WixUIDialogBmp.bmp" />
+    <WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
+
+    <Property Id="WIXUI_INSTALLDIR">INSTALLDIR</Property>
+
+    <UIRef Id="WixUI_InstallDir" />
+
+    <Icon Id="WsdlUIIcon.exe" SourceFile="..\WsdlUI.App.UI\bin\Release\WsdlUI.exe" />
+    <Property Id="ARPPRODUCTICON" Value="WsdlUIIcon.exe" />
+
+  </Product>
+</Wix>

@@ -36,6 +36,9 @@ namespace WsdlUI.App.UI
             this.components = new System.ComponentModel.Container();
             this.scMain = new System.Windows.Forms.SplitContainer();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.uc_treeView1 = new WsdlUI.App.UI.UserControls.uc_TreeView();
+            this.uc_panelInfo1 = new WsdlUI.App.UI.UserControls.uc_PanelInfo();
+            this.uc_log1 = new WsdlUI.App.UI.UserControls.uc_Log();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fILEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,9 +50,6 @@ namespace WsdlUI.App.UI
             this.hELPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkForUpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.uc_treeView1 = new WsdlUI.App.UI.UserControls.uc_TreeView();
-            this.uc_panelInfo1 = new WsdlUI.App.UI.UserControls.uc_PanelInfo();
-            this.uc_log1 = new WsdlUI.App.UI.UserControls.uc_Log();
             this.scMain.Panel1.SuspendLayout();
             this.scMain.Panel2.SuspendLayout();
             this.scMain.SuspendLayout();
@@ -79,6 +79,7 @@ namespace WsdlUI.App.UI
             this.scMain.Panel2.Controls.Add(this.uc_log1);
             this.scMain.Size = new System.Drawing.Size(884, 424);
             this.scMain.SplitterDistance = 330;
+            this.scMain.SplitterWidth = 2;
             this.scMain.TabIndex = 1;
             // 
             // splitContainer1
@@ -97,7 +98,37 @@ namespace WsdlUI.App.UI
             this.splitContainer1.Panel2.Controls.Add(this.uc_panelInfo1);
             this.splitContainer1.Size = new System.Drawing.Size(884, 330);
             this.splitContainer1.SplitterDistance = 294;
+            this.splitContainer1.SplitterWidth = 2;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // uc_treeView1
+            // 
+            this.uc_treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uc_treeView1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uc_treeView1.Location = new System.Drawing.Point(0, 0);
+            this.uc_treeView1.Margin = new System.Windows.Forms.Padding(0);
+            this.uc_treeView1.Name = "uc_treeView1";
+            this.uc_treeView1.Size = new System.Drawing.Size(294, 330);
+            this.uc_treeView1.TabIndex = 0;
+            // 
+            // uc_panelInfo1
+            // 
+            this.uc_panelInfo1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uc_panelInfo1.Location = new System.Drawing.Point(0, 0);
+            this.uc_panelInfo1.Margin = new System.Windows.Forms.Padding(0);
+            this.uc_panelInfo1.Name = "uc_panelInfo1";
+            this.uc_panelInfo1.Size = new System.Drawing.Size(588, 330);
+            this.uc_panelInfo1.TabIndex = 0;
+            // 
+            // uc_log1
+            // 
+            this.uc_log1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uc_log1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uc_log1.Location = new System.Drawing.Point(0, 0);
+            this.uc_log1.Margin = new System.Windows.Forms.Padding(0);
+            this.uc_log1.Name = "uc_log1";
+            this.uc_log1.Size = new System.Drawing.Size(884, 92);
+            this.uc_log1.TabIndex = 0;
             // 
             // statusStrip1
             // 
@@ -188,33 +219,6 @@ namespace WsdlUI.App.UI
             this.checkForUpdateToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.checkForUpdateToolStripMenuItem.Text = "Check For Update";
             this.checkForUpdateToolStripMenuItem.Click += new System.EventHandler(this.helpUpdateToolStripMenuItem_Click);
-            // 
-            // uc_treeView1
-            // 
-            this.uc_treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uc_treeView1.Location = new System.Drawing.Point(0, 0);
-            this.uc_treeView1.Margin = new System.Windows.Forms.Padding(0);
-            this.uc_treeView1.Name = "uc_treeView1";
-            this.uc_treeView1.Size = new System.Drawing.Size(294, 330);
-            this.uc_treeView1.TabIndex = 0;
-            // 
-            // uc_panelInfo1
-            // 
-            this.uc_panelInfo1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uc_panelInfo1.Location = new System.Drawing.Point(0, 0);
-            this.uc_panelInfo1.Margin = new System.Windows.Forms.Padding(0);
-            this.uc_panelInfo1.Name = "uc_panelInfo1";
-            this.uc_panelInfo1.Size = new System.Drawing.Size(586, 330);
-            this.uc_panelInfo1.TabIndex = 0;
-            // 
-            // uc_log1
-            // 
-            this.uc_log1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uc_log1.Location = new System.Drawing.Point(0, 0);
-            this.uc_log1.Margin = new System.Windows.Forms.Padding(0);
-            this.uc_log1.Name = "uc_log1";
-            this.uc_log1.Size = new System.Drawing.Size(884, 90);
-            this.uc_log1.TabIndex = 0;
             // 
             // FormMain
             // 

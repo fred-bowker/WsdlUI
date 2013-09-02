@@ -50,13 +50,14 @@
     <Compile Include="Logger.cs" />
     <Compile Include="WebSvcAsync\CancelObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebSvcAsync\EventParams\AsyncArgsComplete.cs" />
     <Compile Include="WebSvcAsync\MonitorObject.cs" />
     <Compile Include="WebSvcAsync\EventParams\TimeoutAsyncArgs.cs" />
     <Compile Include="WebSvcAsync\Operations\DefaultProxy.cs" />
     <Compile Include="WebSvcAsync\EventParams\AsyncArgs.cs" />
-    <Compile Include="WebSvcAsync\EventParams\CallCompleteAsyncArgs.cs" />
+    <Compile Include="WebSvcAsync\EventParams\AsyncArgsCompleteCall.cs" />
     <Compile Include="WebSvcAsync\EventParams\ExceptionAsyncArgs.cs" />
-    <Compile Include="WebSvcAsync\EventParams\RetrieveCompleteAsyncArgs.cs" />
+    <Compile Include="WebSvcAsync\EventParams\AsyncArgsCompleteRetrieve.cs" />
     <Compile Include="WebSvcAsync\EventParams\UpdateAsyncArgs.cs" />
     <Compile Include="WebSvcAsync\Operations\AsyncOp.cs" />
     <Compile Include="WebSvcAsync\Operations\CallAsyncOp.cs" />

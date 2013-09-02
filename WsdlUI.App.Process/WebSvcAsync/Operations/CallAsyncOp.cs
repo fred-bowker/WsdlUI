@@ -18,7 +18,7 @@ using websvcasync = WsdlUI.App.Process.WebSvcAsync;
 namespace WsdlUI.App.Process.WebSvcAsync.Operations {
     public class CallAsyncOp : AsyncOp {
 
-        public event EventHandler<websvcasync.EventParams.CallCompleteAsyncArgs> OnComplete;
+        public event EventHandler<websvcasync.EventParams.AsyncArgsCompleteCall> OnComplete;
         public event EventHandler OnCancel;
 
         HttpWebResponse _webResponse = null;
@@ -52,6 +52,8 @@ namespace WsdlUI.App.Process.WebSvcAsync.Operations {
         }
 
         protected override void Work() {
+
+            DateTime startTime = DateTime.Now;
 
             try {
                 _cancelObject.Start();
@@ -91,8 +93,10 @@ namespace WsdlUI.App.Process.WebSvcAsync.Operations {
 
                 if (OnComplete != null) {
 
+                    DateTime endTime = DateTime.Now;
+
                     OnComplete(this,
-                        new websvcasync.EventParams.CallCompleteAsyncArgs(base.Name,
+                        new websvcasync.EventParams.AsyncArgsCompleteCall(base.Name, startTime, endTime,
                             new process.WebSvcAsync.Result.CallAsyncResult(responseMessage, contentLength, status, headers)
                             ));
 

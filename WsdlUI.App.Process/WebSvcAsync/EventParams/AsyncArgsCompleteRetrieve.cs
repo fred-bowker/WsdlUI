@@ -6,18 +6,20 @@
     You should have received a copy of the GNU General Public License along with Foobar. If not, see http://www.gnu.org/licenses/.
 */
 
+using System;
+
 using websvcasync = WsdlUI.App.Process.WebSvcAsync;
 
 namespace WsdlUI.App.Process.WebSvcAsync.EventParams {
-    public class RetrieveCompleteAsyncArgs : AsyncArgs {
+    public class AsyncArgsCompleteRetrieve : AsyncArgsComplete {
 
         public websvcasync.Result.RetrieveAsyncResult Result {
             get;
             private set;
         }
 
-        public RetrieveCompleteAsyncArgs(string name, websvcasync.Result.RetrieveAsyncResult result)
-            : base(name) {
+        public AsyncArgsCompleteRetrieve(string name, DateTime startTime, DateTime endTime, websvcasync.Result.RetrieveAsyncResult result)
+            : base(name, startTime, endTime) {
             Result = result;
         }
 

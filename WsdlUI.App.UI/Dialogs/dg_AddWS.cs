@@ -64,7 +64,7 @@ namespace WsdlUI.App.UI.Dialogs {
             }
 
             if (outUri.IsFile) {
-                if (File.Exists(outUri.AbsolutePath) == false) {
+                if (File.Exists(outUri.LocalPath) == false) {
                     ErrorMessage = @"file location does not exist";
 
                     return false;

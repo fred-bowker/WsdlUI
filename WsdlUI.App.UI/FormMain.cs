@@ -130,7 +130,7 @@ namespace WsdlUI.App.UI {
             Uri.TryCreate(wsdl, UriKind.Absolute, out outUri);
 
             if (outUri.IsFile) {
-                return (File.Exists(outUri.AbsolutePath));
+                return (File.Exists(outUri.LocalPath));
             }
 
             return true;
@@ -197,7 +197,9 @@ namespace WsdlUI.App.UI {
 
         }
 
-        public void asyncCall_OnRerieveComplete(object sender, websvcasync.EventParams.RetrieveCompleteAsyncArgs e) {
+        //total elapsed time will be different to the time between the start log message and end log message
+            //this is because the time elapsed does not include the processing time for displaying the data in the UI.
+        public void asyncCall_OnRerieveComplete(object sender, websvcasync.EventParams.AsyncArgsCompleteRetrieve e) {
 
             lock (_retrievelocker) {
 
@@ -212,7 +214,10 @@ namespace WsdlUI.App.UI {
                     State.Instance.ContainerWebSvc.Populate(e.Result);
 
                     uc_treeView1.AddClickedComplete(e.Result);
-                    uc_log1.LogInfoMessage("finish adding wsdl - " + e.Name);
+
+                    string message = "finish adding wsdl - " + e.Name + ", time elapsed " + e.TotalTime + "ms";
+
+                    uc_log1.LogInfoMessage(message);
 
                 }));
             }
@@ -261,7 +266,7 @@ namespace WsdlUI.App.UI {
             Invoke((MethodInvoker)(() => {
 
                 if (e.UpdateAvailable) {
-                    string resultMsg = string.Format(Consts.UpdateFormatMsg, e.Version, e.DownloadUrl);
+                    string resultMsg = string.Format(Consts.UpdateFormatMsg, e.DownloadUrl);
                     uc_log1.LogSystemMessage(resultMsg);
                 }
 

@@ -47,9 +47,9 @@ namespace WsdlUI.App.UI.UserControls
             // 
             // rtb_Request
             // 
+            this.rtb_Request.AcceptsTab = true;
             this.rtb_Request.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtb_Request.Dock = System.Windows.Forms.DockStyle.Fill;
-            
             this.rtb_Request.Location = new System.Drawing.Point(0, 0);
             this.rtb_Request.Margin = new System.Windows.Forms.Padding(0);
             this.rtb_Request.Name = "rtb_Request";

@@ -40,6 +40,39 @@ namespace WsdlUI.App.Model.Config {
             }
         }
 
+      
+        public void AddWsdl(string wsdl) {
+
+            if (_wsdls.Count() == _maxWsdls) {
+                return;
+            }
+
+            List<string> wsdlsList = _wsdls.ToList();
+            wsdlsList.Add(wsdl);
+            _wsdls = wsdlsList.ToArray();
+
+            Modified = true;
+            
+        }
+
+        public void RemoveWsdl(string wsdl) {
+
+            List<string> wsdlsList = _wsdls.ToList();
+            wsdlsList.Remove(wsdl);
+           _wsdls = wsdlsList.ToArray();
+
+           if (_wsdls.Count() == 0) {
+               _enabled = false;
+           }
+
+            Modified = true;
+
+        }
+
+        public bool ContainsWsdl(string wsdl) {
+            return _wsdls.Contains(wsdl);
+        }
+
         public StartupWsdls(int maxWsdls) {
             _maxWsdls = maxWsdls;
         }

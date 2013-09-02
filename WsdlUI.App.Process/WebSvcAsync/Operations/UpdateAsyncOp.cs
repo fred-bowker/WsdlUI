@@ -49,7 +49,7 @@ namespace WsdlUI.App.Process.WebSvcAsync.Operations {
 
             int latestVersion = currentVersion.CompareTo(updateVersion);
 
-            var updateArgs = (latestVersion != 0)
+            var updateArgs = (latestVersion < 0)
                 ? new websvcasync.EventParams.UpdateAsyncArgs(responseVersion, responseUrl)
                 : new websvcasync.EventParams.UpdateAsyncArgs();
 

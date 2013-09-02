@@ -18,9 +18,7 @@ Windows XP SP2 (and above Windows 7, Windows 8)
 
 Either build the source or download the latest release from https://github.com/drexyia/WsdlUI/releases
 
-The program does not currently include an installer for Windows.
-
-Simply run WsdlUI.exe from the Release folder.
+Install using the Windows installer WsdlUI.msi
 
 ## Building
 
@@ -39,6 +37,16 @@ deletes output folders and builds solution
 build.bat -v  
 ``` 
 deletes output folders and builds solution displaying compiler output
+
+```
+build.bat -l  
+``` 
+deletes output folders and builds solution, creates the windows installer
+
+```
+build.bat -l -v
+```  
+deletes output folders and builds solution, creates the windows installer displaying compiler output
 
 ```
 build.bat -c  

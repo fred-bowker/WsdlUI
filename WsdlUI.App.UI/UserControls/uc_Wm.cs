@@ -42,7 +42,7 @@ namespace WsdlUI.App.UI.UserControls
                uc_log1.LogErrorMessage(errorMessage);
                uc_log1.LogInfoMessage("request finish");
             
-                SetReady();
+                SetReady("request end");
                 return;
             }
 
@@ -52,7 +52,7 @@ namespace WsdlUI.App.UI.UserControls
 
        void CallWebSvcCallAsync(model.WebSvcMethod webSvcMethod) {
 
-   process.Logger.Instance.Log.Info("Start " + webSvcMethod.Name);
+           process.Logger.Instance.Log.Info("Start " + webSvcMethod.Name);
 
            _cancelToken = new websvcasync.CancelToken();
 
@@ -80,13 +80,13 @@ namespace WsdlUI.App.UI.UserControls
 
            }));
 
-           SetReady();
+           SetReady("request end");
 
        }
 
        void call_OnCancel(object sender, EventArgs e) {
 
-           SetReady();
+           SetReady("request cancelled");
 
        }
 
@@ -95,14 +95,17 @@ namespace WsdlUI.App.UI.UserControls
            Invoke((MethodInvoker)(() => {
 
                uc_log1.LogErrorMessage("request timed out");
-           
+
+    
            }));
 
-           SetReady();
+           SetReady("request end");
 
        }
 
-       void call_OnComplete(object sender, websvcasync.EventParams.CallCompleteAsyncArgs e) {
+       //the time between the start log message and end log message may be different to the time elapsed
+        //this is because the time elapsed is the time for the web service call to complete and does not include the pocessing displaying of the web service call.
+       void call_OnComplete(object sender, websvcasync.EventParams.AsyncArgsCompleteCall e) {
 
            Invoke((MethodInvoker)(() => {
 
@@ -110,24 +113,26 @@ namespace WsdlUI.App.UI.UserControls
 
            }));
 
-           SetReady();
+           string message = "request end, time elapsed " + e.TotalTime + "ms";
+
+           SetReady(message);
        }
 
-       void SetReady()
-        {
-            Invoke((MethodInvoker)(() => {
+       void SetReady(string message) {
 
-                uc_log1.LogInfoMessage("request finish");
+           Invoke((MethodInvoker)(() => {
 
-                uc_Status1.StatusReady();
+               uc_log1.LogInfoMessage(message);
 
-                uc_wm_request1.Enable();
+               uc_Status1.StatusReady();
 
-                tsbtn_Go.Enabled = true;
-                tsbtn_Cancel.Enabled = false;
+               uc_wm_request1.Enable();
 
-            }));
-        }
+               tsbtn_Go.Enabled = true;
+               tsbtn_Cancel.Enabled = false;
+
+           }));
+       }
 
        void SetInProgress()
         {

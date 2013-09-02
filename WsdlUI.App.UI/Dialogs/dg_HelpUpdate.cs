@@ -44,9 +44,9 @@ namespace WsdlUI.App.UI.Dialogs
             this.Invoke(new MethodInvoker(delegate()
             {
                 pb_Update.Value = pb_Update.Maximum;
-                
-                lbl_UpdateResult.Text = "An error occurred connecting to the update page";
-                lbl_UpdateResult.Visible = true;
+
+                rtb_UpdateResult.Text = "An error occurred connecting to the update page";
+                rtb_UpdateResult.Visible = true;
             }));
         }
 
@@ -72,14 +72,14 @@ namespace WsdlUI.App.UI.Dialogs
 
                 if (e.UpdateAvailable)
                 {
-                    string resultMsg = string.Format(Consts.UpdateFormatMsg, e.Version, e.DownloadUrl);
-                    lbl_UpdateResult.Text = resultMsg;
-                    lbl_UpdateResult.Visible = true;
+                    string resultMsg = string.Format(Consts.UpdateFormatMsg, e.DownloadUrl);
+                    rtb_UpdateResult.Text = resultMsg;
+                    rtb_UpdateResult.Visible = true;
                 }
                 else
                 {
-                    lbl_UpdateResult.Text = "WsdlUI is up to date";
-                    lbl_UpdateResult.Visible = true;
+                    rtb_UpdateResult.Text = "WsdlUI is up to date";
+                    rtb_UpdateResult.Visible = true;
                 }
             }));
 

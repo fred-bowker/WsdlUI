@@ -6,20 +6,31 @@
     You should have received a copy of the GNU General Public License along with Foobar. If not, see http://www.gnu.org/licenses/.
 */
 
-using System.Drawing;
-using System.IO;
+using System;
 
-namespace WsdlUI.App.UI {
-    class Consts {
-        public static readonly Color DisabledBGColor = SystemColors.GradientInactiveCaption;
-        public static readonly Color EnableBGColor = SystemColors.Window;
-        public static string TempDirectory {
-            get {
-                return "OutputFolders" + Path.DirectorySeparatorChar + "temp";
-            }
+namespace WsdlUI.App.Process.WebSvcAsync.EventParams {
+    public class AsyncArgsComplete : AsyncArgs {
 
+        public DateTime StartTime {
+            get;
+            private set;
         }
 
-        public const string UpdateFormatMsg = "UPDATE - A new version of WsdlUI is available. Download it at {0}";
+        public DateTime EndTime {
+            get;
+            private set;
+        }
+
+        public int TotalTime {
+            get {
+                return (int)(EndTime - StartTime).TotalMilliseconds;
+            }           
+        }
+
+        public AsyncArgsComplete(string name, DateTime startTime, DateTime endTime) 
+            : base(name) {
+            StartTime = startTime;
+            EndTime = endTime;
+        }
     }
 }

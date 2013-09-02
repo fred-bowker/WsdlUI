@@ -43,6 +43,7 @@ namespace WsdlUI.App.UI.UserControls {
                 wsNode.SelectedImageKey = "wsdl.png";
                 wsNode.Name = item.WebSvcResult.SourceURI;
                 wsNode.Tag = WSNodeType.WebServiceNode;
+                wsNode.ContextMenuStrip = cms_AddRemoveStartup;
 
                 foreach (var webMethod in item.WebSvcResult.WebSvcMethods) {
                     TreeNode wmNode = new TreeNode(webMethod.Key);
@@ -134,6 +135,27 @@ namespace WsdlUI.App.UI.UserControls {
             Font = DefaultFonts.Instance.Small;
             tv_webServices.Font = DefaultFonts.Instance.Medium;
 
+        }
+
+        private void mi_Add_Click(object sender, EventArgs e) {
+            State.Instance.ConfigStartupWsdls.AddWsdl(tv_webServices.SelectedNode.Name);
+        }
+
+        private void mi_Remove_Click(object sender, EventArgs e) {
+            State.Instance.ConfigStartupWsdls.RemoveWsdl(tv_webServices.SelectedNode.Name);
+        }
+
+        private void tv_webServices_MouseDown(object sender, MouseEventArgs e) {
+            if (e.Button == MouseButtons.Right) {
+
+                TreeNode clickedNode = tv_webServices.GetNodeAt(e.Location);
+                tv_webServices.SelectedNode = clickedNode;
+
+                bool startupContainsWsdl = State.Instance.ConfigStartupWsdls.ContainsWsdl(clickedNode.Name);
+                mi_Add.Visible = !startupContainsWsdl;
+                mi_Remove.Visible = startupContainsWsdl;
+
+            }
         }
     }
 }
