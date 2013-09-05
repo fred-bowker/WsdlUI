@@ -1,78 +1,271 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+<head>
+    <meta charset='utf-8' />
+
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="robots" content="index, follow" />
+    <meta name="keywords" content="wsdlui, wsdl ui, soap, soa, web services, webservices, service oriented architecture," />
+    <meta name="description" content="WsdlUI is a program for quickly viewing and testing web services generated from a wsdl file." />
+
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css' />
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
 
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
     <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+	    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js">
+	    </script>
+	    <![endif]-->
 
-    <title>Wsdlui by drexyia</title>
-  </head>
+    <style type="text/css">
+        .ui-dialog .ui-dialog-content
+        {
+            background: none repeat scroll 0 0 transparent;
+            border: 0 none;
+            overflow: hidden;
+            padding: 0.0em 0em;
+            position: relative;
+        }
 
-  <body>
+        .ui-dialog
+        {
+            left: 0;
+            outline: 0 none;
+            padding: 0.0em;
+            position: absolute;
+            top: 0;
+        }
+
+        .dialog-modal-image
+        {
+            border-style: solid;
+            border-color: #2F74C2;
+            border-width: thin;
+            margin: 10px;
+        }
+
+        .screenshot-minimized
+        {
+            border-style: solid;
+            border-color: #2F74C2;
+            border-width: medium;
+        }
+
+        .noTitle .ui-dialog-titlebar
+        {
+            display: none;
+        }
+    </style>
+
+    <script>
+
+        $(function () {
+            $("#display-request-btn").click(function () {
+
+                $("#dialog-modal-request").dialog({
+                    position: "center",
+                    resizable: false,
+                    draggable: true,
+                    height: 620,
+                    width: 1320,
+                    modal: true,
+                    dialogClass: 'noTitle'
+                });
+            });
+
+            $("#display-response-btn").click(function () {
+
+                $("#dialog-modal-response").dialog({
+                    position: "center",
+                    resizable: false,
+                    draggable: true,
+                    height: 620,
+                    width: 1320,
+                    modal: true,
+                    dialogClass: 'noTitle'
+                });
+            });
+
+            $("#display-wsdlFile-btn").click(function () {
+
+                $("#dialog-modal-wsdlFile").dialog({
+                    position: "center",
+                    resizable: false,
+                    draggable: true,
+                    height: 620,
+                    width: 1320,
+                    modal: true,
+                    dialogClass: 'noTitle'
+                });
+            });
+
+            $("#display-startupWSDL-btn").click(function () {
+
+                $("#dialog-modal-startupWSDL").dialog({
+                    position: "center",
+                    resizable: false,
+                    draggable: true,
+                    height: 620,
+                    width: 1320,
+                    modal: true,
+                    dialogClass: 'noTitle'
+                });
+            });
+
+        });
+
+    </script>
+
+    <title>WsdlUI by drexyia
+    </title>
+</head>
+
+<body>
     <header>
-      <div class="inner">
-        <h1>Wsdlui</h1>
-        <h2>A program for generating web service requests</h2>
-        <a href="https://github.com/drexyia/WsdlUI" class="button"><small>View project on</small>GitHub</a>
-      </div>
+        <div class="inner">
+            <h1>WsdlUI
+            </h1>
+            <h2>A program for generating web service requests
+            </h2>
+            <a href="https://github.com/drexyia/WsdlUI" class="button">
+                <small>View project on
+                </small>GitHub
+            </a>
+        </div>
     </header>
 
     <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+        <div class="inner clearfix">
+            <section id="main-content">
+                <h2>
+                    <a class="anchor" href="#welcome-to-github-pages">
+                        <span class="octicon octicon-link"></span>
+                    </a>Welcome to WsdlUI.
+                </h2>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+                <div>
+                    WsdlUI is a program for quickly viewing and testing web services generated from a .wsdl file.
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+        	        The program is designed to be fast and responsive implementing a small number of features needed for testing web services.
+                </div>
+                
+                <div style="margin-top: 10px">The project is free, open source (GPL v3) and being actively developed, if you have any feedback or feature requests please get in touch.</div>
+   
+                <div style="margin-top: 10px">
+                Checkout the screen shots below to see examples of WsdlUI functionality  
+                </div>
+                <div style="width: 100%; margin-top: 15px">
+                    <div style="float: left; width: 46.5%;" class="screenshot-minimized">
+                        <a href="#" id="display-request-btn">
+                            <img alt="request screenshot" title="View screenshot of a web service request" src="request.jpg" />
+                        </a>
+                    </div>
+                    <div style="float: left; width: 2%;">&nbsp</div>
+                    <div style="float: left; width: 46.5%;" class="screenshot-minimized">
+                        <a href="#" id="display-response-btn">
+                            <img alt="response screenshot" title="View screenshot of the response to a web service call" src="response.jpg" />
+                        </a>
+                    </div>
+                    <br style="clear: left;" />
+                </div>
+                <div style="width: 100%; margin-top: 15px">
+                    <div style="float: left; width: 46.5%;" class="screenshot-minimized">
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+                        <a href="#" id="display-wsdlFile-btn">
+                            <img alt="wsdl file screenshot" title="View screenshot of the wsdl file display" src="wsdlFile.jpg" />
+                        </a>
+                    </div>
+                    <div style="float: left; width: 2%;">&nbsp</div>
+                    <div style="float: left; width: 46.5%;" class="screenshot-minimized">
+                        <a href="#" id="display-startupWSDL-btn">
+                            <img alt="startup wsdl screenshot" title="View screenshot adding wsdls to be loaded on startup" src="startupWSDL.jpg" />
+                        </a>
+                    </div>
+                    <br style="clear: left;" />
+                </div>
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+                <div id="dialog-modal-request" style="display: none;">
+                    <img alt="request screenshot" src="request.jpg" class="dialog-modal-image" />
+                </div>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+                <div id="dialog-modal-response" style="display: none;">
+                    <img alt="response screenshot" src="response.jpg" class="dialog-modal-image" />
+                </div>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+                <div id="dialog-modal-wsdlFile" style="display: none;">
+                    <img alt="wsdl file screenshot" src="wsdlFile.jpg" class="dialog-modal-image" />
+                </div>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+                <div id="dialog-modal-startupWSDL" style="display: none;">
+                    <img alt="startup wsdl screenshot" src="startupWSDL.jpg" class="dialog-modal-image" />
+                </div>
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+                <h3>
+                    <a class="anchor" href="#designer-templates">
+                        <span class="octicon octicon-link"></span>
+                    </a>Requirements
+                </h3>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+                <div>
+                    Windows XP SP2 (and above Windows 7, Windows 8)	    
+                </div>
+                <div>
+                    .NET v3.5
+                </div>
+                
+                <div style="margin-top: 10px">
+                    LINUX SUPPORT COMING SOON!!
+                </div>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+                <h3>
+                    <a class="anchor" href="#rather-drive-stick">
+                        <span class="octicon octicon-link"></span>
+                    </a>Installation
+                </h3>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-        </section>
+                <p>
+                    Download the zip file, unzip then run the msi file its as simple as that.
+                </p>
 
-        <aside id="sidebar">
-          <a href="http://bit.ly/17jxgSO" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
+                <h3>
+                    <a class="anchor" href="#authors-and-contributors">
+                        <span class="octicon octicon-link"></span>
+                    </a>Feedback
+                </h3>
 
-          <p class="repo-owner"><a href="https://github.com/drexyia/WsdlUI"></a> is maintained by <a href="https://github.com/drexyia">drexyia</a>.</p>
+                <p>
+                    Having trouble with WsdlUI? Contact
+                    <a href="mailto:drexyia@fastmail.fm">drexyia@fastmail.fm
+                    </a>and i'll help you sort it out.
+                    <br />
+                    To contribute to WsdlUI visit the projects github page
+                    <a href="https://github.com/drexyia/WsdlUI">https://github.com/drexyia/WsdlUI
+                    </a>.   
+                </p>
 
-        </aside>
-      </div>
+            </section>
+
+            <aside id="sidebar">
+                <a href="http://bit.ly/17jxgSO" class="button">
+                    <small>Download
+                    </small>
+                    .zip file
+                </a>
+
+                <p class="repo-owner">
+                    <a href="https://github.com/drexyia/WsdlUI"></a>is maintained by
+                    <a href="https://github.com/drexyia">drexyia
+                    </a>.
+                </p>
+
+            </aside>
+        </div>
     </div>
-
-  
-  </body>
+</body>
 </html>
