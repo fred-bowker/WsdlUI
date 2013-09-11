@@ -69,7 +69,7 @@ namespace WsdlUI.App.UI {
             Dictionary<string, UserControls.uc_Wm> ucWebMethods = new Dictionary<string, UserControls.uc_Wm>();
             foreach (var v in item.WebSvcResult.WebSvcMethods) {
                 UserControls.uc_Wm ucWebMethod = new UserControls.uc_Wm();
-                ucWebMethod.PopulateForm(v.Value);
+                ucWebMethod.PopulateForm(item.WebSvcResult.SourceURI, v.Value);
                 ucWebMethods[v.Key] = ucWebMethod;
             }
 

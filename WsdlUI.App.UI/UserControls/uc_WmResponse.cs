@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 
 using websvcasync = WsdlUI.App.Process.WebSvcAsync;
+using WsdlUI.App.UI.UserControls.Widgets;
 
 namespace WsdlUI.App.UI.UserControls
 {
@@ -25,15 +26,7 @@ namespace WsdlUI.App.UI.UserControls
         public void PopulateForm(websvcasync.Result.CallAsyncResult result)
         {
             uc_responseMessage.PopulateForm(result.ResponseMessage);
-
-            Dictionary<string, StringProperty> propGridValues = new Dictionary<string, StringProperty>();
-            propGridValues["Status"] = new StringProperty(result.Status, "Response Status", new List<Attribute>(), true);
-            foreach (var keyValue in result.Headers)
-            {
-                propGridValues[keyValue.Key] = new StringProperty(keyValue.Value, "Response Headers", new List<Attribute>(), true);
-            }
-
-            pg_responseHeaders.SelectedObject = new DictionaryPropertyGridAdapter(propGridValues);
+            pg_responseHeaders.SelectedObject = new ResponsePropertyGrid(result.Status, result.Headers);
         }
 
         public void Clear()

@@ -17,15 +17,22 @@ namespace WsdlUI.App.UI {
 
         string _executingDirectoryPath;
 
-        const string PrevWsdlPath = @"OutputFolders\config\prev_wsdl.data";
+        const string ConfigPrevWsdlPath = @"OutputFolders\config\prev_wsdl.data";
+        const string ConfigPrevUrlPath = @"OutputFolders\config\prev_url.data";
         const string ConfigProxyPath = @"OutputFolders\config\proxy.data";
         const string ConfigUpdatePath = @"OutputFolders\config\update.data";
         const string ConfigStartupWsdlsPath = @"OutputFolders\config\startupWsdls.data";
-
+       
         public model.Config.Proxy ConfigProxy {
             get;
             private set;
         }
+
+        public model.Config.PrevUrls ConfigPrevUrls {
+            get;
+            private set;
+        }
+
 
         public model.Config.PrevWsdls ConfigPrevWsdls {
             get;
@@ -70,32 +77,38 @@ namespace WsdlUI.App.UI {
 
         public void Save() {
             var storageProxy = new pickle.Pickler(_executingDirectoryPath + ConfigProxyPath);
-            var storageWsdl = new pickle.Pickler(_executingDirectoryPath + PrevWsdlPath);
+            var storagePrevWsdl = new pickle.Pickler(_executingDirectoryPath + ConfigPrevWsdlPath);
+            var storagePrevUrl = new pickle.Pickler(_executingDirectoryPath + ConfigPrevUrlPath);
             var storageUpdate = new pickle.Pickler(_executingDirectoryPath + ConfigUpdatePath);
             var storageStartupWsdls = new pickle.Pickler(_executingDirectoryPath + ConfigStartupWsdlsPath);
 
             storageProxy.Save(ConfigProxy);
-            storageWsdl.Save(ConfigPrevWsdls);
+            storagePrevWsdl.Save(ConfigPrevWsdls);
+            storagePrevUrl.Save(ConfigPrevUrls);
             storageUpdate.Save(ConfigUpdate);
             storageStartupWsdls.Save(ConfigStartupWsdls);
         }
 
+        //user can clear previous saved data by deleting the file from the config location
         public void Load() {
 
             var storageProxy = new pickle.Pickler(_executingDirectoryPath + ConfigProxyPath);
-            var storageWsdl = new pickle.Pickler(_executingDirectoryPath + PrevWsdlPath);
+            var storagePrevWsdl = new pickle.Pickler(_executingDirectoryPath + ConfigPrevWsdlPath);
+            var storagePrevUrl = new pickle.Pickler(_executingDirectoryPath + ConfigPrevUrlPath);
             var storageUpdate = new pickle.Pickler(_executingDirectoryPath + ConfigUpdatePath);
             var storageStartupWsdls = new pickle.Pickler(_executingDirectoryPath + ConfigStartupWsdlsPath);
 
             ConfigProxy = new WsdlUI.App.Model.Config.Proxy();
             ConfigPrevWsdls = new WsdlUI.App.Model.Config.PrevWsdls(AppConfig.Instance.MaxPrevWsdls);
+            ConfigPrevUrls = new model.Config.PrevUrls(AppConfig.Instance.MaxPrevUrls);
             ConfigUpdate = new Model.Config.Update();
             ConfigStartupWsdls = new Model.Config.StartupWsdls(AppConfig.Instance.MaxStartupWsdls);
 
-            storageUpdate.Load(ConfigUpdate);
-            storageProxy.Load(ConfigProxy);
-            storageWsdl.Load(ConfigPrevWsdls);
-            storageStartupWsdls.Load(ConfigStartupWsdls);
+            storageUpdate.Load(ConfigUpdate, false);
+            storageProxy.Load(ConfigProxy, false);
+            storagePrevWsdl.Load(ConfigPrevWsdls, true);
+            storagePrevUrl.Load(ConfigPrevUrls, true);
+            storageStartupWsdls.Load(ConfigStartupWsdls, false);
         }
     }
 }

@@ -18,22 +18,31 @@ namespace WsdlUI.App.Model.Config.Pickle {
 
         public void Save(IModelPickle saveItem) {
             try {
-                if (saveItem.Modified) {
-                    File.WriteAllLines(_filePath, saveItem.Serialize());
+                if (File.Exists(_filePath)) {
+                    if (saveItem.Modified) {
+                        File.WriteAllLines(_filePath, saveItem.Serialize());
+                    }
                 }
             } //if running multiple instances of the application the file may already being read. Then HIDE exception.
             catch (IOException) {
             }
         }
 
-        public void Load(IModelPickle loadItem) {
+        public void Load(IModelPickle loadItem, bool createFile) {
             try {
-                if (File.Exists(_filePath)) {
-                    string[] fileData = File.ReadAllLines(_filePath);
-                    if (fileData.Length != 0) {
-                        loadItem.Deserialize(fileData);
+
+                if (createFile) {
+                    if (!File.Exists(_filePath)) {
+                        File.Create(_filePath);
+                        return;
                     }
                 }
+
+                string[] fileData = File.ReadAllLines(_filePath);
+                if (fileData.Length != 0) {
+                    loadItem.Deserialize(fileData);
+                }
+                
             } //if running multiple instances of the application the file may already being read. Then HIDE exception.
             catch (IOException) {
             }

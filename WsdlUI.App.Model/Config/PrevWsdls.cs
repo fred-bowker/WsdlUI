@@ -12,48 +12,58 @@ using System.Linq;
 
 namespace WsdlUI.App.Model.Config {
     public class PrevWsdls : ConfigItem, Pickle.IModelPickle {
-        int _maxPrevWsdls;
-        List<string> _prevWsdls;
+        int _maxItems;
+        List<string> _prev;
 
         public string[] WsdlList {
             get {
-                return _prevWsdls.ToArray();
+                return _prev.ToArray();
             }
         }
 
         public PrevWsdls(int maxPrevWsdls) {
-            _maxPrevWsdls = maxPrevWsdls;
-            _prevWsdls = new List<string>();
+            _maxItems = maxPrevWsdls;
+            _prev = new List<string>();
         }
 
         public void Add(string wsdlFile) {
             Modified = true;
 
-            //remove so that it is added to the start of the list
-            if (_prevWsdls.Contains(wsdlFile)) {
-                _prevWsdls.Remove(wsdlFile);
-                _prevWsdls.Insert(0, wsdlFile);
-                return;
-            }
-
-            if (_prevWsdls.Count() == _maxPrevWsdls) {
-                _prevWsdls.RemoveAt(_maxPrevWsdls - 1);
-            }
-
-            _prevWsdls.Insert(0, wsdlFile);
+            AddItem(wsdlFile);
         }
 
         void Pickle.IModelPickle.Deserialize(string[] serializedData) {
-            _prevWsdls = serializedData.ToList();
 
-            if (serializedData.Count() > _maxPrevWsdls) {
-                _prevWsdls = _prevWsdls.GetRange(0, _maxPrevWsdls);
-                Modified = true;
+            //AddItem adds each item to the start of the list, the file stores the most recent wsdl first
+            //inorder to display the wsdls in the correct access order reverse the list
+            foreach (string line in serializedData.Reverse()) {
+                AddItem(line);
             }
         }
 
+        void AddItem(string wsdlFile) {
+
+            //remove so that it is added to the start of the list
+            if (_prev.Contains(wsdlFile)) {
+                _prev.Remove(wsdlFile);
+                _prev.Insert(0, wsdlFile);
+                return;
+            }
+
+            if (_prev.Count() == _maxItems) {
+                _prev.RemoveAt(_maxItems - 1);
+
+                //this method is called when Deserialize the urls and after a web service is called. If the url is changed during 
+                //Deserialize set to modified so that these changes are saved when the progran closses
+                Modified = true;
+            }
+
+            _prev.Insert(0, wsdlFile);
+        }
+
+
         string[] Pickle.IModelPickle.Serialize() {
-            return _prevWsdls.ToArray();
+            return _prev.ToArray();
         }
 
 

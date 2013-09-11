@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using System.Xml;
 
 using model = WsdlUI.App.Model;
+using WsdlUI.App.UI.UserControls.Widgets;
 
 namespace WsdlUI.App.UI.UserControls {
     public partial class uc_WmRequest : UserControl {
@@ -52,24 +53,18 @@ namespace WsdlUI.App.UI.UserControls {
             rtb_Request.Text = "";
         }
 
-        public void PopulateForm(WsdlUI.App.Model.WebSvcMethod webSvcMethod) {
+        public void PopulateForm(string webSvcSrcUri, WsdlUI.App.Model.WebSvcMethod webSvcMethod) {
             _webSvcMethod = webSvcMethod;
 
             rtb_Request.Text = webSvcMethod.SampleRequestMessage;
 
-            Dictionary<string, StringProperty> propGridValues = new Dictionary<string, StringProperty>();
-            propGridValues["URL"] = new StringProperty(webSvcMethod.ServiceURI, "Request Line", new List<Attribute>());
-            propGridValues[WsdlUI.App.Model.WebSvcMethod.HEADER_NAME_CONTENT_TYPE] = new StringProperty(webSvcMethod.HeaderContentType, "Request Headers", new List<Attribute>(), true);
-            propGridValues[WsdlUI.App.Model.WebSvcMethod.HEADER_NAME_SOAP_ACTION] = new StringProperty(webSvcMethod.HeaderSoapAction, "Request Headers", new List<Attribute>(), true);
-
-            pg_headers.SelectedObject = new DictionaryPropertyGridAdapter(propGridValues);
+            pg_headers.SelectedObject = new RequestPropertyGrid(webSvcSrcUri, webSvcMethod.Name, webSvcMethod.HeaderContentType, webSvcMethod.HeaderSoapAction, webSvcMethod.ServiceURI);
         }
 
-
         public WsdlUI.App.Model.WebSvcMethod RetrieveForm() {
-            IDictionary<string, StringProperty> items = RetrieveItemsFromGrid();
+            RequestPropertyGrid items = (RequestPropertyGrid)pg_headers.SelectedObject;
 
-            _webSvcMethod.ServiceURI = items["URL"].InternalValue;
+            _webSvcMethod.ServiceURI = items.Url;
             _webSvcMethod.SampleRequestMessage = rtb_Request.Text;
 
             return _webSvcMethod;
@@ -77,11 +72,13 @@ namespace WsdlUI.App.UI.UserControls {
 
         public string ValidateForm() {
             try {
-                IDictionary<string, StringProperty> items = RetrieveItemsFromGrid();
+                RequestPropertyGrid items = (RequestPropertyGrid)pg_headers.SelectedObject;
 
-                string uri = items["URL"].InternalValue;
-
-                new Uri(uri);
+                Uri url = new Uri(items.Url);
+                if (url.Scheme != Uri.UriSchemeHttp && url.Scheme != Uri.UriSchemeHttps) {
+                    return "invalid url";
+                }
+                
                 return null;
             }
             catch (UriFormatException) {
@@ -91,17 +88,6 @@ namespace WsdlUI.App.UI.UserControls {
 
         public uc_WmRequest() {
             InitializeComponent();
-        }
-
-        IDictionary<string, StringProperty> RetrieveItemsFromGrid() {
-            //running on mono returns IDictionary<string, StringProperty>, the clr returns DictionaryPropertyGridAdapter
-            IDictionary<string, StringProperty> items = pg_headers.SelectedObject as IDictionary<string, StringProperty>;
-            if (items == null) {
-                DictionaryPropertyGridAdapter gridAdapter = (DictionaryPropertyGridAdapter)pg_headers.SelectedObject;
-                items = gridAdapter.PropGridValues;
-            }
-
-            return items;
         }
 
         private void uc_WmRequest_Load(object sender, EventArgs e) {

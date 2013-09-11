@@ -15,6 +15,12 @@ namespace WsdlUI.App.UI {
             }
         }
 
+        public int MaxPrevUrls {
+            get {
+                return int.Parse(ConfigurationManager.AppSettings["WsdlUI.App.UI.MaxPrevUrls"]);
+            }
+        }
+
         public int MaxStartupWsdls {
             get {
                 return int.Parse(ConfigurationManager.AppSettings["WsdlUI.App.UI.MaxStartupWsdls"]);

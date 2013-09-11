@@ -19,15 +19,17 @@ namespace WsdlUI.App.UI.UserControls
     public partial class uc_Wm : UserControl
     {
         websvcasync.CancelToken _cancelToken;
+        string _webSvcSrcUri;
      
         public uc_Wm()
         {             
             InitializeComponent();
         }
 
-        public void PopulateForm(WsdlUI.App.Model.WebSvcMethod webSvcMethod)
+        public void PopulateForm(string webSvcSrcUri, WsdlUI.App.Model.WebSvcMethod webSvcMethod)
         {
-            uc_wm_request1.PopulateForm(webSvcMethod);
+            _webSvcSrcUri = webSvcSrcUri;
+            uc_wm_request1.PopulateForm(webSvcSrcUri, webSvcMethod);
         }
 
        void tsBtnGo_Click(object sender, EventArgs e)
@@ -47,6 +49,10 @@ namespace WsdlUI.App.UI.UserControls
             }
 
             model.WebSvcMethod webSvcMethod = uc_wm_request1.RetrieveForm();
+
+            //add to the list of previous uris the uri has already been validated by ValidateForm
+            State.Instance.ConfigPrevUrls.Add(_webSvcSrcUri, webSvcMethod.Name, webSvcMethod.ServiceURI);
+
             CallWebSvcCallAsync(webSvcMethod);       
         }
 
@@ -61,6 +67,7 @@ namespace WsdlUI.App.UI.UserControls
                var call = new websvcasync.Operations.CallAsyncOp(webSvcMethod, _cancelToken, State.Instance.ConfigProxy, AppConfig.Instance.WebSvcCallTimeout);
                call.OnComplete += call_OnComplete;
                call.OnWebException += call_OnWebException;
+               call.OnException += call_OnException;
                call.OnCancel += call_OnCancel;
                call.OnTimeout += call_OnTimeout;
                call.Start();
@@ -70,6 +77,17 @@ namespace WsdlUI.App.UI.UserControls
            //the windows forms control must be updated by a thread with single threaded appartment property
            thread.SetApartmentState(ApartmentState.STA);
            thread.Start();
+       }
+
+       void call_OnException(object sender, websvcasync.EventParams.ExceptionAsyncArgs e) {
+          
+           Invoke((MethodInvoker)(() => {
+
+               uc_log1.LogErrorMessage(e.Message);
+
+           }));
+
+           SetReady("request end");
        }
 
        void call_OnWebException(object sender, websvcasync.EventParams.ExceptionAsyncArgs e) {

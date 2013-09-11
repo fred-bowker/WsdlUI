@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -121,10 +121,11 @@
     <Compile Include="UserControls\uc_Status.Designer.cs">
       <DependentUpon>uc_Status.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Widgets\RequestPropertyGrid.cs" />
+    <Compile Include="UserControls\Widgets\ResponsePropertyGrid.cs" />
     <Compile Include="UserControls\Widgets\wg_BaseToolStripButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="UserControls\Widgets\DictionaryPropertyGridAdapter.cs" />
     <Compile Include="Dialogs\dg_ConfigProxy.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -201,9 +202,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Widgets\DictionaryPropertyGrid.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="UserControls\Widgets\wg_BaseToolStrip.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -279,6 +277,7 @@
     <Content Include="OutputFolders\config\startupWsdls.data">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="OutputFolders\config\prev_url.data" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="OutputFolders\temp\temp.xml">
