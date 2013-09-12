@@ -14,41 +14,45 @@ using System.Windows.Forms;
 using websvcasync = WsdlUI.App.Process.WebSvcAsync;
 using WsdlUI.App.UI.UserControls.Widgets;
 
-namespace WsdlUI.App.UI.UserControls
-{
-    public partial class uc_WmResponse : UserControl
-    {
-        public uc_WmResponse()
-        {
+namespace WsdlUI.App.UI.UserControls {
+    public partial class uc_WmResponse : UserControl {
+        public uc_WmResponse() {
             InitializeComponent();
         }
 
-        public void PopulateForm(websvcasync.Result.CallAsyncResult result)
-        {
+        public void PopulateForm(websvcasync.Result.CallAsyncResult result) {
             uc_responseMessage.PopulateForm(result.ResponseMessage);
             pg_responseHeaders.SelectedObject = new ResponsePropertyGrid(result.Status, result.Headers);
         }
 
-        public void Clear()
-        {
+        public void PopulateForm(string respMsg, string status, string contentType) {
+            uc_responseMessage.PopulateForm(respMsg);
+
+            Dictionary<string, string> headers = new Dictionary<string, string> {
+                {"Content-Type", contentType}
+            };
+            pg_responseHeaders.SelectedObject = new ResponsePropertyGrid(status, headers);
+        }
+
+        public void Clear() {
             pg_responseHeaders.SelectedObject = null;
             uc_responseMessage.Clear();
         }
 
-        private void uc_WmResponse_Load(object sender, EventArgs e) {
+        void uc_WmResponse_Load(object sender, EventArgs e) {
             Font = DefaultFonts.Instance.Small;
         }
 
 
     }
 
-    
-  
 
-   
 
-   
 
-   
+
+
+
+
+
 
 }

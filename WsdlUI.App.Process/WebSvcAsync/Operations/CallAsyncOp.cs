@@ -69,7 +69,7 @@ namespace WsdlUI.App.Process.WebSvcAsync.Operations {
 
                 _streamWriter = new StreamWriter(webRequest.GetRequestStream());
 
-                _streamWriter.Write(_webSvcMethod.SampleRequestMessage);
+                _streamWriter.Write(_webSvcMethod.SampleReqMsg);
                 _streamWriter.Flush();
                 _streamWriter.Close();
 

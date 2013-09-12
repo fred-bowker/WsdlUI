@@ -299,11 +299,6 @@ namespace WsdlUI.App.UI {
             dialog.RetrieveForm();
         }
 
-        void helpUpdateToolStripMenuItem_Click(object sender, EventArgs e) {
-            WsdlUI.App.UI.Dialogs.dg_HelpUpdate dialog = new Dialogs.dg_HelpUpdate();
-            dialog.ShowDialog();
-        }
-
         void configStartupWsdlsToolStripMenuItem_Click(object sender, EventArgs e) {
             WsdlUI.App.UI.Dialogs.dg_ConfigStartupWsdls dialog = new Dialogs.dg_ConfigStartupWsdls();
             dialog.ShowDialog();

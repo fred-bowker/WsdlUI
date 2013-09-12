@@ -11,10 +11,24 @@ using System.Collections.Generic;
 
 namespace WsdlUI.App.Model {
     public class WebSvcMethod {
-        string _initialSampleRequest;
 
         public const string HEADER_NAME_CONTENT_TYPE = "Content-Type";
         public const string HEADER_NAME_SOAP_ACTION = "SOAPAction";
+
+        public string ServiceURI {
+            get;
+            set;
+        }
+
+        public string SampleReqMsg {
+            get;
+            set;
+        }
+
+        public string SampleRespMsg {
+            get;
+            private set;
+        }
 
         public Dictionary<string, string> RequestHeaders {
             get;
@@ -32,14 +46,10 @@ namespace WsdlUI.App.Model {
             }
         }
 
-        public string ServiceURI {
+        public string SampleResponseMessage {
             get;
-            set;
-        }
+            private set;
 
-        public string SampleRequestMessage {
-            get;
-            set;
         }
 
         public string HeaderContentType {
@@ -48,40 +58,24 @@ namespace WsdlUI.App.Model {
             }
         }
 
-        public WebSvcMethod(string name, string sampleRequest, string serviceURI) {
-            RequestHeaders = new Dictionary<string, string>();
+        public string RespHeaderContentType {
+            get;
+            private set;
+        }
 
-            _initialSampleRequest = sampleRequest;
+        public WebSvcMethod(string name, string sampleReq, string sampleResp, string serviceURI, string soapAction, string reqContentType, string respContentType) {
+
             Name = name;
+            SampleReqMsg = sampleReq;
+            SampleRespMsg = sampleResp;
             ServiceURI = serviceURI;
 
-            ParseSoapHeaders();
-            ParseSoapMessage();
-        }
-
-        void ParseSoapHeaders() {
-            string[] splitLines = _initialSampleRequest.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-
-            string soapAction = GetHeader(splitLines, "SOAPAction:");
-            string contentType = GetHeader(splitLines, "Content-Type:");
-
-            RequestHeaders[WsdlUI.App.Model.WebSvcMethod.HEADER_NAME_CONTENT_TYPE] = contentType;
+            RequestHeaders = new Dictionary<string, string>();
+            RequestHeaders[WsdlUI.App.Model.WebSvcMethod.HEADER_NAME_CONTENT_TYPE] = reqContentType;
             RequestHeaders[WsdlUI.App.Model.WebSvcMethod.HEADER_NAME_SOAP_ACTION] = soapAction;
-        }
 
-        void ParseSoapMessage() {
-            int indexOfMessage = _initialSampleRequest.IndexOf(@"<soap:Envelope");
-            SampleRequestMessage = _initialSampleRequest.Substring(indexOfMessage);
-        }
+            RespHeaderContentType = respContentType;
 
-        string GetHeader(string[] splitLines, string headerName) {
-            foreach (var v in splitLines) {
-                if (v.StartsWith(headerName)) {
-                    return v.Replace(headerName, "").Trim();
-                }
-            }
-
-            throw new Exception("Error Here");
         }
 
     }

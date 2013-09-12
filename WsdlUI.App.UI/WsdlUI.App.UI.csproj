@@ -102,12 +102,6 @@
     <Compile Include="Dialogs\dg_Base.Designer.cs">
       <DependentUpon>dg_Base.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\dg_HelpUpdate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Dialogs\dg_HelpUpdate.Designer.cs">
-      <DependentUpon>dg_HelpUpdate.cs</DependentUpon>
-    </Compile>
     <Compile Include="Dialogs\dg_HelpAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -221,9 +215,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\dg_HelpAbout.resx">
       <DependentUpon>dg_HelpAbout.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\dg_HelpUpdate.resx">
-      <DependentUpon>dg_HelpUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>

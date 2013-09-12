@@ -17,7 +17,7 @@ namespace WsdlUI.App.Process.WebSvcGenerate.Sample {
             : base(services, schemas) {
         }
 
-        public void GenerateMessages(string operation, string bindingName, string protocol, out string req) {
+        public void GenerateMessages(string operation, string bindingName, string protocol, out string req, out string resp) {
             Port port = FindPort(bindingName, protocol);
             Binding binding = descriptions.GetBinding(port.Binding);
             if (binding == null) throw new InvalidOperationException("Binding " + bindingName + " not found");
@@ -28,6 +28,7 @@ namespace WsdlUI.App.Process.WebSvcGenerate.Sample {
             OperationBinding obin = FindOperation(binding, operation);
 
             req = GenerateMessage(port, obin, oper, protocol, true);
+            resp = GenerateMessage(port, obin, oper, protocol, false);
         }
 
         Port FindPort(string portName, string protocol) {

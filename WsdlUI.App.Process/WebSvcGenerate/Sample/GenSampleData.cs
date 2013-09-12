@@ -6,6 +6,7 @@
     You should have received a copy of the GNU General Public License along with Foobar. If not, see http://www.gnu.org/licenses/.
 */
 
+using System;
 using System.Collections.Generic;
 using System.Web.Services.Description;
 using System.Xml.Schema;
@@ -48,14 +49,41 @@ namespace WsdlUI.App.Process.WebSvcGenerate.Sample {
                 }
 
                 string req;
-                SampleGeneratorWebSvc sg = new SampleGeneratorWebSvc(descCol, schemaCol);
-                sg.GenerateMessages(method, null, "Soap", out req);
+                string resp;
 
-                model.WebSvcMethod webMethod = new model.WebSvcMethod(method, req, _serviceURI);
+                SampleGeneratorWebSvc sg = new SampleGeneratorWebSvc(descCol, schemaCol);
+                sg.GenerateMessages(method, null, "Soap", out req, out resp);
+
+                int indexOfReqMsg = req.IndexOf(@"<soap:Envelope");
+                string reqHeaderMsg = req.Substring(0, indexOfReqMsg);
+                string sampleReqMsg = req.Substring(indexOfReqMsg);
+
+                int indexOfRespMsg = resp.IndexOf(@"<soap:Envelope");
+                string respHeaderMsg = resp.Substring(0, indexOfRespMsg);
+                string sampleRespMsg = resp.Substring(indexOfRespMsg);
+
+                string[] reqHeaderLines = reqHeaderMsg.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+                string soapAction = GetHeader(reqHeaderLines, "SOAPAction:");
+                string reqContentType = GetHeader(reqHeaderLines, "Content-Type:");
+
+                string[] respHeaderLines = respHeaderMsg.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+                string respContentType = GetHeader(respHeaderLines, "Content-Type:");
+
+                model.WebSvcMethod webMethod = new model.WebSvcMethod(method, sampleReqMsg, sampleRespMsg, _serviceURI, soapAction, reqContentType, respContentType);
                 results[method] = webMethod;
             }
 
             return results;
+        }
+
+        string GetHeader(string[] splitLines, string headerName) {
+            foreach (var v in splitLines) {
+                if (v.StartsWith(headerName)) {
+                    return v.Replace(headerName, "").Trim();
+                }
+            }
+
+            return "Not Found";
         }
 
         List<string> GetMethodList() {

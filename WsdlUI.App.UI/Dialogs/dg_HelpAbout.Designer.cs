@@ -37,69 +37,55 @@ namespace WsdlUI.App.UI.Dialogs
         /// </summary>
        void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txt_License = new System.Windows.Forms.TextBox();
-            this.lbl_WebSite = new System.Windows.Forms.LinkLabel();
-            this.lbl_Developer = new System.Windows.Forms.Label();
+            this.rtb_WebSite = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lbl_Version = new System.Windows.Forms.Label();
             this.pb_AppIcon = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pb_Update = new System.Windows.Forms.ProgressBar();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.rtb_UpdateResult = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pb_AppIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // txt_License
             // 
-            this.txt_License.Location = new System.Drawing.Point(14, 89);
+            this.txt_License.Location = new System.Drawing.Point(12, 100);
             this.txt_License.Multiline = true;
             this.txt_License.Name = "txt_License";
             this.txt_License.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txt_License.Size = new System.Drawing.Size(455, 203);
+            this.txt_License.Size = new System.Drawing.Size(599, 203);
             this.txt_License.TabIndex = 0;
             this.txt_License.TextChanged += new System.EventHandler(this.txt_License_TextChanged);
             this.txt_License.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_License_KeyPress);
             // 
-            // lbl_WebSite
+            // rtb_WebSite
             // 
-            this.lbl_WebSite.AutoSize = true;
-            this.lbl_WebSite.Location = new System.Drawing.Point(107, 33);
-            this.lbl_WebSite.Name = "lbl_WebSite";
-            this.lbl_WebSite.Size = new System.Drawing.Size(21, 14);
-            this.lbl_WebSite.TabIndex = 11;
-            this.lbl_WebSite.TabStop = true;
-            this.lbl_WebSite.Text = "WS";
-            // 
-            // lbl_Developer
-            // 
-            this.lbl_Developer.AutoSize = true;
-            this.lbl_Developer.Location = new System.Drawing.Point(107, 10);
-            this.lbl_Developer.Name = "lbl_Developer";
-            this.lbl_Developer.Size = new System.Drawing.Size(21, 14);
-            this.lbl_Developer.TabIndex = 10;
-            this.lbl_Developer.Text = "DE";
+            this.rtb_WebSite.AutoSize = true;
+            this.rtb_WebSite.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtb_WebSite.Location = new System.Drawing.Point(93, 10);
+            this.rtb_WebSite.Name = "rtb_WebSite";
+            this.rtb_WebSite.ReadOnly = true;
+            this.rtb_WebSite.Size = new System.Drawing.Size(421, 14);
+            this.rtb_WebSite.TabIndex = 11;
+            this.rtb_WebSite.Text = "WS";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 33);
+            this.label2.Location = new System.Drawing.Point(14, 10);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(70, 14);
             this.label2.TabIndex = 9;
             this.label2.Text = "Web Site:";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 14);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Developer:";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 60);
+            this.label4.Location = new System.Drawing.Point(14, 35);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(63, 14);
             this.label4.TabIndex = 12;
@@ -108,7 +94,7 @@ namespace WsdlUI.App.UI.Dialogs
             // lbl_Version
             // 
             this.lbl_Version.AutoSize = true;
-            this.lbl_Version.Location = new System.Drawing.Point(107, 60);
+            this.lbl_Version.Location = new System.Drawing.Point(90, 35);
             this.lbl_Version.Name = "lbl_Version";
             this.lbl_Version.Size = new System.Drawing.Size(21, 14);
             this.lbl_Version.TabIndex = 13;
@@ -117,25 +103,54 @@ namespace WsdlUI.App.UI.Dialogs
             // pb_AppIcon
             // 
             this.pb_AppIcon.Image = global::WsdlUI.App.UI.Properties.Resources.applications_internet_3_png;
-            this.pb_AppIcon.Location = new System.Drawing.Point(388, 10);
+            this.pb_AppIcon.Location = new System.Drawing.Point(529, 10);
             this.pb_AppIcon.Name = "pb_AppIcon";
             this.pb_AppIcon.Size = new System.Drawing.Size(82, 75);
             this.pb_AppIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pb_AppIcon.TabIndex = 14;
             this.pb_AppIcon.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(14, 64);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 14);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Update:";
+            // 
+            // pb_Update
+            // 
+            this.pb_Update.Location = new System.Drawing.Point(93, 64);
+            this.pb_Update.Name = "pb_Update";
+            this.pb_Update.Size = new System.Drawing.Size(421, 22);
+            this.pb_Update.Step = 1;
+            this.pb_Update.TabIndex = 16;
+            // 
+            // rtb_UpdateResult
+            // 
+            this.rtb_UpdateResult.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtb_UpdateResult.Location = new System.Drawing.Point(93, 64);
+            this.rtb_UpdateResult.Name = "rtb_UpdateResult";
+            this.rtb_UpdateResult.ReadOnly = true;
+            this.rtb_UpdateResult.Size = new System.Drawing.Size(421, 22);
+            this.rtb_UpdateResult.TabIndex = 17;
+            this.rtb_UpdateResult.Text = "";
+            this.rtb_UpdateResult.Visible = false;
+            // 
             // dg_HelpAbout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(489, 306);
+            this.ClientSize = new System.Drawing.Size(625, 321);
+            this.Controls.Add(this.rtb_UpdateResult);
+            this.Controls.Add(this.pb_Update);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.pb_AppIcon);
             this.Controls.Add(this.lbl_Version);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.lbl_WebSite);
-            this.Controls.Add(this.lbl_Developer);
+            this.Controls.Add(this.rtb_WebSite);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.txt_License);
             this.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "dg_HelpAbout";
@@ -149,12 +164,14 @@ namespace WsdlUI.App.UI.Dialogs
         #endregion
 
         private System.Windows.Forms.TextBox txt_License;
-        private System.Windows.Forms.LinkLabel lbl_WebSite;
-        private System.Windows.Forms.Label lbl_Developer;
+        private System.Windows.Forms.RichTextBox rtb_WebSite;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lbl_Version;
         private System.Windows.Forms.PictureBox pb_AppIcon;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ProgressBar pb_Update;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.RichTextBox rtb_UpdateResult;
     }
 }

@@ -56,7 +56,7 @@ namespace WsdlUI.App.UI.UserControls {
         public void PopulateForm(string webSvcSrcUri, WsdlUI.App.Model.WebSvcMethod webSvcMethod) {
             _webSvcMethod = webSvcMethod;
 
-            rtb_Request.Text = webSvcMethod.SampleRequestMessage;
+            rtb_Request.Text = webSvcMethod.SampleReqMsg;
 
             pg_headers.SelectedObject = new RequestPropertyGrid(webSvcSrcUri, webSvcMethod.Name, webSvcMethod.HeaderContentType, webSvcMethod.HeaderSoapAction, webSvcMethod.ServiceURI);
         }
@@ -65,7 +65,7 @@ namespace WsdlUI.App.UI.UserControls {
             RequestPropertyGrid items = (RequestPropertyGrid)pg_headers.SelectedObject;
 
             _webSvcMethod.ServiceURI = items.Url;
-            _webSvcMethod.SampleRequestMessage = rtb_Request.Text;
+            _webSvcMethod.SampleReqMsg = rtb_Request.Text;
 
             return _webSvcMethod;
         }

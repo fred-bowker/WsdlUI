@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace WsdlUI.App.UI {
 
@@ -40,7 +41,12 @@ namespace WsdlUI.App.UI {
               .Description;
 
             string path = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + Path.DirectorySeparatorChar + HelpLicensePath;
-            License = File.ReadAllText(path);
+
+            //the license file should always be saved with unix line endings, this is the standard for the project
+            string textWithUnixLineEndings = File.ReadAllText(path);
+            string correctLineEnding = Regex.Replace(textWithUnixLineEndings, "\n", Environment.NewLine, RegexOptions.Multiline);
+
+            License = correctLineEnding;
         }
 
         public static AppInfo Instance {

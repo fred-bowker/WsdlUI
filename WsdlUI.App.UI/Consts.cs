@@ -20,6 +20,6 @@ namespace WsdlUI.App.UI {
 
         }
 
-        public const string UpdateFormatMsg = "UPDATE - A new version of WsdlUI is available. Download it at {0}";
+        public const string UpdateFormatMsg = "An update is available at {0}";
     }
 }

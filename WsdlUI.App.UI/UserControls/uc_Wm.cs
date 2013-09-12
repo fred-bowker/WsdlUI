@@ -30,6 +30,8 @@ namespace WsdlUI.App.UI.UserControls
         {
             _webSvcSrcUri = webSvcSrcUri;
             uc_wm_request1.PopulateForm(webSvcSrcUri, webSvcMethod);
+            uc_wm_response1.PopulateForm(webSvcMethod.SampleRespMsg, "200 OK", webSvcMethod.RespHeaderContentType);
+
         }
 
        void tsBtnGo_Click(object sender, EventArgs e)
