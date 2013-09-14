@@ -37,25 +37,13 @@ namespace WsdlUI.App.UI.UserControls
         /// </summary>
        void InitializeComponent()
         {
-            this.rtb_Request = new System.Windows.Forms.RichTextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.pg_headers = new System.Windows.Forms.PropertyGrid();
+            this.tec_Request = new Widgets.wg_XmlTextEditor();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // rtb_Request
-            // 
-            this.rtb_Request.AcceptsTab = true;
-            this.rtb_Request.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtb_Request.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtb_Request.Location = new System.Drawing.Point(0, 0);
-            this.rtb_Request.Margin = new System.Windows.Forms.Padding(0);
-            this.rtb_Request.Name = "rtb_Request";
-            this.rtb_Request.Size = new System.Drawing.Size(495, 306);
-            this.rtb_Request.TabIndex = 1;
-            this.rtb_Request.Text = "";
             // 
             // splitContainer1
             // 
@@ -71,7 +59,7 @@ namespace WsdlUI.App.UI.UserControls
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.rtb_Request);
+            this.splitContainer1.Panel2.Controls.Add(this.tec_Request);
             this.splitContainer1.Size = new System.Drawing.Size(495, 400);
             this.splitContainer1.SplitterDistance = 90;
             this.splitContainer1.TabIndex = 3;
@@ -86,6 +74,14 @@ namespace WsdlUI.App.UI.UserControls
             this.pg_headers.Size = new System.Drawing.Size(495, 90);
             this.pg_headers.TabIndex = 0;
             this.pg_headers.ToolbarVisible = false;
+            // 
+            // tec_Request
+            // 
+            this.tec_Request.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tec_Request.Location = new System.Drawing.Point(0, 0);
+            this.tec_Request.Name = "tec_Request";
+            this.tec_Request.Size = new System.Drawing.Size(495, 306);
+            this.tec_Request.TabIndex = 2;
             // 
             // uc_WmRequest
             // 
@@ -105,8 +101,8 @@ namespace WsdlUI.App.UI.UserControls
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox rtb_Request;
-        private System.Windows.Forms.SplitContainer splitContainer1;
+       private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.PropertyGrid pg_headers;
+        private WsdlUI.App.UI.UserControls.Widgets.wg_XmlTextEditor tec_Request;
     }
 }

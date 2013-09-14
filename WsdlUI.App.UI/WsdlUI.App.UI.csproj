@@ -60,6 +60,10 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ICSharpCode.TextEditor, Version=2.0.0.1462, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WsdlUI.App.External\ICSharpCode\ICSharpCode.TextEditor.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\WsdlUI.App.External\log4net-1.2.11\net\3.5\release\log4net.dll</HintPath>
@@ -199,6 +203,9 @@
     <Compile Include="UserControls\Widgets\wg_BaseToolStrip.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UserControls\Widgets\wg_XmlTextEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Dialogs\dg_AddWS.resx">
@@ -268,7 +275,9 @@
     <Content Include="OutputFolders\config\startupWsdls.data">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="OutputFolders\config\prev_url.data" />
+    <Content Include="OutputFolders\config\prev_url.data">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="OutputFolders\temp\temp.xml">

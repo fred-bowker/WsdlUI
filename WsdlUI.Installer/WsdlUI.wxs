@@ -24,6 +24,7 @@
               <Shortcut Id="desktopWsdlUI" Directory="DesktopFolder" Name="WsdlUI" WorkingDirectory='INSTALLDIR' Icon="WsdlUIIcon.exe" IconIndex="0" Advertise="yes" />
             </File>
             <File Id="log4netDLLFile" Name="log4net.dll" Source="..\WsdlUI.App.UI\bin\Release\log4net.dll" />
+	    <File Id="textEditorDLLFile" Name="ICSharpCode.TextEditor.dll" Source="..\WsdlUI.App.UI\bin\Release\ICSharpCode.TextEditor.dll" />
             <File Id="ModelDLLFile" Name="WsdlUI.App.Model.dll" Source="..\WsdlUI.App.UI\bin\Release\WsdlUI.App.Model.dll" />
             <File Id="ProcessDLLFile" Name="WsdlUI.App.Process.dll" Source="..\WsdlUI.App.UI\bin\Release\WsdlUI.App.Process.dll" />
             <File Id="log4netXMLFile" Name="log4net.xml" Source="..\WsdlUI.App.UI\bin\Release\log4net.xml" />
@@ -57,6 +58,7 @@
                   <Permission User="Users" GenericAll="yes"/>
                 </CreateFolder>
                 <File Id="prev_wsdl_data" Name="prev_wsdl.data" KeyPath="yes" Source="..\WsdlUI.App.UI\bin\Release\OutputFolders\config\prev_wsdl.data"/>
+                <File Id="prev_url_data" Name="prev_url.data" Source="..\WsdlUI.App.UI\bin\Release\OutputFolders\config\prev_url.data"/>
                 <File Id="proxy_data" Name="proxy.data" Source="..\WsdlUI.App.UI\bin\Release\OutputFolders\config\proxy.data"/>
                 <File Id="startupWsdls_data" Name="startupWsdls.data" Source="..\WsdlUI.App.UI\bin\Release\OutputFolders\config\startupWsdls.data"/>
                 <File Id="update_data" Name="update.data" Source="..\WsdlUI.App.UI\bin\Release\OutputFolders\config\update.data"/>

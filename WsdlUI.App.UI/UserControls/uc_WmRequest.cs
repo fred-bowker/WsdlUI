@@ -12,6 +12,9 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Xml;
 
+using ICSharpCode.TextEditor;
+using ICSharpCode.TextEditor.Document;
+
 using model = WsdlUI.App.Model;
 using WsdlUI.App.UI.UserControls.Widgets;
 
@@ -20,44 +23,19 @@ namespace WsdlUI.App.UI.UserControls {
         model.WebSvcMethod _webSvcMethod;
 
         public void Enable() {
-            rtb_Request.BackColor = Consts.EnableBGColor;
-            rtb_Request.ReadOnly = false;
+            tec_Request.BackColor = Consts.EnableBGColor;
+            tec_Request.Enabled = true;
         }
 
         public void Disable() {
-            rtb_Request.BackColor = Consts.DisabledBGColor;
-            rtb_Request.ReadOnly = true;
+            tec_Request.BackColor = Consts.DisabledBGColor;
+            tec_Request.Enabled = false;
         }
 
-        //returns null if valid else returns an error string, text passed in as we are then using a copy from other thread
-        public string ValidateForm(string url, string xml) {
-            if (string.IsNullOrEmpty(url)) {
-                return "url is empty";
-            }
-
-            if (string.IsNullOrEmpty(xml)) {
-                return "xml text is empty";
-            }
-
-            try {
-                new XmlDocument().LoadXml(xml);
-
-                return null;
-            }
-            catch (XmlException ex) {
-                return ex.Message;
-            }
-        }
-
-        public void Clear() {
-            rtb_Request.Text = "";
-        }
 
         public void PopulateForm(string webSvcSrcUri, WsdlUI.App.Model.WebSvcMethod webSvcMethod) {
             _webSvcMethod = webSvcMethod;
-
-            rtb_Request.Text = webSvcMethod.SampleReqMsg;
-
+            tec_Request.Text = webSvcMethod.SampleReqMsg;
             pg_headers.SelectedObject = new RequestPropertyGrid(webSvcSrcUri, webSvcMethod.Name, webSvcMethod.HeaderContentType, webSvcMethod.HeaderSoapAction, webSvcMethod.ServiceURI);
         }
 
@@ -65,7 +43,7 @@ namespace WsdlUI.App.UI.UserControls {
             RequestPropertyGrid items = (RequestPropertyGrid)pg_headers.SelectedObject;
 
             _webSvcMethod.ServiceURI = items.Url;
-            _webSvcMethod.SampleReqMsg = rtb_Request.Text;
+            _webSvcMethod.SampleReqMsg = tec_Request.Text;
 
             return _webSvcMethod;
         }
@@ -74,12 +52,25 @@ namespace WsdlUI.App.UI.UserControls {
             try {
                 RequestPropertyGrid items = (RequestPropertyGrid)pg_headers.SelectedObject;
 
+                if (string.IsNullOrEmpty(items.Url)) {
+                    return "url is empty";
+                }
+
+                if (string.IsNullOrEmpty(tec_Request.Text)) {
+                    return "xml text is empty";
+                }
+
                 Uri url = new Uri(items.Url);
                 if (url.Scheme != Uri.UriSchemeHttp && url.Scheme != Uri.UriSchemeHttps) {
                     return "invalid url";
                 }
+
+                new XmlDocument().LoadXml(tec_Request.Text);
                 
                 return null;
+            }
+            catch (XmlException ex) {
+                return ex.Message;
             }
             catch (UriFormatException) {
                 return "invalid url";
@@ -92,7 +83,7 @@ namespace WsdlUI.App.UI.UserControls {
 
         private void uc_WmRequest_Load(object sender, EventArgs e) {
             Font = DefaultFonts.Instance.Small;
-            rtb_Request.Font = DefaultFonts.Instance.Large;
+            tec_Request.Font = DefaultFonts.Instance.Large;
         }
     }
 }
