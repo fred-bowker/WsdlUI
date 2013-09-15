@@ -40,9 +40,6 @@ namespace WsdlUI.App.Model.Config {
             }
         }
 
-        public StartupWsdls() {
-            _wsdls = new string[] { };
-        }
       
         public void AddWsdl(string wsdl) {
 
