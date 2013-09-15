@@ -11,6 +11,7 @@ using System.IO;
 namespace WsdlUI.App.Model.Config.Pickle {
     public class Pickler {
         string _filePath;
+       
 
         public Pickler(string filePath) {
             _filePath = filePath;
@@ -28,14 +29,12 @@ namespace WsdlUI.App.Model.Config.Pickle {
             }
         }
 
-        public void Load(IModelPickle loadItem, bool createFile) {
+        public void Load(IModelPickle loadItem) {
             try {
 
-                if (createFile) {
-                    if (!File.Exists(_filePath)) {
-                        File.Create(_filePath);
-                        return;
-                    }
+                if (!File.Exists(_filePath)) {
+                    File.Create(_filePath);
+                    return;
                 }
 
                 string[] fileData = File.ReadAllLines(_filePath);

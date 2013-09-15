@@ -104,11 +104,11 @@ namespace WsdlUI.App.UI {
             ConfigUpdate = new Model.Config.Update();
             ConfigStartupWsdls = new Model.Config.StartupWsdls(AppConfig.Instance.MaxStartupWsdls);
 
-            storageUpdate.Load(ConfigUpdate, false);
-            storageProxy.Load(ConfigProxy, false);
-            storagePrevWsdl.Load(ConfigPrevWsdls, true);
-            storagePrevUrl.Load(ConfigPrevUrls, true);
-            storageStartupWsdls.Load(ConfigStartupWsdls, false);
+            storageUpdate.Load(ConfigUpdate);
+            storageProxy.Load(ConfigProxy);
+            storagePrevWsdl.Load(ConfigPrevWsdls);
+            storagePrevUrl.Load(ConfigPrevUrls);
+            storageStartupWsdls.Load(ConfigStartupWsdls);
         }
     }
 }

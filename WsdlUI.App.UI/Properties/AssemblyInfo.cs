@@ -12,7 +12,7 @@ using System.Reflection;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyDescription("Fred Bowker")]
-[assembly: AssemblyCompany("https://github.com/drexyia/WsdlUI")]
+[assembly: AssemblyCompany("http://drexyia.github.io/WsdlUI/")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -23,7 +23,7 @@ using System.Reflection;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("1.2.3")]
+[assembly: AssemblyVersion("1.3.0")]
 
 
 
