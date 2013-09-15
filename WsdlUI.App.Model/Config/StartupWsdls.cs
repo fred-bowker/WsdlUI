@@ -75,6 +75,7 @@ namespace WsdlUI.App.Model.Config {
 
         public StartupWsdls(int maxWsdls) {
             _maxWsdls = maxWsdls;
+            _wsdls = new string[] { };
         }
 
         public void Deserialize(string[] serializedData) {
