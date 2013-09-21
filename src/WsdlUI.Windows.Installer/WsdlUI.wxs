@@ -3,11 +3,17 @@
 
   <Product Id="*" Name="WsdlUI" Language="1033" Version="1.3.0" Manufacturer="DREXYIA" UpgradeCode="1D899DE0-4940-4255-97F6-47F27D1DE9A9">
 
-    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine"/>
 
     <MajorUpgrade DowngradeErrorMessage="A later version of [ProductName] is already installed. Setup will now exit."/>
 
     <MediaTemplate EmbedCab="yes" />
+
+    <!--the installation is installed for members of the USERS group, on non english windows versions this group will not be called USERS-->
+    <!--GetGlobalGroupNames sets a property UsersAccount to the correct USERS group name-->
+    <!--See http://stackoverflow.com/questions/2260634/wix-problem-to-give-permissions-to-a-folder/5296967#5296967-->
+    <Binary Id="WixCustomActions.CA.dll" SourceFile="WixCustomActions.CA.dll" />
+    <CustomAction Id="TranslateUsersGroup" BinaryKey="WixCustomActions.CA.dll" DllEntry="GetGlobalGroupNames" Impersonate="no" />
 
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="ProgramFilesFolder">
@@ -16,7 +22,7 @@
           <Component Id="MainExecutable" Guid='CFE2C81D-153D-4939-BE0F-680EB295F81B'>
 
             <CreateFolder>
-              <Permission User="Users" GenericAll="yes"/>
+              <Permission GenericAll="yes" User="[UsersAccount]" />
             </CreateFolder>
 
             <File Id="WsdlUIEXE" Name="WsdlUI.exe" KeyPath="yes" Source="..\WsdlUI.App.UI\bin\Release\WsdlUI.exe">
@@ -24,7 +30,7 @@
               <Shortcut Id="desktopWsdlUI" Directory="DesktopFolder" Name="WsdlUI" WorkingDirectory='INSTALLDIR' Icon="WsdlUIIcon.exe" IconIndex="0" Advertise="yes" />
             </File>
             <File Id="log4netDLLFile" Name="log4net.dll" Source="..\WsdlUI.App.UI\bin\Release\log4net.dll" />
-	          <File Id="textEditorDLLFile" Name="ICSharpCode.TextEditor.dll" Source="..\WsdlUI.App.UI\bin\Release\ICSharpCode.TextEditor.dll" />
+            <File Id="textEditorDLLFile" Name="ICSharpCode.TextEditor.dll" Source="..\WsdlUI.App.UI\bin\Release\ICSharpCode.TextEditor.dll" />
             <File Id="ModelDLLFile" Name="WsdlUI.App.Model.dll" Source="..\WsdlUI.App.UI\bin\Release\WsdlUI.App.Model.dll" />
             <File Id="ProcessDLLFile" Name="WsdlUI.App.Process.dll" Source="..\WsdlUI.App.UI\bin\Release\WsdlUI.App.Process.dll" />
             <File Id="log4netXMLFile" Name="log4net.xml" Source="..\WsdlUI.App.UI\bin\Release\log4net.xml" />
@@ -36,7 +42,7 @@
             <Component Id="ResourcesFolder" Guid='45B8D976-0629-44E3-828D-AA286E612489'>
 
               <CreateFolder>
-                <Permission User="Users" GenericAll="yes"/>
+                <Permission GenericAll="yes" User="[UsersAccount]" />
               </CreateFolder>
 
               <File Id="arrow_right_3_png" Name="arrow-right-3.png" KeyPath="yes" Source="..\WsdlUI.App.UI\bin\Release\Resources\arrow-right-3.png"/>
@@ -51,19 +57,24 @@
           </Directory>
 
           <Directory Id="InstDir_OutputFolders" Name="OutputFolders" >
-            
+
             <Directory Id="InstDir_OutputFolders_Config" Name="config" >
               <Component Id="OutputFolderConfig" Guid='07882502-34F5-4B6D-9E23-4E43CA53368D'>
                 <CreateFolder>
-                  <Permission User="Users" GenericAll="yes"/>
+                  <Permission GenericAll="yes" User="[UsersAccount]" />
                 </CreateFolder>
+                <File Id="prev_wsdl_data" Name="prev_wsdl.data" KeyPath="yes" Source="..\WsdlUI.App.UI\bin\Release\OutputFolders\config\prev_wsdl.data"/>
+                <File Id="prev_url_data" Name="prev_url.data" Source="..\WsdlUI.App.UI\bin\Release\OutputFolders\config\prev_url.data"/>
+                <File Id="proxy_data" Name="proxy.data" Source="..\WsdlUI.App.UI\bin\Release\OutputFolders\config\proxy.data"/>
+                <File Id="startupWsdls_data" Name="startupWsdls.data" Source="..\WsdlUI.App.UI\bin\Release\OutputFolders\config\startupWsdls.data"/>
+                <File Id="update_data" Name="update.data" Source="..\WsdlUI.App.UI\bin\Release\OutputFolders\config\update.data"/>
               </Component>
             </Directory>
 
             <Directory Id="InstDir_OutputFolders_License" Name="license" >
               <Component Id="OutputFolderLicense" Guid='E17A6AB8-5126-478E-8182-1F17053EB9E3'>
                 <CreateFolder>
-                  <Permission User="Users" GenericAll="yes"/>
+                  <Permission GenericAll="yes" User="[UsersAccount]" />
                 </CreateFolder>
                 <File Id="LICENSE_md" Name="LICENSE.md" KeyPath="yes" Source="..\WsdlUI.App.UI\bin\Release\OutputFolders\license\LICENSE.md"/>
               </Component>
@@ -72,7 +83,7 @@
             <Directory Id="InstDir_OutputFolders_Temp" Name="temp" >
               <Component Id="OutputFolderTemp" Guid='F6FE154E-DA98-48C8-83DE-F880017E7BB0'>
                 <CreateFolder>
-                  <Permission User="Users" GenericAll="yes"/>
+                  <Permission GenericAll="yes" User="[UsersAccount]" />
                 </CreateFolder>
               </Component>
             </Directory>
@@ -103,9 +114,9 @@
       <ComponentRef Id='ProgramMenuDir' />
     </Feature>
 
-     <WixVariable Id="WixUIBannerBmp" Value="WixUIBannerBmp.bmp" />
-     <WixVariable Id="WixUIDialogBmp" Value="WixUIDialogBmp.bmp" />
-    <WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
+    <WixVariable Id="WixUIBannerBmp" Value="Resources\WixUIBannerBmp.bmp" />
+    <WixVariable Id="WixUIDialogBmp" Value="Resources\WixUIDialogBmp.bmp" />
+    <WixVariable Id="WixUILicenseRtf" Value="Resources\License.rtf" />
 
     <Property Id="WIXUI_INSTALLDIR">INSTALLDIR</Property>
 
@@ -113,6 +124,10 @@
 
     <Icon Id="WsdlUIIcon.exe" SourceFile="..\WsdlUI.App.UI\bin\Release\WsdlUI.exe" />
     <Property Id="ARPPRODUCTICON" Value="WsdlUIIcon.exe" />
+
+    <InstallExecuteSequence>
+      <Custom Action='TranslateUsersGroup' Before='CreateFolders' />
+    </InstallExecuteSequence>
 
   </Product>
 </Wix>
