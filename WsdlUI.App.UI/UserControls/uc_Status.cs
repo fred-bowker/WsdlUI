@@ -7,31 +7,61 @@
 */
 
 
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace WsdlUI.App.UI.UserControls {
     public partial class uc_Status : UserControl {
         public uc_Status() {
             InitializeComponent();
+            tslbl_Status.AutoSize = false;
+            tslbl_Status.Spring = false;
 
-            ss_Progress.BackColor = Color.FromArgb(215, 228, 242); 
+            ss_Progress.BackColor = Consts.DisabledBGColor;
+            ss_Progress.SizeChanged += ss_Progress_SizeChanged;
+
+            pb_Running.Minimum = 1;
+            pb_Running.Value = 1;
+            pb_Running.Step = 1;
+
+            //interval of half a second
+            timer1.Interval = 500;
+            timer1.Tick += timer1_Tick;
+        }
+
+        void ss_Progress_SizeChanged(object sender, System.EventArgs e) {
+            pb_Running.Width = ss_Progress.Width - 114;
         }
 
         internal void StatusInProgress() {
+
             tslbl_Status.Text = "In Progress";
-            ss_Progress.BackColor = Color.LightPink;
+
+            pb_Running.Maximum = State.Instance.ConfigTimeout.Timeout * 2;
+            timer1.Enabled = true;
+            timer1.Start();
+
         }
 
         internal void StatusReady() {
-            tslbl_Status.Text = "Ready";
 
-            ss_Progress.BackColor = Color.FromArgb(215, 228, 242); 
+            timer1.Stop();
+
+            tslbl_Status.Text = "Ready";
+            pb_Running.Value = 1;
         }
 
         private void uc_Status_Load(object sender, System.EventArgs e) {
             Font = DefaultFonts.Instance.Small;
             tslbl_Status.Font = DefaultFonts.Instance.Small;
+        }
+
+        void timer1_Tick(object sender, System.EventArgs e) {
+            if (pb_Running.Value != pb_Running.Maximum) {
+                pb_Running.Value++;
+            }
+            else {
+                timer1.Stop();
+            }
         }
 
     }

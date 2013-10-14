@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\ConfigItem.cs" />
+    <Compile Include="Config\CallTimeout.cs" />
     <Compile Include="Config\PrevUrls.cs" />
     <Compile Include="Config\Pickle\IModelPickle.cs" />
     <Compile Include="Config\PrevWsdls.cs" />

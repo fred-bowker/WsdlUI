@@ -17,7 +17,9 @@ namespace WsdlUI.App.Process.WebSvcAsync.Operations {
         }
 
         DefaultProxy() {
-            Proxy = WebRequest.GetSystemWebProxy();
+            //Bug fix: WebRequest.GetSystemWebProxy throws a null reference exception on Windows 7 x64.
+            //WebRequest.DefaultWebProxy uses a proxy if set in the web.config otherwise uses the system wide proxy settings from IE
+            Proxy = WebRequest.DefaultWebProxy;
         }
 
         internal static DefaultProxy Instance {

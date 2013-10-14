@@ -33,12 +33,6 @@ namespace WsdlUI.App.UI {
             }
         }
 
-        public int WebSvcCallTimeout {
-            get {
-                return int.Parse(ConfigurationManager.AppSettings["WsdlUI.App.UI.WebSvcCallTimeout"]);
-            }
-        }
-
         public int WebSvcRetrieveTimeout {
             get {
                 return int.Parse(ConfigurationManager.AppSettings["WsdlUI.App.UI.WebSvcRetrieveTimeout"]);

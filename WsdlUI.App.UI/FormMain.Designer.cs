@@ -49,6 +49,7 @@ namespace WsdlUI.App.UI
             this.startupWsdlsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hELPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.callTimeoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.scMain.Panel1.SuspendLayout();
             this.scMain.Panel2.SuspendLayout();
             this.scMain.SuspendLayout();
@@ -170,7 +171,8 @@ namespace WsdlUI.App.UI
             this.oPTIONSToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.proxyToolStripMenuItem,
             this.updateToolStripMenuItem,
-            this.startupWsdlsToolStripMenuItem});
+            this.startupWsdlsToolStripMenuItem,
+            this.callTimeoutToolStripMenuItem});
             this.oPTIONSToolStripMenuItem.Name = "oPTIONSToolStripMenuItem";
             this.oPTIONSToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.oPTIONSToolStripMenuItem.Text = "OPTIONS";
@@ -178,21 +180,21 @@ namespace WsdlUI.App.UI
             // proxyToolStripMenuItem
             // 
             this.proxyToolStripMenuItem.Name = "proxyToolStripMenuItem";
-            this.proxyToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.proxyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.proxyToolStripMenuItem.Text = "Proxy";
             this.proxyToolStripMenuItem.Click += new System.EventHandler(this.configProxyToolStripMenuItem_Click);
             // 
             // updateToolStripMenuItem
             // 
             this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.updateToolStripMenuItem.Text = "Update";
             this.updateToolStripMenuItem.Click += new System.EventHandler(this.configUpdateToolStripMenuItem_Click);
             // 
             // startupWsdlsToolStripMenuItem
             // 
             this.startupWsdlsToolStripMenuItem.Name = "startupWsdlsToolStripMenuItem";
-            this.startupWsdlsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.startupWsdlsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.startupWsdlsToolStripMenuItem.Text = "Startup Wsdls";
             this.startupWsdlsToolStripMenuItem.Click += new System.EventHandler(this.configStartupWsdlsToolStripMenuItem_Click);
             // 
@@ -207,9 +209,16 @@ namespace WsdlUI.App.UI
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.helpAboutToolStripMenuItem_Click);
+            // 
+            // callTimeoutToolStripMenuItem
+            // 
+            this.callTimeoutToolStripMenuItem.Name = "callTimeoutToolStripMenuItem";
+            this.callTimeoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.callTimeoutToolStripMenuItem.Text = "Call Timeout";
+            this.callTimeoutToolStripMenuItem.Click += new System.EventHandler(this.callTimeoutToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -257,5 +266,6 @@ namespace WsdlUI.App.UI
         private UserControls.uc_PanelInfo uc_panelInfo1;
         private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem startupWsdlsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem callTimeoutToolStripMenuItem;
     }
 }

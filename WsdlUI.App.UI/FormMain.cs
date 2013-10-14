@@ -198,7 +198,7 @@ namespace WsdlUI.App.UI {
         }
 
         //total elapsed time will be different to the time between the start log message and end log message
-            //this is because the time elapsed does not include the processing time for displaying the data in the UI.
+        //this is because the time elapsed does not include the processing time for displaying the data in the UI.
         public void asyncCall_OnRerieveComplete(object sender, websvcasync.EventParams.AsyncArgsCompleteRetrieve e) {
 
             lock (_retrievelocker) {
@@ -308,16 +308,10 @@ namespace WsdlUI.App.UI {
             menuStrip1.Font = DefaultFonts.Instance.Medium;
         }
 
+        private void callTimeoutToolStripMenuItem_Click(object sender, EventArgs e) {
+            WsdlUI.App.UI.Dialogs.dg_ConfigTimout dialog = new Dialogs.dg_ConfigTimout();
+            dialog.ShowDialog();
 
+        }
     }
 }
-
-
-
-
-
-
-
-
-
-

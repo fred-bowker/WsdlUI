@@ -11,13 +11,26 @@ using System.IO;
 
 namespace WsdlUI.App.UI {
     class Consts {
-        public static readonly Color DisabledBGColor = SystemColors.GradientInactiveCaption;
+        public static readonly Color DisabledBGColor = Color.FromArgb(243, 248, 254);
         public static readonly Color EnableBGColor = SystemColors.Window;
         public static string TempDirectory {
             get {
                 return "OutputFolders" + Path.DirectorySeparatorChar + "temp";
             }
 
+        }
+
+        public static string LicenseDirectory {
+            get {
+                return "OutputFolders" + Path.DirectorySeparatorChar + "license";
+            }
+
+        }
+
+        public static string ConfigDirectory {
+            get {
+                return "OutputFolders" + Path.DirectorySeparatorChar + "config";
+            }
         }
 
         public const string UpdateFormatMsg = "An update is available at {0}";

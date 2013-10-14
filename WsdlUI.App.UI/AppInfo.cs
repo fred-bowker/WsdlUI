@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 namespace WsdlUI.App.UI {
 
     public sealed class AppInfo {
-        const string HelpLicensePath = @"OutputFolders\license\LICENSE.md";
+        string _helpLicensePath = Path.Combine(Consts.LicenseDirectory,"LICENSE.md");
 
         public string WebSite {
             get;
@@ -40,7 +40,7 @@ namespace WsdlUI.App.UI {
                assembly, typeof(AssemblyDescriptionAttribute), false))
               .Description;
 
-            string path = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + Path.DirectorySeparatorChar + HelpLicensePath;
+            string path = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + Path.DirectorySeparatorChar + _helpLicensePath;
 
             //the license file should always be saved with unix line endings, this is the standard for the project
             string textWithUnixLineEndings = File.ReadAllText(path);

@@ -8,15 +8,10 @@
 
 
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Xml;
-
-using ICSharpCode.TextEditor;
-using ICSharpCode.TextEditor.Document;
-
-using model = WsdlUI.App.Model;
 using WsdlUI.App.UI.UserControls.Widgets;
+using model = WsdlUI.App.Model;
 
 namespace WsdlUI.App.UI.UserControls {
     public partial class uc_WmRequest : UserControl {

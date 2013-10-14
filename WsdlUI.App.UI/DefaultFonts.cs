@@ -1,7 +1,4 @@
-using System;
-using System.IO;
 using System.Drawing;
-using System.Reflection;
 
 namespace WsdlUI.App.UI {
 

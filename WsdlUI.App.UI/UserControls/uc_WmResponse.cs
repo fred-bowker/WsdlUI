@@ -10,9 +10,8 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-
-using websvcasync = WsdlUI.App.Process.WebSvcAsync;
 using WsdlUI.App.UI.UserControls.Widgets;
+using websvcasync = WsdlUI.App.Process.WebSvcAsync;
 
 namespace WsdlUI.App.UI.UserControls {
     public partial class uc_WmResponse : UserControl {

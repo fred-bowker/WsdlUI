@@ -177,7 +177,7 @@ namespace WsdlUI.App.UI.UserControls
             this.uc_Status1.Location = new System.Drawing.Point(0, 0);
             this.uc_Status1.Margin = new System.Windows.Forms.Padding(0);
             this.uc_Status1.Name = "uc_Status1";
-            this.uc_Status1.Padding = new System.Windows.Forms.Padding(1);
+            this.uc_Status1.Padding = new System.Windows.Forms.Padding(1, 1, 0, 1);
             this.uc_Status1.Size = new System.Drawing.Size(604, 24);
             this.uc_Status1.TabIndex = 1;
             // 
@@ -206,6 +206,7 @@ namespace WsdlUI.App.UI.UserControls
             this.panel1.Controls.Add(this.uc_Status1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 205);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(604, 24);
             this.panel1.TabIndex = 4;
