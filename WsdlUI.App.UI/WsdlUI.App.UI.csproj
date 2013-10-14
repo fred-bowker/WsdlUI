@@ -56,26 +56,18 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ICSharpCode.TextEditor, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\WsdlUI.App.External\ICSharpCode\ICSharpCode.TextEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\WsdlUI.App.External\log4net-1.2.11\net\3.5\release\log4net.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="log4net">
+      <HintPath>..\WsdlUI.App.External\log4net-1.2.11\net\3.5\release\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppConfig.cs" />
@@ -211,53 +203,53 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Dialogs\dg_AddWS.resx">
+    <None Include="Dialogs\dg_AddWS.resx">
       <DependentUpon>dg_AddWS.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\dg_Base.resx">
+    </None>
+    <None Include="Dialogs\dg_Base.resx">
       <DependentUpon>dg_Base.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\dg_ConfigProxy.resx">
+    </None>
+    <None Include="Dialogs\dg_ConfigProxy.resx">
       <DependentUpon>dg_ConfigProxy.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\dg_ConfigStartupWsdls.resx">
+    </None>
+    <None Include="Dialogs\dg_ConfigStartupWsdls.resx">
       <DependentUpon>dg_ConfigStartupWsdls.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\dg_HelpAbout.resx">
+    </None>
+    <None Include="Dialogs\dg_HelpAbout.resx">
       <DependentUpon>dg_HelpAbout.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormMain.resx">
+    </None>
+    <None Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
-    </EmbeddedResource>
+    </None>
     <EmbeddedResource Include="Properties\Resources.resx">
       <SubType>Designer</SubType>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\uc_Log.resx">
+    <None Include="UserControls\uc_Log.resx">
       <DependentUpon>uc_Log.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\uc_PanelInfo.resx">
+    </None>
+    <None Include="UserControls\uc_PanelInfo.resx">
       <DependentUpon>uc_PanelInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\uc_SourceBrowser.resx">
+    </None>
+    <None Include="UserControls\uc_SourceBrowser.resx">
       <DependentUpon>uc_SourceBrowser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\uc_Status.resx">
+    </None>
+    <None Include="UserControls\uc_Status.resx">
       <DependentUpon>uc_Status.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\uc_TreeView.resx">
+    </None>
+    <None Include="UserControls\uc_TreeView.resx">
       <DependentUpon>uc_TreeView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\uc_Wm.resx">
+    </None>
+    <None Include="UserControls\uc_Wm.resx">
       <DependentUpon>uc_Wm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\uc_WmRequest.resx">
+    </None>
+    <None Include="UserControls\uc_WmRequest.resx">
       <DependentUpon>uc_WmRequest.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\uc_WmResponse.resx">
+    </None>
+    <None Include="UserControls\uc_WmResponse.resx">
       <DependentUpon>uc_WmResponse.cs</DependentUpon>
-    </EmbeddedResource>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -349,16 +341,20 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ICSharpCode.TextEditor\ICSharpCode.TextEditor.csproj">
+      <Project>{635D30AE-E121-412D-A0C7-5CB662CD2569}</Project>
+      <Name>ICSharpCode.TextEditor</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WsdlUI.App.Model\WsdlUI.App.Model.csproj">
       <Project>{6D501389-8AAD-4A0D-BFA3-F7A61EB0DE90}</Project>
       <Name>WsdlUI.App.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\WsdlUI.App.Process\WsdlUI.App.Process.csproj">
-      <Project>{af547fa4-2ba4-4c47-98fb-3749422484c5}</Project>
+      <Project>{AF547FA4-2BA4-4C47-98FB-3749422484C5}</Project>
       <Name>WsdlUI.App.Process</Name>
     </ProjectReference>
     <ProjectReference Include="..\WsdlUI.TextEditor\WsdlUI.TextEditor.csproj">
-      <Project>{2d18be89-d210-49eb-a9dd-2246fbb3df6d}</Project>
+      <Project>{2D18BE89-D210-49EB-A9DD-2246FBB3DF6D}</Project>
       <Name>WsdlUI.TextEditor</Name>
     </ProjectReference>
   </ItemGroup>

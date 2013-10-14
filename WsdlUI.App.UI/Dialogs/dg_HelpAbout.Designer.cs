@@ -69,6 +69,7 @@ namespace WsdlUI.App.UI.Dialogs
             this.rtb_WebSite.Location = new System.Drawing.Point(93, 10);
             this.rtb_WebSite.Name = "rtb_WebSite";
             this.rtb_WebSite.ReadOnly = true;
+            this.rtb_WebSite.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
             this.rtb_WebSite.Size = new System.Drawing.Size(421, 14);
             this.rtb_WebSite.TabIndex = 11;
             this.rtb_WebSite.Text = "WS";

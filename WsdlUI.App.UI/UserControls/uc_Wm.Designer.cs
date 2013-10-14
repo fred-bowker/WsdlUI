@@ -38,27 +38,124 @@ namespace WsdlUI.App.UI.UserControls
        void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.tc_Settings = new System.Windows.Forms.TabControl();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.uc_wm_request1 = new WsdlUI.App.UI.UserControls.uc_WmRequest();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.uc_wm_response1 = new WsdlUI.App.UI.UserControls.uc_WmResponse();
+            this.uc_log1 = new WsdlUI.App.UI.UserControls.uc_Log();
             this.toolStrip1 = new WsdlUI.App.UI.UserControls.Widgets.wg_BaseToolStrip();
             this.tsbtn_Go = new WsdlUI.App.UI.UserControls.Widgets.wg_BaseToolStripButton();
             this.tsbtn_Cancel = new WsdlUI.App.UI.UserControls.Widgets.wg_BaseToolStripButton();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.uc_wm_response1 = new WsdlUI.App.UI.UserControls.uc_WmResponse();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.uc_wm_request1 = new WsdlUI.App.UI.UserControls.uc_WmRequest();
-            this.uc_log1 = new WsdlUI.App.UI.UserControls.uc_Log();
-            this.tc_Settings = new System.Windows.Forms.TabControl();
             this.uc_Status1 = new WsdlUI.App.UI.UserControls.uc_Status();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.toolStrip1.SuspendLayout();
-            this.tabPage4.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            this.tc_Settings.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.tc_Settings.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.uc_Status1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 205);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(604, 24);
+            this.panel1.TabIndex = 4;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 45);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.tc_Settings);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.uc_log1);
+            this.splitContainer1.Size = new System.Drawing.Size(604, 160);
+            this.splitContainer1.SplitterDistance = 109;
+            this.splitContainer1.SplitterWidth = 2;
+            this.splitContainer1.TabIndex = 3;
+            // 
+            // tc_Settings
+            // 
+            this.tc_Settings.Controls.Add(this.tabPage3);
+            this.tc_Settings.Controls.Add(this.tabPage4);
+            this.tc_Settings.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tc_Settings.ItemSize = new System.Drawing.Size(96, 30);
+            this.tc_Settings.Location = new System.Drawing.Point(0, 0);
+            this.tc_Settings.Name = "tc_Settings";
+            this.tc_Settings.Padding = new System.Drawing.Point(0, 0);
+            this.tc_Settings.SelectedIndex = 0;
+            this.tc_Settings.Size = new System.Drawing.Size(604, 109);
+            this.tc_Settings.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.tc_Settings.TabIndex = 2;
+            this.tc_Settings.Tag = "";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.uc_wm_request1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 34);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(596, 71);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Request";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // uc_wm_request1
+            // 
+            this.uc_wm_request1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uc_wm_request1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uc_wm_request1.Location = new System.Drawing.Point(0, 0);
+            this.uc_wm_request1.Margin = new System.Windows.Forms.Padding(0);
+            this.uc_wm_request1.Name = "uc_wm_request1";
+            this.uc_wm_request1.Size = new System.Drawing.Size(596, 71);
+            this.uc_wm_request1.TabIndex = 0;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.uc_wm_response1);
+            this.tabPage4.Location = new System.Drawing.Point(4, 34);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(596, 71);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Response";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // uc_wm_response1
+            // 
+            this.uc_wm_response1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uc_wm_response1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uc_wm_response1.Location = new System.Drawing.Point(0, 0);
+            this.uc_wm_response1.Margin = new System.Windows.Forms.Padding(0);
+            this.uc_wm_response1.Name = "uc_wm_response1";
+            this.uc_wm_response1.Size = new System.Drawing.Size(596, 71);
+            this.uc_wm_response1.TabIndex = 0;
+            // 
+            // uc_log1
+            // 
+            this.uc_log1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uc_log1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uc_log1.Location = new System.Drawing.Point(0, 0);
+            this.uc_log1.Margin = new System.Windows.Forms.Padding(0);
+            this.uc_log1.Name = "uc_log1";
+            this.uc_log1.Size = new System.Drawing.Size(604, 49);
+            this.uc_log1.TabIndex = 0;
             // 
             // toolStrip1
             // 
@@ -104,72 +201,6 @@ namespace WsdlUI.App.UI.UserControls
             this.tsbtn_Cancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbtn_Cancel.Click += new System.EventHandler(this.tsbtn_Cancel_Click);
             // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.uc_wm_response1);
-            this.tabPage4.Location = new System.Drawing.Point(4, 25);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(596, 80);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Response";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // uc_wm_response1
-            // 
-            this.uc_wm_response1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uc_wm_response1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uc_wm_response1.Location = new System.Drawing.Point(0, 0);
-            this.uc_wm_response1.Margin = new System.Windows.Forms.Padding(0);
-            this.uc_wm_response1.Name = "uc_wm_response1";
-            this.uc_wm_response1.Size = new System.Drawing.Size(596, 80);
-            this.uc_wm_response1.TabIndex = 0;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.uc_wm_request1);
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(596, 80);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Request";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // uc_wm_request1
-            // 
-            this.uc_wm_request1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uc_wm_request1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uc_wm_request1.Location = new System.Drawing.Point(0, 0);
-            this.uc_wm_request1.Margin = new System.Windows.Forms.Padding(0);
-            this.uc_wm_request1.Name = "uc_wm_request1";
-            this.uc_wm_request1.Size = new System.Drawing.Size(596, 80);
-            this.uc_wm_request1.TabIndex = 0;
-            // 
-            // uc_log1
-            // 
-            this.uc_log1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uc_log1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uc_log1.Location = new System.Drawing.Point(0, 0);
-            this.uc_log1.Margin = new System.Windows.Forms.Padding(0);
-            this.uc_log1.Name = "uc_log1";
-            this.uc_log1.Size = new System.Drawing.Size(604, 49);
-            this.uc_log1.TabIndex = 0;
-            // 
-            // tc_Settings
-            // 
-            this.tc_Settings.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
-            this.tc_Settings.Controls.Add(this.tabPage3);
-            this.tc_Settings.Controls.Add(this.tabPage4);
-            this.tc_Settings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tc_Settings.Location = new System.Drawing.Point(0, 0);
-            this.tc_Settings.Name = "tc_Settings";
-            this.tc_Settings.Padding = new System.Drawing.Point(0, 0);
-            this.tc_Settings.SelectedIndex = 0;
-            this.tc_Settings.Size = new System.Drawing.Size(604, 109);
-            this.tc_Settings.TabIndex = 2;
-            this.tc_Settings.Tag = "";
-            // 
             // uc_Status1
             // 
             this.uc_Status1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -181,36 +212,6 @@ namespace WsdlUI.App.UI.UserControls
             this.uc_Status1.Size = new System.Drawing.Size(604, 24);
             this.uc_Status1.TabIndex = 1;
             // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 45);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.tc_Settings);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.uc_log1);
-            this.splitContainer1.Size = new System.Drawing.Size(604, 160);
-            this.splitContainer1.SplitterDistance = 109;
-            this.splitContainer1.SplitterWidth = 2;
-            this.splitContainer1.TabIndex = 3;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.uc_Status1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 205);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(604, 24);
-            this.panel1.TabIndex = 4;
-            // 
             // uc_Wm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -221,15 +222,15 @@ namespace WsdlUI.App.UI.UserControls
             this.Name = "uc_Wm";
             this.Size = new System.Drawing.Size(604, 229);
             this.Load += new System.EventHandler(this.uc_Wm_Load);
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
-            this.tc_Settings.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
+            this.tc_Settings.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
