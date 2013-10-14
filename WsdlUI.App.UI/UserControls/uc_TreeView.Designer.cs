@@ -41,14 +41,16 @@ namespace WsdlUI.App.UI.UserControls
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Web Services");
             this.imgList_All = new System.Windows.Forms.ImageList(this.components);
             this.tv_webServices = new System.Windows.Forms.TreeView();
+            this.cms_AddRemoveStartup = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mi_Remove = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyUriToClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mi_Add_Startup = new System.Windows.Forms.ToolStripMenuItem();
+            this.mi_Remove_Startup = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new WsdlUI.App.UI.UserControls.Widgets.wg_BaseToolStrip();
             this.tsbButtonAdd = new WsdlUI.App.UI.UserControls.Widgets.wg_BaseToolStripButton();
             this.tsBtnRemove = new WsdlUI.App.UI.UserControls.Widgets.wg_BaseToolStripButton();
-            this.cms_AddRemoveStartup = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mi_Add = new System.Windows.Forms.ToolStripMenuItem();
-            this.mi_Remove = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip1.SuspendLayout();
             this.cms_AddRemoveStartup.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // imgList_All
@@ -77,6 +79,44 @@ namespace WsdlUI.App.UI.UserControls
             this.tv_webServices.TabIndex = 2;
             this.tv_webServices.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tv_webServices_AfterSelect);
             this.tv_webServices.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tv_webServices_MouseDown);
+            // 
+            // cms_AddRemoveStartup
+            // 
+            this.cms_AddRemoveStartup.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mi_Remove,
+            this.mi_Add_Startup,
+            this.mi_Remove_Startup,
+            this.copyUriToClipboardToolStripMenuItem});
+            this.cms_AddRemoveStartup.Name = "cms_AddRemoveStartup";
+            this.cms_AddRemoveStartup.Size = new System.Drawing.Size(240, 114);
+            // 
+            // mi_Remove
+            // 
+            this.mi_Remove.Name = "mi_Remove";
+            this.mi_Remove.Size = new System.Drawing.Size(239, 22);
+            this.mi_Remove.Text = "Remove";
+            this.mi_Remove.Click += new System.EventHandler(this.mi_Remove_Click);
+            // 
+            // copyUriToClipboardToolStripMenuItem
+            // 
+            this.copyUriToClipboardToolStripMenuItem.Name = "copyUriToClipboardToolStripMenuItem";
+            this.copyUriToClipboardToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
+            this.copyUriToClipboardToolStripMenuItem.Text = "Copy Uri To Clipboard";
+            this.copyUriToClipboardToolStripMenuItem.Click += new System.EventHandler(this.copyUriToClipboardToolStripMenuItem_Click);
+            // 
+            // mi_Add_Startup
+            // 
+            this.mi_Add_Startup.Name = "mi_Add_Startup";
+            this.mi_Add_Startup.Size = new System.Drawing.Size(239, 22);
+            this.mi_Add_Startup.Text = "Add To Wsdl Startup List";
+            this.mi_Add_Startup.Click += new System.EventHandler(this.mi_Add_Startup_Click);
+            // 
+            // mi_Remove_Startup
+            // 
+            this.mi_Remove_Startup.Name = "mi_Remove_Startup";
+            this.mi_Remove_Startup.Size = new System.Drawing.Size(239, 22);
+            this.mi_Remove_Startup.Text = "Remove From Wsdl Startup List";
+            this.mi_Remove_Startup.Click += new System.EventHandler(this.mi_Remove_Startup_Click);
             // 
             // toolStrip1
             // 
@@ -122,28 +162,6 @@ namespace WsdlUI.App.UI.UserControls
             this.tsBtnRemove.ToolTipText = "Remove web service";
             this.tsBtnRemove.Click += new System.EventHandler(this.tsBtnRemove_Click);
             // 
-            // cms_AddRemoveStartup
-            // 
-            this.cms_AddRemoveStartup.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mi_Add,
-            this.mi_Remove});
-            this.cms_AddRemoveStartup.Name = "cms_AddRemoveStartup";
-            this.cms_AddRemoveStartup.Size = new System.Drawing.Size(240, 48);
-            // 
-            // mi_Add
-            // 
-            this.mi_Add.Name = "mi_Add";
-            this.mi_Add.Size = new System.Drawing.Size(239, 22);
-            this.mi_Add.Text = "Add To Wsdl Startup List";
-            this.mi_Add.Click += new System.EventHandler(this.mi_Add_Click);
-            // 
-            // mi_Remove
-            // 
-            this.mi_Remove.Name = "mi_Remove";
-            this.mi_Remove.Size = new System.Drawing.Size(239, 22);
-            this.mi_Remove.Text = "Remove From Wsdl Startup List";
-            this.mi_Remove.Click += new System.EventHandler(this.mi_Remove_Click);
-            // 
             // uc_TreeView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -152,9 +170,9 @@ namespace WsdlUI.App.UI.UserControls
             this.Controls.Add(this.toolStrip1);
             this.Name = "uc_TreeView";
             this.Load += new System.EventHandler(this.uc_TreeView_Load);
+            this.cms_AddRemoveStartup.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.cms_AddRemoveStartup.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -167,7 +185,9 @@ namespace WsdlUI.App.UI.UserControls
         public System.Windows.Forms.ImageList imgList_All;
         private System.Windows.Forms.TreeView tv_webServices;
         private System.Windows.Forms.ContextMenuStrip cms_AddRemoveStartup;
-        private System.Windows.Forms.ToolStripMenuItem mi_Add;
+        private System.Windows.Forms.ToolStripMenuItem mi_Add_Startup;
+        private System.Windows.Forms.ToolStripMenuItem mi_Remove_Startup;
+        private System.Windows.Forms.ToolStripMenuItem copyUriToClipboardToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mi_Remove;
     }
 }

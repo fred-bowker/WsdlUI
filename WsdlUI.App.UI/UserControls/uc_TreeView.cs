@@ -96,34 +96,7 @@ namespace WsdlUI.App.UI.UserControls {
 
         void tsBtnRemove_Click(object sender, EventArgs e) {
 
-            if (tv_webServices.SelectedNode == null) {
-                return;
-            }
-
-            WSNodeType nodeType = (WSNodeType)tv_webServices.SelectedNode.Tag;
-
-            if (nodeType == WSNodeType.WebServiceNode) {
-
-                process.Logger.Instance.Log.Info("Start: Node Type WebServiceNode " + tv_webServices.SelectedNode.Name);
-
-                if (RemoveClicked != null) {
-                    RemoveClicked(tv_webServices.SelectedNode.Name);
-                }
-
-                tv_webServices.SelectedNode.Remove();
-
-            }
-            else if (nodeType == WSNodeType.WebMethodNode) {
-
-                process.Logger.Instance.Log.Info("Start: Node Type WebMethodNode " + tv_webServices.SelectedNode.Parent.Name);
-
-                if (RemoveClicked != null) {
-                    RemoveClicked(tv_webServices.SelectedNode.Parent.Name);
-                }
-
-                tv_webServices.SelectedNode.Parent.Remove();
-            }
-
+            Remove();
 
         }
 
@@ -137,11 +110,11 @@ namespace WsdlUI.App.UI.UserControls {
 
         }
 
-        private void mi_Add_Click(object sender, EventArgs e) {
+        private void mi_Add_Startup_Click(object sender, EventArgs e) {
             State.Instance.ConfigStartupWsdls.AddWsdl(tv_webServices.SelectedNode.Name);
         }
 
-        private void mi_Remove_Click(object sender, EventArgs e) {
+        private void mi_Remove_Startup_Click(object sender, EventArgs e) {
             State.Instance.ConfigStartupWsdls.RemoveWsdl(tv_webServices.SelectedNode.Name);
         }
 
@@ -152,10 +125,58 @@ namespace WsdlUI.App.UI.UserControls {
                 tv_webServices.SelectedNode = clickedNode;
 
                 bool startupContainsWsdl = State.Instance.ConfigStartupWsdls.ContainsWsdl(clickedNode.Name);
-                mi_Add.Visible = !startupContainsWsdl;
-                mi_Remove.Visible = startupContainsWsdl;
+                mi_Add_Startup.Visible = !startupContainsWsdl;
+                mi_Remove_Startup.Visible = startupContainsWsdl;
 
             }
+        }
+
+        private void mi_Remove_Click(object sender, EventArgs e)
+        {
+            Remove();
+        }
+
+        void Remove()
+        {
+            if (tv_webServices.SelectedNode == null)
+            {
+                return;
+            }
+
+            WSNodeType nodeType = (WSNodeType)tv_webServices.SelectedNode.Tag;
+
+            if (nodeType == WSNodeType.WebServiceNode)
+            {
+
+                process.Logger.Instance.Log.Info("Start: Node Type WebServiceNode " + tv_webServices.SelectedNode.Name);
+
+                if (RemoveClicked != null)
+                {
+                    RemoveClicked(tv_webServices.SelectedNode.Name);
+                }
+
+                tv_webServices.SelectedNode.Remove();
+
+            }
+            else if (nodeType == WSNodeType.WebMethodNode)
+            {
+
+                process.Logger.Instance.Log.Info("Start: Node Type WebMethodNode " + tv_webServices.SelectedNode.Parent.Name);
+
+                if (RemoveClicked != null)
+                {
+                    RemoveClicked(tv_webServices.SelectedNode.Parent.Name);
+                }
+
+                tv_webServices.SelectedNode.Parent.Remove();
+            }
+
+        }
+
+        private void copyUriToClipboardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string uri = tv_webServices.SelectedNode.Name;
+            Clipboard.SetText(uri);
         }
     }
 }
