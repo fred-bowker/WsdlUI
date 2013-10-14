@@ -1,35 +1,42 @@
-/*
-    Copyright 2013 Fred Bowker
-    This file is part of WsdlUI.
-    WsdlUI is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
-    WsdlUI is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
-    You should have received a copy of the GNU General Public License along with Foobar. If not, see http://www.gnu.org/licenses/.
-*/
-
 using System;
-
+using System.Text.RegularExpressions;
+using System.Xml.Linq;
+using ICSharpCode.Addons;
 using ICSharpCode.TextEditor;
-using ICSharpCode.TextEditor.Addons;
 using ICSharpCode.TextEditor.Document;
 
-namespace WsdlUI.App.UI.UserControls.Widgets {
-    public class wg_XmlTextEditor : TextEditorControl {
+namespace WsdlUI.TextEditor {
+    public class XmlTextEditor : TextEditorControl {
 
-        public wg_XmlTextEditor() {
+        public string XmlUnformatted {
+            get {
+                //<Operation xmlns="">VOID
+                //</Operation>
+                Regex parser = new Regex(@"\s*<");
+                string xmlUnformatted = parser.Replace(Text, "<");
+
+                parser = new Regex(@">\s*<");
+                xmlUnformatted = parser.Replace(xmlUnformatted, "><");
+                return xmlUnformatted;
+            }
+        }
+
+        public void FormatXml() {
+            Text = XElement.Parse(Text).ToString();
+        }
+
+        public XmlTextEditor() {
             Document.HighlightingStrategy = HighlightingStrategyFactory.CreateHighlightingStrategy("XML");
             Document.FoldingManager.FoldingStrategy = new XmlFoldingStrategy();
             Document.FormattingStrategy = new XmlFormattingStrategy();
             TextEditorProperties = InitializeProperties();
-            Document.FoldingManager.UpdateFoldings(string.Empty, null);
-            TextArea.Refresh(base.TextArea.FoldMargin);
+            Document.FoldingManager.UpdateFoldings(null, null);
             Document.DocumentChanged += Document_DocumentChanged;
         }
 
         void Document_DocumentChanged(object sender, DocumentEventArgs e) {
-            Document.FoldingManager.UpdateFoldings(string.Empty, null);
-            TextArea.Refresh(base.TextArea.FoldMargin);
+            Document.FoldingManager.UpdateFoldings(null, null);
         }
-
 
         ITextEditorProperties InitializeProperties() {
             var properties = new DefaultTextEditorProperties();
@@ -58,8 +65,5 @@ namespace WsdlUI.App.UI.UserControls.Widgets {
 
             return properties;
         }
-
-    
-    
     }
 }

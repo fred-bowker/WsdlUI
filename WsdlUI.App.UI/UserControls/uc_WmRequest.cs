@@ -38,7 +38,7 @@ namespace WsdlUI.App.UI.UserControls {
             RequestPropertyGrid items = (RequestPropertyGrid)pg_headers.SelectedObject;
 
             _webSvcMethod.ServiceURI = items.Url;
-            _webSvcMethod.SampleReqMsg = tec_Request.Text;
+            _webSvcMethod.SampleReqMsg = tec_Request.XmlUnformatted;
 
             return _webSvcMethod;
         }
@@ -61,7 +61,7 @@ namespace WsdlUI.App.UI.UserControls {
                 }
 
                 new XmlDocument().LoadXml(tec_Request.Text);
-                
+
                 return null;
             }
             catch (XmlException ex) {
@@ -79,6 +79,9 @@ namespace WsdlUI.App.UI.UserControls {
         private void uc_WmRequest_Load(object sender, EventArgs e) {
             Font = DefaultFonts.Instance.Small;
             tec_Request.Font = DefaultFonts.Instance.Large;
+        }
+        private void formatXmlToolStripMenuItem_Click(object sender, EventArgs e) {
+            tec_Request.FormatXml();
         }
     }
 }

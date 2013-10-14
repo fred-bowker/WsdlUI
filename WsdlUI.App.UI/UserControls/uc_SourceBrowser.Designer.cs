@@ -6,6 +6,7 @@
     You should have received a copy of the GNU General Public License along with Foobar. If not, see http://www.gnu.org/licenses/.
 */
 
+using WsdlUI.TextEditor;
 
 namespace WsdlUI.App.UI.UserControls
 {
@@ -37,32 +38,36 @@ namespace WsdlUI.App.UI.UserControls
         /// </summary>
        void InitializeComponent()
         {
-            this.wb_source = new System.Windows.Forms.WebBrowser();
+            this.tec_source = new XmlTextEditor();
             this.SuspendLayout();
             // 
-            // wb_source
+            // tec_source
             // 
-            this.wb_source.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.wb_source.Location = new System.Drawing.Point(0, 0);
-            this.wb_source.Margin = new System.Windows.Forms.Padding(0);
-            this.wb_source.MinimumSize = new System.Drawing.Size(20, 20);
-            this.wb_source.Name = "wb_source";
-            this.wb_source.Size = new System.Drawing.Size(150, 150);
-            this.wb_source.TabIndex = 0;
+            this.tec_source.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tec_source.IsReadOnly = false;
+            this.tec_source.Location = new System.Drawing.Point(0, 0);
+            this.tec_source.Name = "tec_source";
+            this.tec_source.ShowLineNumbers = false;
+            this.tec_source.ShowVRuler = false;
+            this.tec_source.Size = new System.Drawing.Size(150, 150);
+            this.tec_source.TabIndent = 2;
+            this.tec_source.TabIndex = 0;
             // 
             // uc_SourceBrowser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.wb_source);
+            this.Controls.Add(this.tec_source);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "uc_SourceBrowser";
+            this.Load += new System.EventHandler(this.uc_SourceBrowser_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.WebBrowser wb_source;
+       private XmlTextEditor tec_source;
+
     }
 }

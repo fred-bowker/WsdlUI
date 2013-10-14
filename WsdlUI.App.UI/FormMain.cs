@@ -34,17 +34,6 @@ namespace WsdlUI.App.UI {
             uc_treeView1.RemoveClicked += new Action<string>(uc_treeView1_RemoveClicked);
         }
 
-        //xml is written to a temp directory for displaying in the web browser control
-        void ClearTempDirectory() {
-            try {
-                foreach (var filename in Directory.GetFiles(Consts.TempDirectory, "*.xml")) {
-                    File.Delete(filename);
-                }
-            } //if running multiple instances of the application the file may already being read. Then HIDE exception.
-            catch (IOException) {
-            }
-        }
-
         void uc_treeView1_RemoveClicked(string key) {
 
             _addedWsdls.Remove(key);
@@ -275,7 +264,6 @@ namespace WsdlUI.App.UI {
 
         public void CleanUp() {
             State.Instance.Save();
-            ClearTempDirectory();
         }
 
         void exitToolStripMenuItem_Click(object sender, EventArgs e) {

@@ -6,6 +6,7 @@
     You should have received a copy of the GNU General Public License along with Foobar. If not, see http://www.gnu.org/licenses/.
 */
 
+using WsdlUI.TextEditor;
 
 namespace WsdlUI.App.UI.UserControls
 {
@@ -37,12 +38,16 @@ namespace WsdlUI.App.UI.UserControls
         /// </summary>
        void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.pg_headers = new System.Windows.Forms.PropertyGrid();
-            this.tec_Request = new Widgets.wg_XmlTextEditor();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.formatXmlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tec_Request = new XmlTextEditor();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -75,12 +80,29 @@ namespace WsdlUI.App.UI.UserControls
             this.pg_headers.TabIndex = 0;
             this.pg_headers.ToolbarVisible = false;
             // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.formatXmlToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(137, 26);
+            // 
+            // formatXmlToolStripMenuItem
+            // 
+            this.formatXmlToolStripMenuItem.Name = "formatXmlToolStripMenuItem";
+            this.formatXmlToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.formatXmlToolStripMenuItem.Text = "Format Xml";
+            this.formatXmlToolStripMenuItem.Click += new System.EventHandler(this.formatXmlToolStripMenuItem_Click);
+            // 
             // tec_Request
             // 
+            this.tec_Request.ContextMenuStrip = this.contextMenuStrip1;
             this.tec_Request.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tec_Request.IsReadOnly = false;
             this.tec_Request.Location = new System.Drawing.Point(0, 0);
             this.tec_Request.Name = "tec_Request";
+            this.tec_Request.ShowLineNumbers = false;
+            this.tec_Request.ShowVRuler = false;
             this.tec_Request.Size = new System.Drawing.Size(495, 306);
+            this.tec_Request.TabIndent = 2;
             this.tec_Request.TabIndex = 2;
             // 
             // uc_WmRequest
@@ -95,6 +117,7 @@ namespace WsdlUI.App.UI.UserControls
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -103,6 +126,8 @@ namespace WsdlUI.App.UI.UserControls
 
        private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.PropertyGrid pg_headers;
-        private WsdlUI.App.UI.UserControls.Widgets.wg_XmlTextEditor tec_Request;
+        private XmlTextEditor tec_Request;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem formatXmlToolStripMenuItem;
     }
 }

@@ -60,7 +60,7 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ICSharpCode.TextEditor, Version=2.0.0.1462, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ICSharpCode.TextEditor, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\WsdlUI.App.External\ICSharpCode\ICSharpCode.TextEditor.dll</HintPath>
     </Reference>
@@ -209,9 +209,6 @@
     <Compile Include="UserControls\Widgets\wg_BaseToolStrip.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="UserControls\Widgets\wg_XmlTextEditor.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Dialogs\dg_AddWS.resx">
@@ -289,9 +286,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="OutputFolders\temp\temp.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Resources\applications-internet-3.ico" />
     <Content Include="Resources\applications-internet-3.png" />
     <Content Include="Resources\bullet_green.png">
@@ -362,6 +356,10 @@
     <ProjectReference Include="..\WsdlUI.App.Process\WsdlUI.App.Process.csproj">
       <Project>{af547fa4-2ba4-4c47-98fb-3749422484c5}</Project>
       <Name>WsdlUI.App.Process</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WsdlUI.TextEditor\WsdlUI.TextEditor.csproj">
+      <Project>{2d18be89-d210-49eb-a9dd-2246fbb3df6d}</Project>
+      <Name>WsdlUI.TextEditor</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

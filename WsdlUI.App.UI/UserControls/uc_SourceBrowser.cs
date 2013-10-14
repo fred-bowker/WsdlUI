@@ -7,32 +7,27 @@
 */
 
 using System;
-using System.IO;
-using System.Text;
 using System.Windows.Forms;
-
 
 namespace WsdlUI.App.UI.UserControls {
     public partial class uc_SourceBrowser : UserControl {
         public uc_SourceBrowser() {
             InitializeComponent();
+
+            tec_source.IsReadOnly = true;
         }
 
-        //The other way to display the xml is to set the document text property and setting the xslt
-        //this method is overkill and involves modifying the default xslt of ie or firefox
-        //The method used here SHOULD use the default style sheets for the currently installed IE
-        public void PopulateForm (string sourceXML)
-  {
-   string tempfilePath = string.Format (@"{0}{1}{2}{1}{3}.xml", Directory.GetCurrentDirectory (), Path.DirectorySeparatorChar, Consts.TempDirectory, Guid.NewGuid ());
-
-   File.WriteAllText (tempfilePath, sourceXML, Encoding.UTF8);
-
-   wb_source.AllowNavigation = true;
-            wb_source.Navigate(tempfilePath);
+        public void PopulateForm(string sourceXML) {
+            tec_source.Text = sourceXML;
+            tec_source.FormatXml();
         }
 
         public void Clear() {
-            wb_source.DocumentText = null;
+            tec_source.Text = "";
+        }
+
+        private void uc_SourceBrowser_Load(object sender, EventArgs e) {
+            tec_source.Font = DefaultFonts.Instance.Large;
         }
     }
 }
