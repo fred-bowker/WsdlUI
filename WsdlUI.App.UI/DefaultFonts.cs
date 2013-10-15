@@ -1,5 +1,7 @@
 using System.Drawing;
 
+using process = WsdlUI.App.Process;
+
 namespace WsdlUI.App.UI {
 
     public sealed class DefaultFonts {
@@ -37,8 +39,14 @@ namespace WsdlUI.App.UI {
 
                 if (!result) {
                     fontName = "Courier New";
+                    result = IsFontInstalled(fontName);
+                    if (!result) {
+                        process.Logger.Instance.Log.Info("no default font found");
+                    }
                 }
             }
+
+            process.Logger.Instance.Log.Info("using font: " + fontName);
 
             Smaller = new System.Drawing.Font(fontName, 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             Small =  new System.Drawing.Font(fontName, 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

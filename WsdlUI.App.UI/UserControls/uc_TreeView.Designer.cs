@@ -55,7 +55,7 @@ namespace WsdlUI.App.UI.UserControls
             // 
             // imgList_All
             // 
-            this.imgList_All.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imgList_All.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
             this.imgList_All.ImageSize = new System.Drawing.Size(16, 16);
             this.imgList_All.TransparentColor = System.Drawing.Color.Transparent;
             // 

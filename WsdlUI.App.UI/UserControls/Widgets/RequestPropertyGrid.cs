@@ -28,6 +28,7 @@ namespace WsdlUI.App.UI.UserControls.Widgets {
         }
 
         [CategoryAttribute(HEADER_CATEGORY_NAME)]
+        [ReadOnly(true)]
         [DisplayName(WsdlUI.App.Model.WebSvcMethod.HEADER_NAME_CONTENT_TYPE)]
         public string ContentType {
             get;
@@ -35,6 +36,7 @@ namespace WsdlUI.App.UI.UserControls.Widgets {
         }
 
         [CategoryAttribute(HEADER_CATEGORY_NAME)]
+        [ReadOnly(true)]
         [DisplayName(WsdlUI.App.Model.WebSvcMethod.HEADER_NAME_SOAP_ACTION)]
         public string SoapAction {
             get;
