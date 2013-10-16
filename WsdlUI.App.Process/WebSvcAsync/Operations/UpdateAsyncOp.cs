@@ -38,6 +38,7 @@ namespace WsdlUI.App.Process.WebSvcAsync.Operations {
             webReq.ContentType = "text/plain; encoding='utf-8'";
             webReq.Proxy = base.WebProxy;
 
+			IgnoreSSL();
             _response = (HttpWebResponse)webReq.GetResponse();
             _readStream = new StreamReader(_response.GetResponseStream());
 
@@ -61,6 +62,7 @@ namespace WsdlUI.App.Process.WebSvcAsync.Operations {
 
         protected override void TearDown() {
 
+		    UseSSL();
             if (_response != null) {
                 _response.Close();
             }
@@ -70,5 +72,18 @@ namespace WsdlUI.App.Process.WebSvcAsync.Operations {
 
         }
 
+        //to access the https address for updates ignore certificate errors, mono does not trust anything by default.
+        //all subsequent https calls will use certificates
+        private void IgnoreSSL() {
+            System.Net.ServicePointManager.ServerCertificateValidationCallback = new System.Net.Security.RemoteCertificateValidationCallback(AcceptAllCertifications);
+        }
+
+        private bool AcceptAllCertifications(object sender, System.Security.Cryptography.X509Certificates.X509Certificate certification, System.Security.Cryptography.X509Certificates.X509Chain chain, System.Net.Security.SslPolicyErrors sslPolicyErrors) {
+            return true;
+        } 
+
+        private void UseSSL() {
+            System.Net.ServicePointManager.ServerCertificateValidationCallback = null;
+        }
     }
 }
