@@ -163,13 +163,13 @@
                 <div style="width: 100%; margin-top: 15px">
                     <div style="float: left; width: 46.5%;" class="screenshot-minimized">
                         <a href="#" id="display-request-btn">
-                            <img alt="request screenshot" title="View screenshot of a web service request" src="request.jpg" />
+                            <img alt="request screenshot" title="View screenshot of a web service request" src="request.png" />
                         </a>
                     </div>
                     <div style="float: left; width: 2%;">&nbsp</div>
                     <div style="float: left; width: 46.5%;" class="screenshot-minimized">
                         <a href="#" id="display-response-btn">
-                            <img alt="response screenshot" title="View screenshot of the response to a web service call" src="response.jpg" />
+                            <img alt="response screenshot" title="View screenshot of the response to a web service call" src="response.png" />
                         </a>
                     </div>
                     <br style="clear: left;" />
@@ -178,61 +178,91 @@
                     <div style="float: left; width: 46.5%;" class="screenshot-minimized">
 
                         <a href="#" id="display-wsdlFile-btn">
-                            <img alt="wsdl file screenshot" title="View screenshot of the wsdl file display" src="wsdlFile.jpg" />
+                            <img alt="wsdl file screenshot" title="View screenshot of the wsdl file display" src="wsdlFile.png" />
                         </a>
                     </div>
                     <div style="float: left; width: 2%;">&nbsp</div>
                     <div style="float: left; width: 46.5%;" class="screenshot-minimized">
                         <a href="#" id="display-startupWSDL-btn">
-                            <img alt="startup wsdl screenshot" title="View screenshot adding wsdls to be loaded on startup" src="startupWSDL.jpg" />
+                            <img alt="startup wsdl screenshot" title="View screenshot adding wsdls to be loaded on startup" src="startupWSDL.png" />
                         </a>
                     </div>
                     <br style="clear: left;" />
                 </div>
 
                 <div id="dialog-modal-request" style="display: none;">
-                    <img alt="request screenshot" src="request.jpg" class="dialog-modal-image" />
+                    <img alt="request screenshot" src="request.png" class="dialog-modal-image" />
                 </div>
 
                 <div id="dialog-modal-response" style="display: none;">
-                    <img alt="response screenshot" src="response.jpg" class="dialog-modal-image" />
+                    <img alt="response screenshot" src="response.png" class="dialog-modal-image" />
                 </div>
 
                 <div id="dialog-modal-wsdlFile" style="display: none;">
-                    <img alt="wsdl file screenshot" src="wsdlFile.jpg" class="dialog-modal-image" />
+                    <img alt="wsdl file screenshot" src="wsdlFile.png" class="dialog-modal-image" />
                 </div>
 
                 <div id="dialog-modal-startupWSDL" style="display: none;">
-                    <img alt="startup wsdl screenshot" src="startupWSDL.jpg" class="dialog-modal-image" />
+                    <img alt="startup wsdl screenshot" src="startupWSDL.png" class="dialog-modal-image" />
                 </div>
 
                 <h3>
                     <a class="anchor" href="#designer-templates">
                         <span class="octicon octicon-link"></span>
-                    </a>Requirements
+                    </a>Requirements Windows
                 </h3>
 
+       
                 <div>
                     Windows XP SP2 (and above Windows 7, Windows 8)	    
                 </div>
                 <div>
                     .NET v3.5
                 </div>
-                
-                <div style="margin-top: 10px">
-                    LINUX SUPPORT COMING SOON!!
+
+                 <h3>
+                    <a class="anchor" href="#designer-templates">
+                        <span class="octicon octicon-link"></span>
+                    </a>Requirements Linux
+                </h3>
+
+       
+                <div>
+                    Mono 2.10.X or higher, Mono WinForms library.
+                     <br />
+                    <br />
+                    sudo apt-get install libmono-winforms2.0-cil
+                     <br />
+                    Install mono on Debian based systems (Ubuntu, Mint)
+                     <br />
+                    sudo yum install mono-winforms.x86_64
+                     <br />
+                    Install mono on RedHat based systems (Fedora)
+
                 </div>
 
                 <h3>
                     <a class="anchor" href="#rather-drive-stick">
                         <span class="octicon octicon-link"></span>
-                    </a>Installation
+                    </a>Installation Windows
                 </h3>
 
                 <p>
                     Download the zip file, unzip then run the msi file its as simple as that.
                     <br />
                     Alternatively to run without installation, simply unzip and run WsdlUI.exe from the release folder.
+                </p>
+
+                 <h3>
+                    <a class="anchor" href="#rather-drive-stick">
+                        <span class="octicon octicon-link"></span>
+                    </a>Installation Linux
+                </h3>
+
+                <p>
+                    Download the tar file, extract then run mono WsdlUI.exe from the release folder.
+                    <br />
+                    WsdlUI uses the Inconsolata font if it is available, otherwise download and install it at <a href="http://www.levien.com/type/myfonts/inconsolata.html">Inconsolata</a>.
                 </p>
 
                 <h3>
@@ -254,10 +284,14 @@
             </section>
 
             <aside id="sidebar">
-                <a href="http://bit.ly/14XKHbg" class="button">
-                    <small>Download
-                    </small>
-                    .zip file
+                <a href="http://bit.ly/18zcWlr" class="button">
+                    Windows   
+                    <small>.zip file</small>  
+                </a>
+
+                 <a href="http://bit.ly/1d8crCn" class="button">
+                    Linux 
+                    <small>.tar.gz file</small>
                 </a>
 
                 <p class="repo-owner">
