@@ -1,0 +1,4 @@
+C:\Src\GitHub\WsdlUI\WsdlUI.TextEditor\bin\Release\WsdlUI.TextEditor.dll
+C:\Src\GitHub\WsdlUI\WsdlUI.TextEditor\bin\Release\ICSharpCode.TextEditor.dll
+C:\Src\GitHub\WsdlUI\WsdlUI.TextEditor\obj\Release\WsdlUI.TextEditor.csprojResolveAssemblyReference.cache
+C:\Src\GitHub\WsdlUI\WsdlUI.TextEditor\obj\Release\WsdlUI.TextEditor.dll

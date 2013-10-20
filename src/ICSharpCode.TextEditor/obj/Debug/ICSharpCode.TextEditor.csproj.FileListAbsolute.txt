@@ -1,0 +1,5 @@
+C:\Src\GitHub\WsdlUI\ICSharpCode.TextEditor\bin\Debug\ICSharpCode.TextEditor.dll
+C:\Src\GitHub\WsdlUI\ICSharpCode.TextEditor\bin\Debug\ICSharpCode.TextEditor.pdb
+C:\Src\GitHub\WsdlUI\ICSharpCode.TextEditor\obj\Debug\ICSharpCode.TextEditor.csprojResolveAssemblyReference.cache
+C:\Src\GitHub\WsdlUI\ICSharpCode.TextEditor\obj\Debug\ICSharpCode.TextEditor.dll
+C:\Src\GitHub\WsdlUI\ICSharpCode.TextEditor\obj\Debug\ICSharpCode.TextEditor.pdb
