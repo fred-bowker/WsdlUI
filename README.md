@@ -6,19 +6,52 @@ The program is designed to be fast and responsive implementing a small number of
 
 There are other .Net tools that have similar functionality including WebServiceStudio and Storm both hosted on Codeplex. These projects have both been inactive for a couple of years so I decided to code a new tool. 
 
-The current release only runs on Windows however the next release will run on Linux with mono, hopefully this will be ready soon.
+The project is written in .Net and uses WinForms, it runs on Windows and Linux using the Mono runtime.
 
 ## Requirements
+
+### Windows
 
 .NET v3.5
 
 Windows XP SP2 (and above Windows 7, Windows 8)
+
+Uses the Microsoft Consolas font if installed otherwise the program defaults to Courier New.
+
+### Linux
+
+Mono 2.10.X or higher, Mono WinForms library.
+
+```
+sudo apt-get install libmono-winforms2.0-cil
+```
+Install mono on Debian based systems (Ubuntu, Mint)
+
+```
+sudo yum install mono-winforms.x86_64
+```
+Install mono on RedHat based systems (Fedora)
+
+Uses the open source Inconsolata font if installed otherwise the program defaults to Courier New.
+
  
 ## Installing
+
+### Windows
 
 Either build the source or download the latest release from https://github.com/drexyia/WsdlUI/releases
 
 Install using the Windows installer WsdlUI.msi
+
+### Linux
+
+Download the latest linux relase from https://github.com/drexyia/WsdlUI/releases
+
+Extract the tar file, change to the release folder
+
+```
+mono WsdlUI.exe
+```
 
 ## Building
 
@@ -53,7 +86,18 @@ build.bat -c
 ``` 
 deletes output folders does not build solution
 
+### Linux
+
+#### Mono XBuild 
+
+```
+./build.sh  
+``` 
+deletes output folders and builds solution
+
+
 The solution file has been tested and builds with all versions of VS2012 including the express edition.
+The solution file can also be used with MonoDevelop on Linux.
 
 ## Contributing
 
