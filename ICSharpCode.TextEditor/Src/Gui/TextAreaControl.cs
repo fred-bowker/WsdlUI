@@ -219,8 +219,11 @@ namespace ICSharpCode.TextEditor
 		
 		public void AdjustScrollBars()
 		{
-			//TODO: Debug currently does not work on linux
-			/*
+            //running on mono a bug exists whereby AdjustScrollBars is called when textarea is null
+            if (textArea == null) {
+                return;
+            }
+			
 			adjustScrollBarsOnNextUpdate = false;
 			vScrollBar.Minimum = 0;
 			// number of visible lines in document (folding!)
@@ -256,7 +259,7 @@ namespace ICSharpCode.TextEditor
 			
 			hScrollBar.LargeChange = Math.Max(0, textArea.TextView.VisibleColumnCount - 1);
 			hScrollBar.SmallChange = Math.Max(0, (int)textArea.TextView.SpaceWidth);
-			*/
+			
 		}
 		
 		public void OptionsChanged()

@@ -48,6 +48,8 @@ namespace WsdlUI.App.UI.Dialogs
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "dg_Base";
+            //A bug when running on opensuse 12.3 means that if text is not set to blank a title of <2> is shown
+            this.Text = " ";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
