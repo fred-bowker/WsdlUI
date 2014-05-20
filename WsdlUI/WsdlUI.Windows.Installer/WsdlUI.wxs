@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+
+  <Product Id="*" Name="WsdlUI" Language="1033" Version="1.4.0" Manufacturer="DREXYIA" UpgradeCode="1D899DE0-4940-4255-97F6-47F27D1DE9A9">
+
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine"/>
+
+    <MajorUpgrade DowngradeErrorMessage="A later version of [ProductName] is already installed. Setup will now exit."/>
+
+    <MediaTemplate EmbedCab="yes" />
+
+    <!--the installation is installed for members of the USERS group, on non english windows versions this group will not be called USERS-->
+    <!--GetGlobalGroupNames sets a property UsersAccount to the correct USERS group name-->
+    <!--See http://stackoverflow.com/questions/2260634/wix-problem-to-give-permissions-to-a-folder/5296967#5296967-->
+    <Binary Id="WixCustomActions.CA.dll" SourceFile="WixCustomActions.CA.dll" />
+    <CustomAction Id="TranslateUsersGroup" BinaryKey="WixCustomActions.CA.dll" DllEntry="GetGlobalGroupNames" Impersonate="no" />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLDIR" Name="WsdlUI" >
+
+          <Component Id="MainExecutable" Guid='CFE2C81D-153D-4939-BE0F-680EB295F81B'>
+
+            <CreateFolder>
+              <Permission GenericAll="yes" User="[UsersAccount]" />
+            </CreateFolder>
+
+            <File Id="WsdlUIEXE" Name="WsdlUI.exe" KeyPath="yes" Source="..\WsdlUI.App.UI.Windows\bin\Release\WsdlUI.exe">
+              <Shortcut Id="startmenuWsdlUI" Directory="ProgramMenuDir" Name="WsdlUI" WorkingDirectory='INSTALLDIR' Icon="WsdlUIIcon.exe" IconIndex="0" Advertise="yes" />
+              <Shortcut Id="desktopWsdlUI" Directory="DesktopFolder" Name="WsdlUI" WorkingDirectory='INSTALLDIR' Icon="WsdlUIIcon.exe" IconIndex="0" Advertise="yes" />
+            </File>
+            <File Id="log4netDLLFile" Name="log4net.dll" Source="..\WsdlUI.App.UI.Windows\bin\Release\log4net.dll" />
+            <File Id="textEditorDLLFile" Name="ICSharpCode.TextEditor.dll" Source="..\WsdlUI.App.UI.Windows\bin\Release\ICSharpCode.TextEditor.dll" />
+            <File Id="WsdlTextEditorDLLFile" Name="WsdlUI.TextEditor.dll" Source="..\WsdlUI.App.UI.Windows\bin\Release\WsdlUI.TextEditor.dll" />
+            <File Id="ModelDLLFile" Name="WsdlUI.App.Model.dll" Source="..\WsdlUI.App.UI.Windows\bin\Release\WsdlUI.App.Model.dll" />
+            <File Id="ProcessDLLFile" Name="WsdlUI.App.Process.dll" Source="..\WsdlUI.App.UI.Windows\bin\Release\WsdlUI.App.Process.dll" />
+            <File Id="UIDLLFile" Name="WsdlUI.App.UI.dll" Source="..\WsdlUI.App.UI.Windows\bin\Release\WsdlUI.App.UI.dll" />
+            <File Id="WsdlUIConfigFile" Name="WsdlUI.exe.config" Source="..\WsdlUI.App.UI.Windows\bin\Release\WsdlUI.exe.config" />
+            <File Id="DrexyiaUtilsFile" Name="Drexyia.Utils.dll" Source="..\WsdlUI.App.UI.Windows\bin\Release\Drexyia.Utils.dll" />
+            <File Id="DrexyiaWebSvcModelFile" Name="Drexyia.WebSvc.Model.dll" Source="..\WsdlUI.App.UI.Windows\bin\Release\Drexyia.WebSvc.Model.dll" />
+            <File Id="DrexyiaWebSvcProcessFile" Name="Drexyia.WebSvc.Process.dll" Source="..\WsdlUI.App.UI.Windows\bin\Release\Drexyia.WebSvc.Process.dll" />
+            <File Id="DrexyiaWebSvcWsdlFile" Name="Drexyia.WebSvc.Wsdl.dll" Source="..\WsdlUI.App.UI.Windows\bin\Release\Drexyia.WebSvc.Wsdl.dll" />
+
+            <!-- copy the console application across -->
+            <File Id="commandLineDLLFile" Name="CommandLine.dll" Source="..\WsdlUI.App.UI.Console\bin\Release\CommandLine.dll" />
+            <File Id="consoleExeFile" Name="WsdlUI-Console.exe" Source="..\WsdlUI.App.UI.Console\bin\Release\WsdlUI-Console.exe" />
+            <File Id="consoleExeConfigFile" Name="WsdlUI-Console.exe.config" Source="..\WsdlUI.App.UI.Console\bin\Release\WsdlUI-Console.exe.config" />
+
+          </Component>
+          <Directory Id="InstDir_Resources" Name="Resources" >
+
+            <Component Id="ResourcesFolder" Guid='45B8D976-0629-44E3-828D-AA286E612489'>
+
+              <CreateFolder>
+                <Permission GenericAll="yes" User="[UsersAccount]" />
+              </CreateFolder>
+
+              <File Id="arrow_right_3_png" Name="arrow-right-3.png" KeyPath="yes" Source="..\WsdlUI.App.UI.Windows\bin\Release\Resources\arrow-right-3.png"/>
+              <File Id="bullet_green_png" Name="bullet_green.png" Source="..\WsdlUI.App.UI.Windows\bin\Release\Resources\bullet_green.png"/>
+              <File Id="bullet_purple_png" Name="bullet_purple.png" Source="..\WsdlUI.App.UI.Windows\bin\Release\Resources\bullet_purple.png"/>
+              <File Id="folder_png" Name="folder.png" Source="..\WsdlUI.App.UI.Windows\bin\Release\Resources\folder.png"/>
+              <File Id="list_add_3_png" Name="list-add-3.png" Source="..\WsdlUI.App.UI.Windows\bin\Release\Resources\list-add-3.png"/>
+              <File Id="list_remove_3_png" Name="list-remove-3.png" Source="..\WsdlUI.App.UI.Windows\bin\Release\Resources\list-remove-3.png"/>
+              <File Id="process_stop_3_png" Name="process-stop-3.png" Source="..\WsdlUI.App.UI.Windows\bin\Release\Resources\process-stop-3.png"/>
+              <File Id="view_list_tree_4_png" Name="view-list-tree-4.png" Source="..\WsdlUI.App.UI.Windows\bin\Release\Resources\view-list-tree-4.png"/>
+            </Component>
+          </Directory>
+
+          <Directory Id="InstDir_OutputFolders" Name="OutputFolders" >
+
+            <Directory Id="InstDir_OutputFolders_Config" Name="config" >
+              <Component Id="OutputFolderConfig" Guid='07882502-34F5-4B6D-9E23-4E43CA53368D'>
+                <CreateFolder>
+                  <Permission GenericAll="yes" User="[UsersAccount]" />
+                </CreateFolder>
+                <File Id="prev_wsdl_data" Name="prev_wsdl.data" KeyPath="yes" Source="..\WsdlUI.App.UI.Windows\bin\Release\OutputFolders\config\prev_wsdl.data"/>
+                <File Id="prev_url_data" Name="prev_url.data" Source="..\WsdlUI.App.UI.Windows\bin\Release\OutputFolders\config\prev_url.data"/>
+                <File Id="proxy_data" Name="proxy.data" Source="..\WsdlUI.App.UI.Windows\bin\Release\OutputFolders\config\proxy.data"/>
+                <File Id="startupWsdls_data" Name="startupWsdls.data" Source="..\WsdlUI.App.UI.Windows\bin\Release\OutputFolders\config\startupWsdls.data"/>
+                <File Id="update_data" Name="update.data" Source="..\WsdlUI.App.UI.Windows\bin\Release\OutputFolders\config\update.data"/>
+                <File Id="timeout_data" Name="timeout.data" Source="..\WsdlUI.App.UI.Windows\bin\Release\OutputFolders\config\timeout.data"/>
+              </Component>
+            </Directory>
+
+            <Directory Id="InstDir_OutputFolders_License" Name="license" >
+              <Component Id="OutputFolderLicense" Guid='E17A6AB8-5126-478E-8182-1F17053EB9E3'>
+                <CreateFolder>
+                  <Permission GenericAll="yes" User="[UsersAccount]" />
+                </CreateFolder>
+                <File Id="LICENSE_md" Name="LICENSE.md" KeyPath="yes" Source="..\WsdlUI.App.UI.Windows\bin\Release\OutputFolders\license\LICENSE.md"/>
+              </Component>
+            </Directory>
+
+          </Directory>
+
+        </Directory>
+      </Directory>
+
+      <Directory Id="ProgramMenuFolder" Name="Programs">
+        <Directory Id="ProgramMenuDir" Name="WsdlU">
+          <Component Id="ProgramMenuDir" Guid="EC0D2600-66F6-4824-A032-0550701A86AA">
+            <RemoveFolder Id='ProgramMenuDir' On='uninstall' />
+            <RegistryValue Root='HKCU' Key='Software\[Manufacturer]\[ProductName]' Type='string' Value='' KeyPath='yes' />
+          </Component>
+        </Directory>
+      </Directory>
+
+      <Directory Id="DesktopFolder" Name="Desktop" />
+    </Directory>
+
+    <Feature Id="Complete" Level='1' >
+      <ComponentRef Id='MainExecutable' />
+      <ComponentRef Id='ResourcesFolder' />
+      <ComponentRef Id='OutputFolderConfig' />
+      <ComponentRef Id='OutputFolderLicense' />
+      <ComponentRef Id='ProgramMenuDir' />
+    </Feature>
+
+    <WixVariable Id="WixUIBannerBmp" Value="Resources\WixUIBannerBmp.bmp" />
+    <WixVariable Id="WixUIDialogBmp" Value="Resources\WixUIDialogBmp.bmp" />
+    <WixVariable Id="WixUILicenseRtf" Value="Resources\License.rtf" />
+
+    <Property Id="WIXUI_INSTALLDIR">INSTALLDIR</Property>
+
+    <UIRef Id="WixUI_InstallDir" />
+
+    <Icon Id="WsdlUIIcon.exe" SourceFile="..\WsdlUI.App.UI.Windows\bin\Release\WsdlUI.exe" />
+    <Property Id="ARPPRODUCTICON" Value="WsdlUIIcon.exe" />
+
+    <InstallExecuteSequence>
+      <Custom Action='TranslateUsersGroup' Before='CreateFolders' />
+    </InstallExecuteSequence>
+
+  </Product>
+</Wix>

@@ -1,10 +1,10 @@
-# WsdlUI 
+# WsdlUI
 
-WsdlUI is a program for quickly viewing and testing web services generated from a .wsdl file. 
+WsdlUI is a program for quickly viewing and testing web services generated from a .wsdl file.
 
-The program is designed to be fast and responsive implementing a small number of features needed for testing web services. 
+The program is designed to be fast and responsive implementing a small number of features needed for testing web services.
 
-There are other .Net tools that have similar functionality including WebServiceStudio and Storm both hosted on Codeplex. These projects have both been inactive for a couple of years so I decided to code a new tool. 
+There are other .Net tools that have similar functionality including WebServiceStudio and Storm both hosted on Codeplex. These projects have both been inactive for a couple of years so I decided to code a new tool.
 
 The project is written in .Net and uses WinForms, it runs on Windows and Linux using the Mono runtime.
 
@@ -34,7 +34,7 @@ Install mono on RedHat based systems (Fedora)
 
 Uses the open source Inconsolata font if installed otherwise the program defaults to Courier New.
 
- 
+
 ## Installing
 
 ### Windows
@@ -42,6 +42,17 @@ Uses the open source Inconsolata font if installed otherwise the program default
 Either build the source or download the latest release from https://github.com/drexyia/WsdlUI/releases
 
 Install using the Windows installer WsdlUI.msi
+
+#### Visual Studio
+
+WsdlUI can be used as a replacement for WcfTestClient when running WCF Service Library projects from within Visual Studio. From within a WCF Service Library Project make the following changes
+
+1. Go to project properies -> Debug page
+2. Change Command Line Arguments
+
+     From: /client:"WcfTestClient.exe"
+
+     To: /client:"[PATH]WsdlUI.exe"
 
 ### Linux
 
@@ -59,45 +70,59 @@ Running the build scripts will clean solution folders by deleting previous bin/o
 
 ### Windows
 
-#### Microsoft MSBuild 
+#### Microsoft MSBuild
 
 ```
-build.bat  
-```    
+build.bat
+```
 deletes output folders and builds solution
 
 ```
-build.bat -v  
-``` 
+build.bat -v
+```
 deletes output folders and builds solution displaying compiler output
 
 ```
-build.bat -l  
-``` 
+build.bat -l
+```
 deletes output folders and builds solution, creates the windows installer
 
 ```
 build.bat -l -v
-```  
+```
 deletes output folders and builds solution, creates the windows installer displaying compiler output
 
 ```
-build.bat -c  
-``` 
+build.bat -c
+```
 deletes output folders does not build solution
 
 ### Linux
 
-#### Mono XBuild 
+#### Mono XBuild
 
 ```
-./build.sh  
-``` 
+./build.sh
+```
 deletes output folders and builds solution
 
 
 The solution file has been tested and builds with all versions of VS2012 including the express edition.
 The solution file can also be used with MonoDevelop on Linux.
+
+## Debugging
+
+The application writes trace information to any log4net appenders that are configured. Modify WsdlUI.exe.config to configure log4net.
+
+### Console
+
+The application can be run from the cmd prompt, this will output all tracing information to the command prompt.
+
+```
+WsdlUI-Console.exe --help               Displays help info
+WsdlUI-Console.exe --debug              Start with debug info written to the console
+WsdlUI-Console.exe --request-uri="uri"  Start in single request mode
+```
 
 ## Contributing
 

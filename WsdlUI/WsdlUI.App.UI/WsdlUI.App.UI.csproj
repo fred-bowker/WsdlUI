@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D6829F54-F7F8-4C9E-B7E7-30BCDCDE5FF9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WsdlUI.App.UI</RootNamespace>
+    <AssemblyName>WsdlUI.App.UI</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\..\External\log4net-1.2.11\NET35\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppConfig.cs" />
+    <Compile Include="AppInfo.cs" />
+    <Compile Include="Consts.cs" />
+    <Compile Include="DefaultFonts.cs" />
+    <Compile Include="Dialogs\dg_ConfigTimout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\dg_ConfigTimout.Designer.cs">
+      <DependentUpon>dg_ConfigTimout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\dg_ConfigStartupWsdls.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\dg_ConfigStartupWsdls.Designer.cs">
+      <DependentUpon>dg_ConfigStartupWsdls.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\dg_BaseUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\dg_BaseCancel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\dg_ConfigUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\dg_ConfigUpdate.Designer.cs">
+      <DependentUpon>dg_ConfigUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\dg_Base.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\dg_Base.Designer.cs">
+      <DependentUpon>dg_Base.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\dg_HelpAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\dg_HelpAbout.Designer.cs">
+      <DependentUpon>dg_HelpAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="State\ContainerItemWebSvc.cs" />
+    <Compile Include="UserControls\uc_Status.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\uc_Status.Designer.cs">
+      <DependentUpon>uc_Status.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UserControlBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Widgets\RequestPropertyGrid.cs" />
+    <Compile Include="UserControls\Widgets\ResponsePropertyGrid.cs" />
+    <Compile Include="UserControls\Widgets\wg_BaseToolStripButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Dialogs\dg_ConfigProxy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\dg_ConfigProxy.Designer.cs">
+      <DependentUpon>dg_ConfigProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\dg_Error.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\dg_Error.Designer.cs">
+      <DependentUpon>dg_Error.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Enums.cs" />
+    <Compile Include="Dialogs\dg_AddWS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\dg_AddWS.Designer.cs">
+      <DependentUpon>dg_AddWS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="State\State.cs" />
+    <Compile Include="UserControls\uc_Log.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\uc_Log.Designer.cs">
+      <DependentUpon>uc_Log.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\uc_PanelInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\uc_PanelInfo.Designer.cs">
+      <DependentUpon>uc_PanelInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\uc_SourceBrowser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\uc_SourceBrowser.Designer.cs">
+      <DependentUpon>uc_SourceBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\uc_TreeView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\uc_TreeView.Designer.cs">
+      <DependentUpon>uc_TreeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\uc_Wm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\uc_Wm.Designer.cs">
+      <DependentUpon>uc_Wm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\uc_WmRequest.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\uc_WmRequest.Designer.cs">
+      <DependentUpon>uc_WmRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\uc_WmResponse.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\uc_WmResponse.Designer.cs">
+      <DependentUpon>uc_WmResponse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="State\ContainerWebSvc.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Widgets\wg_BaseToolStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Dialogs\dg_AddWS.resx">
+      <DependentUpon>dg_AddWS.cs</DependentUpon>
+    </None>
+    <None Include="Dialogs\dg_Base.resx">
+      <DependentUpon>dg_Base.cs</DependentUpon>
+    </None>
+    <None Include="Dialogs\dg_ConfigProxy.resx">
+      <DependentUpon>dg_ConfigProxy.cs</DependentUpon>
+    </None>
+    <None Include="Dialogs\dg_ConfigStartupWsdls.resx">
+      <DependentUpon>dg_ConfigStartupWsdls.cs</DependentUpon>
+    </None>
+    <None Include="Dialogs\dg_HelpAbout.resx">
+      <DependentUpon>dg_HelpAbout.cs</DependentUpon>
+    </None>
+    <None Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </None>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="UserControls\uc_Log.resx">
+      <DependentUpon>uc_Log.cs</DependentUpon>
+    </None>
+    <None Include="UserControls\uc_PanelInfo.resx">
+      <DependentUpon>uc_PanelInfo.cs</DependentUpon>
+    </None>
+    <None Include="UserControls\uc_SourceBrowser.resx">
+      <DependentUpon>uc_SourceBrowser.cs</DependentUpon>
+    </None>
+    <None Include="UserControls\uc_Status.resx">
+      <DependentUpon>uc_Status.cs</DependentUpon>
+    </None>
+    <None Include="UserControls\uc_TreeView.resx">
+      <DependentUpon>uc_TreeView.cs</DependentUpon>
+    </None>
+    <None Include="UserControls\uc_Wm.resx">
+      <DependentUpon>uc_Wm.cs</DependentUpon>
+    </None>
+    <None Include="UserControls\uc_WmRequest.resx">
+      <DependentUpon>uc_WmRequest.cs</DependentUpon>
+    </None>
+    <None Include="UserControls\uc_WmResponse.resx">
+      <DependentUpon>uc_WmResponse.cs</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="OutputFolders\config\update.data">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OutputFolders\license\LICENSE.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OutputFolders\config\prev_wsdl.data">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OutputFolders\config\proxy.data">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OutputFolders\config\startupWsdls.data">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OutputFolders\config\prev_url.data">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OutputFolders\config\timeout.data">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\applications-internet-3.ico" />
+    <Content Include="Resources\applications-internet-3.png" />
+    <Content Include="Resources\bullet_green.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\folder.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\bullet_purple.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\list-add-3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\list-remove-3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\arrow-right-3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\process-stop-3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\tool_clipboard.png" />
+    <Content Include="Resources\view-list-tree-4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\wsdl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Drexyia\Drexyia.Utils\Drexyia.Utils.csproj">
+      <Project>{8FB1B2D3-2EFD-40A6-AD45-D4AE570D9CFA}</Project>
+      <Name>Drexyia.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Drexyia\Drexyia.WebSvc.Model\Drexyia.WebSvc.Model.csproj">
+      <Project>{45D682D2-A966-4381-A442-BD20357CD679}</Project>
+      <Name>Drexyia.WebSvc.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Drexyia\Drexyia.WebSvc.Process\Drexyia.WebSvc.Process.csproj">
+      <Project>{A500BE20-0E73-4439-A0E3-AC23A0F3AB97}</Project>
+      <Name>Drexyia.WebSvc.Process</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Drexyia\Drexyia.WebSvc.Wsdl\Drexyia.WebSvc.Wsdl.csproj">
+      <Project>{6CDE5B71-3F96-43AA-A440-745D3C7A7B31}</Project>
+      <Name>Drexyia.WebSvc.Wsdl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ICSharpCode.TextEditor\ICSharpCode.TextEditor.csproj">
+      <Project>{635D30AE-E121-412D-A0C7-5CB662CD2569}</Project>
+      <Name>ICSharpCode.TextEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WsdlUI.App.Process\WsdlUI.App.Process.csproj">
+      <Project>{AF547FA4-2BA4-4C47-98FB-3749422484C5}</Project>
+      <Name>WsdlUI.App.Process</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WsdlUI.App.Model\WsdlUI.App.Model.csproj">
+      <Project>{6D501389-8AAD-4A0D-BFA3-F7A61EB0DE90}</Project>
+      <Name>WsdlUI.App.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WsdlUI.TextEditor\WsdlUI.TextEditor.csproj">
+      <Project>{3BE1683B-8E13-47EC-B2EF-E0D492AB81DF}</Project>
+      <Name>WsdlUI.TextEditor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

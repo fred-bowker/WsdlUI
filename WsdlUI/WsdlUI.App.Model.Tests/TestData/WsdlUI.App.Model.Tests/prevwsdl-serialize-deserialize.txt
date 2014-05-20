@@ -1,0 +1,5 @@
+﻿http://localhost:1111/service1.svc?wsdl
+file://C:\service2.wsdl
+http://localhost:3333/service3.svc?wsdl
+file://C:\service4.wsdl
+http://localhost:5555/service5.svc?wsdl
