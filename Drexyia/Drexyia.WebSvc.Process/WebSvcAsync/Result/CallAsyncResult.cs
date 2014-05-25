@@ -8,34 +8,23 @@
 
 using System.Collections.Generic;
 
+using model = Drexyia.WebSvc.Model;
+
 namespace Drexyia.WebSvc.Process.WebSvcAsync.Result {
     public class CallAsyncResult {
 
-        public string ResponseMessage {
+        public model.WebSvcMessageResponse Response
+        {
             get;
             private set;
         }
 
-        public string ContentLength {
-            get;
-            private set;
-        }
+        public CallAsyncResult(string body, string status, Dictionary<string, string> headers) {
 
-        public string Status {
-            get;
-            private set;
-        }
-
-        public Dictionary<string, string> Headers {
-            get;
-            private set;
-        }
-
-        public CallAsyncResult(string responseMessage, string contentLength, string status, Dictionary<string, string> headers) {
-            ResponseMessage = responseMessage;
-            ContentLength = contentLength;
-            Status = status;
-            Headers = headers;
+            Response = new model.WebSvcMessageResponse();
+            Response.Body = body;
+            Response.Status = status;
+            Response.Headers = headers;
         }
     }
 }

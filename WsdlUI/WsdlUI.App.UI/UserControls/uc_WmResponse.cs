@@ -21,8 +21,8 @@ namespace WsdlUI.App.UI.UserControls {
         }
 
         public void PopulateForm(drexProcess.WebSvcAsync.Result.CallAsyncResult result) {
-            uc_responseMessage.PopulateForm(result.ResponseMessage);
-            pg_responseHeaders.SelectedObject = new ResponsePropertyGrid(result.Status, result.Headers);
+            uc_responseMessage.PopulateForm(result.Response.Body);
+            pg_responseHeaders.SelectedObject = new ResponsePropertyGrid(result.Response.Status, result.Response.Headers);
         }
 
         public void PopulateForm(string respMsg, string status, string contentType) {

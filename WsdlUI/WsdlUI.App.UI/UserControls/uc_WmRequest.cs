@@ -42,11 +42,14 @@ namespace WsdlUI.App.UI.UserControls {
             tec_Request.Enabled = false;
         }
 
-
         public void PopulateForm(string webSvcSrcUri, drexModel.WebSvcMethod webSvcMethod) {
             _webSvcMethod = webSvcMethod;
             tec_Request.Text = webSvcMethod.Request.Body;
-            pg_headers.SelectedObject = new RequestPropertyGrid(webSvcSrcUri, webSvcMethod.Name, webSvcMethod.Request.HeaderContentType, webSvcMethod.Request.HeaderSoapAction, webSvcMethod.ServiceURI);
+            pg_headers.SelectedObject = new RequestPropertyGrid(webSvcSrcUri, 
+                webSvcMethod.Name,
+                webSvcMethod.Request.Headers[drexModel.WebSvcMessage.HEADER_NAME_CONTENT_TYPE], 
+                webSvcMethod.Request.Headers[drexModel.WebSvcMessageRequest.HEADER_NAME_SOAP_ACTION], 
+                webSvcMethod.ServiceURI);
         }
 
         public drexModel.WebSvcMethod RetrieveForm() {

@@ -13,19 +13,15 @@ namespace Drexyia.WebSvc.Model {
     public class WebSvcMessage {
 
         public const string HEADER_NAME_CONTENT_TYPE = "Content-Type";
-        
-        const string HEADER_DEFAULT_CONTENT_TYPE = @"text/xml; charset=utf-8";
- 
-        public string HeaderContentType {
-            get {
-                return Headers[HEADER_NAME_CONTENT_TYPE];
-            }
-            set {
-                Headers[HEADER_NAME_CONTENT_TYPE] = value;
-            }
-        }
-       
+        public const string HEADER_NAME_CONTENT_LENGTH = "Content-Length";
+               
         public string Body {
+            get;
+            set;
+        }
+
+        public Dictionary<string, string> Headers
+        {
             get;
             set;
         }
@@ -41,14 +37,8 @@ namespace Drexyia.WebSvc.Model {
             }
         }
   
-        protected Dictionary<string, string> Headers {
-            get;
-            set;
-        }
-
         public WebSvcMessage() {
             Headers = new Dictionary<string, string>();
-            HeaderContentType = HEADER_DEFAULT_CONTENT_TYPE;
         }
 
     }

@@ -8,19 +8,6 @@
 
 namespace Drexyia.WebSvc.Model {
     public class WebSvcMessageRequest : WebSvcMessage {
-
         public const string HEADER_NAME_SOAP_ACTION = "SOAPAction";
-
-        public string HeaderSoapAction {
-            get {
-                return base.Headers[HEADER_NAME_SOAP_ACTION];
-            }
-        }
-
-        public WebSvcMessageRequest(string soapAction)
-            : base()
-        {
-            base.Headers[HEADER_NAME_SOAP_ACTION] = soapAction;
-        }
-    }
+   }
 }

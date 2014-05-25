@@ -34,7 +34,8 @@ namespace Drexyia.WebSvc.Process.Tests {
         public void TestHelloWorldProxy() {
 
             var webMethod = new model.WebSvcMethod("HelloWorld", TestDataReader.Instance.ServiceUriProxy);
-            webMethod.Request = new model.WebSvcMessageRequest("http://tempuri.org/ICallSyncOpService/HelloWorld");
+            webMethod.Request = new model.WebSvcMessageRequest();
+            webMethod.Request.Headers[model.WebSvcMessageRequest.HEADER_NAME_SOAP_ACTION] = "http://tempuri.org/ICallSyncOpService/HelloWorld";
             webMethod.Request.Body = TestDataReader.Instance.RequestResponseMessages["HelloWorldRequest"];
 
             var proxy = new model.Proxy();
@@ -53,7 +54,9 @@ namespace Drexyia.WebSvc.Process.Tests {
         public void TestHelloWorld() {
 
             var webMethod = new model.WebSvcMethod("HelloWorld", TestDataReader.Instance.ServiceUri);
-            webMethod.Request = new model.WebSvcMessageRequest("http://tempuri.org/ICallSyncOpService/HelloWorld");
+            webMethod.Request = new model.WebSvcMessageRequest();
+            webMethod.Request.Headers[model.WebSvcMessage.HEADER_NAME_CONTENT_TYPE] = "text/xml; charset=utf-8";
+            webMethod.Request.Headers[model.WebSvcMessageRequest.HEADER_NAME_SOAP_ACTION] = "http://tempuri.org/ICallSyncOpService/HelloWorld";
             webMethod.Request.Body = TestDataReader.Instance.RequestResponseMessages["HelloWorldRequest"];
 
             var call = new process.WebSvcSync.Operations.CallSyncOp(webMethod);
@@ -62,6 +65,11 @@ namespace Drexyia.WebSvc.Process.Tests {
             //the mono web server returns the xml version tag, the .net version does not, this is fine.
             string responseRemovedXmlTag = webMethod.Response.BodyUnformatted.Replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "");
 
+            var contentLengthResult = webMethod.Response.Headers[model.WebSvcMessage.HEADER_NAME_CONTENT_LENGTH];
+            var contentTypeResult = webMethod.Response.Headers[model.WebSvcMessage.HEADER_NAME_CONTENT_TYPE];
+
+            Assert.AreEqual("211", contentLengthResult);
+            Assert.AreEqual("text/xml; charset=utf-8", contentTypeResult);
             Assert.AreEqual(responseRemovedXmlTag, TestDataReader.Instance.RequestResponseMessages["HelloWorldResponse"]);
             Assert.AreEqual(webMethod.Response.Status, "200 OK");
 		}
@@ -73,12 +81,19 @@ namespace Drexyia.WebSvc.Process.Tests {
         public void TestHelloWorldMex() {
 
             var webMethod = new model.WebSvcMethod("HelloWorld", TestDataReader.Instance.ServiceUriMex);
-            webMethod.Request = new model.WebSvcMessageRequest("http://tempuri.org/ICallSyncOpServiceMex/HelloWorld");
+            webMethod.Request = new model.WebSvcMessageRequest();
+            webMethod.Request.Headers[model.WebSvcMessage.HEADER_NAME_CONTENT_TYPE] = "text/xml; charset=utf-8";
+            webMethod.Request.Headers[model.WebSvcMessageRequest.HEADER_NAME_SOAP_ACTION] = "http://tempuri.org/ICallSyncOpServiceMex/HelloWorld";
             webMethod.Request.Body = TestDataReader.Instance.RequestResponseMessages["HelloWorldRequest"];
 
             var call = new process.WebSvcSync.Operations.CallSyncOp(webMethod);
             webMethod.Response = call.Work();
 
+            var contentLengthResult = webMethod.Response.Headers[model.WebSvcMessage.HEADER_NAME_CONTENT_LENGTH];
+            var contentTypeResult = webMethod.Response.Headers[model.WebSvcMessage.HEADER_NAME_CONTENT_TYPE];
+
+            Assert.AreEqual("211", contentLengthResult);
+            Assert.AreEqual("text/xml; charset=utf-8", contentTypeResult);
             Assert.AreEqual(webMethod.Response.BodyUnformatted, TestDataReader.Instance.RequestResponseMessages["HelloWorldResponse"]);
             Assert.AreEqual(webMethod.Response.Status, "200 OK");
         }

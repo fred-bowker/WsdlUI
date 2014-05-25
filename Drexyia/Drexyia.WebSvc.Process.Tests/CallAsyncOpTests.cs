@@ -33,7 +33,9 @@ namespace Drexyia.WebSvc.Process.Tests {
         public void TestHelloWorld() {
 
             var webMethod = new model.WebSvcMethod("HelloWorld", TestDataReader.Instance.ServiceUri);
-            webMethod.Request = new model.WebSvcMessageRequest("http://tempuri.org/ICallSyncOpService/HelloWorld");
+            webMethod.Request = new model.WebSvcMessageRequest();
+            webMethod.Request.Headers[model.WebSvcMessage.HEADER_NAME_CONTENT_TYPE] = "text/xml; charset=utf-8";
+            webMethod.Request.Headers[model.WebSvcMessageRequest.HEADER_NAME_SOAP_ACTION] = "http://tempuri.org/ICallSyncOpService/HelloWorld";
             webMethod.Request.Body = TestDataReader.Instance.RequestResponseMessages["HelloWorldRequest"];
 
             var call = new process.WebSvcAsync.Operations.CallAsyncOp(webMethod);
@@ -46,9 +48,13 @@ namespace Drexyia.WebSvc.Process.Tests {
             thread.Start();
             thread.Join();
 
-            ////TODO: look at this why does the response message not include body unformatted
-            //Assert.AreEqual(_testHelloWorldResult.ResponseMessage.BodyUnformatted, TestDataReader.Instance.RequestResponseMessages["HelloWorldResponse"]);
-            Assert.AreEqual(_testHelloWorldResult.Status, "200 OK");
+            var contentLengthResult = _testHelloWorldResult.Response.Headers[model.WebSvcMessage.HEADER_NAME_CONTENT_LENGTH];
+            var contentTypeResult = _testHelloWorldResult.Response.Headers[model.WebSvcMessage.HEADER_NAME_CONTENT_TYPE];
+
+            Assert.AreEqual("211", contentLengthResult);
+            Assert.AreEqual("text/xml; charset=utf-8", contentTypeResult);
+            Assert.AreEqual(_testHelloWorldResult.Response.BodyUnformatted, TestDataReader.Instance.RequestResponseMessages["HelloWorldResponse"]);
+            Assert.AreEqual(_testHelloWorldResult.Response.Status, "200 OK");
         }
 
         void call_OnComplete(object sender, WebSvcAsync.EventParams.AsyncArgsCompleteCall e) {

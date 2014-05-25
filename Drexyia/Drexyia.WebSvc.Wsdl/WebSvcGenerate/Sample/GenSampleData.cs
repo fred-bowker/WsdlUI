@@ -69,15 +69,14 @@ namespace Drexyia.WebSvc.Wsdl.Sample {
                 string[] respHeaderLines = respHeaderMsg.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
                 string respContentType = GetHeader(respHeaderLines, "Content-Type:");
 
-                model.WebSvcMessageRequest messageRequest = new model.WebSvcMessageRequest(soapAction) {
-                    Body = sampleReqMsg,
-                    HeaderContentType = reqContentType
-                };
+                model.WebSvcMessageRequest messageRequest = new model.WebSvcMessageRequest();
+                messageRequest.Body = sampleReqMsg;
+                messageRequest.Headers[model.WebSvcMessage.HEADER_NAME_CONTENT_TYPE] = reqContentType;
+                messageRequest.Headers[model.WebSvcMessageRequest.HEADER_NAME_SOAP_ACTION] = soapAction;
 
-                model.WebSvcMessageResponse messageResponse = new model.WebSvcMessageResponse() {
-                    Body = sampleRespMsg,
-                    HeaderContentType = respContentType
-                };
+                model.WebSvcMessageResponse messageResponse = new model.WebSvcMessageResponse();
+                messageResponse.Body = sampleRespMsg;
+                messageResponse.Headers[model.WebSvcMessage.HEADER_NAME_CONTENT_TYPE] = respContentType;
 
                 model.WebSvcMethod webMethod = new model.WebSvcMethod(method, _serviceURI) {
                     Request = messageRequest,

@@ -9,6 +9,7 @@
 using System;
 using System.IO;
 using System.Net;
+using System.Collections.Generic;
 
 using log4net;
 
@@ -44,8 +45,8 @@ namespace Drexyia.WebSvc.Process.WebSvcSync.Operations {
                 HttpWebRequest webRequest = (HttpWebRequest)HttpWebRequest.CreateDefault(new Uri(_webSvcMethod.ServiceURI));
 
                 webRequest.Method = "Post";
-                webRequest.ContentType = _webSvcMethod.Request.HeaderContentType;
-                webRequest.Headers["SOAPAction"] = _webSvcMethod.Request.HeaderSoapAction;
+                webRequest.ContentType = _webSvcMethod.Request.Headers[model.WebSvcMessage.HEADER_NAME_CONTENT_TYPE];
+                webRequest.Headers[model.WebSvcMessageRequest.HEADER_NAME_SOAP_ACTION] = _webSvcMethod.Request.Headers[model.WebSvcMessageRequest.HEADER_NAME_SOAP_ACTION];
                 webRequest.ServicePoint.Expect100Continue = false;
                 webRequest.Proxy = base.WebProxy;
 
@@ -63,20 +64,17 @@ namespace Drexyia.WebSvc.Process.WebSvcSync.Operations {
 
                 _streamReader = new StreamReader(_webResponse.GetResponseStream());
 
-                string responseMessage = _streamReader.ReadToEnd();
+                string body = _streamReader.ReadToEnd();
                 string status = ((int)_webResponse.StatusCode).ToString() + " " + _webResponse.StatusCode.ToString();
-                
-                //TODO: FB we are currently not doing anything with the headers returned add this for next version
-                //Dictionary<string, string> headers = new Dictionary<string, string>();
-                //string contentLength = "Content-Length," + _webResponse.ContentLength.ToString();
-                //foreach (string key in _webResponse.Headers.Keys) {
-                //    headers[key] = _webResponse.Headers[key];
-                //}
+                Dictionary<string, string> headers = new Dictionary<string, string>();
+                foreach (string key in _webResponse.Headers.Keys) {
+                    headers[key] = _webResponse.Headers[key];
+                }
 
-                model.WebSvcMessageResponse response = new model.WebSvcMessageResponse() {
-                    Body = responseMessage,
-                    Status = status
-                };
+                var response = new model.WebSvcMessageResponse();
+                response.Body = body;
+                response.Status = status;
+                response.Headers = headers;
 
                 return response;
 

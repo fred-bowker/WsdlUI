@@ -73,8 +73,8 @@ namespace Drexyia.WebSvc.Process.WebSvcAsync.Operations {
                 HttpWebRequest webRequest = (HttpWebRequest)HttpWebRequest.CreateDefault(new Uri(_webSvcMethod.ServiceURI));
 
                 webRequest.Method = "Post";
-                webRequest.ContentType = _webSvcMethod.Request.HeaderContentType;
-                webRequest.Headers["SOAPAction"] = _webSvcMethod.Request.HeaderSoapAction;
+                webRequest.ContentType = _webSvcMethod.Request.Headers[model.WebSvcMessage.HEADER_NAME_CONTENT_TYPE];
+                webRequest.Headers[model.WebSvcMessageRequest.HEADER_NAME_SOAP_ACTION] = _webSvcMethod.Request.Headers[model.WebSvcMessageRequest.HEADER_NAME_SOAP_ACTION];
                 webRequest.ServicePoint.Expect100Continue = false;
                 webRequest.Proxy = base.WebProxy;
                 webRequest.Timeout = base.TimeoutInSec * 1000;
@@ -97,8 +97,7 @@ namespace Drexyia.WebSvc.Process.WebSvcAsync.Operations {
 
                 _streamReader = new StreamReader(_webResponse.GetResponseStream());
 
-                string responseMessage = _streamReader.ReadToEnd();
-                string contentLength = "Content-Length," + _webResponse.ContentLength.ToString();
+                string body = _streamReader.ReadToEnd();
                 string status = ((int)_webResponse.StatusCode).ToString() + " " + _webResponse.StatusCode.ToString();
                 Dictionary<string, string> headers = new Dictionary<string, string>();
                 foreach (string key in _webResponse.Headers.Keys) {
@@ -111,7 +110,7 @@ namespace Drexyia.WebSvc.Process.WebSvcAsync.Operations {
 
                     OnComplete(this,
                         new process.WebSvcAsync.EventParams.AsyncArgsCompleteCall(base.Name, startTime, endTime,
-                            new process.WebSvcAsync.Result.CallAsyncResult(responseMessage, contentLength, status, headers)
+                            new process.WebSvcAsync.Result.CallAsyncResult(body, status, headers)
                             ));
 
                 }
