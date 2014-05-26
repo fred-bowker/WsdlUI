@@ -7,11 +7,19 @@
 */
 
 using System;
+using System.ServiceModel.Web;
 
 namespace Drexyia.WebSvc.Process.Tests.Server {
     public class CallSyncOpService : ICallSyncOpService {
 
         public string HelloWorld() {
+            return "Hello World";
+        }
+
+        public string HelloWorldStatus201()
+        {
+            WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.Created;
+
             return "Hello World";
         }
 

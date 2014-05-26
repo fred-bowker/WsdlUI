@@ -58,6 +58,7 @@ namespace Drexyia.WebSvc.Process.Tests {
             
             _requestResponseMessages["HelloWorldRequest"] = FlattenXml(File.ReadAllText(testDataDirectory + Path.DirectorySeparatorChar + "hello-world-request.xml"));
             _requestResponseMessages["HelloWorldResponse"] = FlattenXml(File.ReadAllText(testDataDirectory + Path.DirectorySeparatorChar + "hello-world-response.xml"));
+            _requestResponseMessages["HelloWorld201Request"] = FlattenXml(File.ReadAllText(testDataDirectory + Path.DirectorySeparatorChar + "hello-world-201-request.xml"));
 
             ServiceUri = ConfigurationManager.AppSettings["TestServiceUri"];
             ServiceUriProxy = ConfigurationManager.AppSettings["TestServiceUriProxy"];

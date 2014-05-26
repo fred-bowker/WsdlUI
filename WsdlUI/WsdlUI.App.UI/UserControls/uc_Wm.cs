@@ -25,7 +25,7 @@ namespace WsdlUI.App.UI.UserControls {
         public void PopulateForm(string webSvcSrcUri, drexModel.WebSvcMethod webSvcMethod) {
             _webSvcSrcUri = webSvcSrcUri;
             uc_wm_request1.PopulateForm(webSvcSrcUri, webSvcMethod);
-            //TODO: FB is this a bug
+            
             uc_wm_response1.PopulateForm(webSvcMethod.Response.Body, "200 OK", webSvcMethod.Response.Headers[drexModel.WebSvcMessage.HEADER_NAME_CONTENT_TYPE]);
             uc_wm_request1.OnXmlFormatError += uc_wm_request1_OnXmlFormatError;
         }

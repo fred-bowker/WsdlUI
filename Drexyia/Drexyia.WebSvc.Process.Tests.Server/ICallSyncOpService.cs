@@ -15,6 +15,9 @@ namespace Drexyia.WebSvc.Process.Tests.Server {
         string HelloWorld();
 
         [OperationContract]
+        string HelloWorldStatus201();
+
+        [OperationContract]
         CompositeType HelloWorldUsingDataContract(CompositeType composite);
     }
 

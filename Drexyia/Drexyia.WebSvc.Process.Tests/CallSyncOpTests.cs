@@ -74,6 +74,22 @@ namespace Drexyia.WebSvc.Process.Tests {
             Assert.AreEqual(webMethod.Response.Status, "200 OK");
 		}
 
+        [Test]
+        public void TestHelloWorldStatus201()
+        {
+
+            var webMethod = new model.WebSvcMethod("HelloWorldStatus201", TestDataReader.Instance.ServiceUri);
+            webMethod.Request = new model.WebSvcMessageRequest();
+            webMethod.Request.Headers[model.WebSvcMessage.HEADER_NAME_CONTENT_TYPE] = "text/xml; charset=utf-8";
+            webMethod.Request.Headers[model.WebSvcMessageRequest.HEADER_NAME_SOAP_ACTION] = "http://tempuri.org/ICallSyncOpService/HelloWorldStatus201";
+            webMethod.Request.Body = TestDataReader.Instance.RequestResponseMessages["HelloWorld201Request"];
+
+            var call = new process.WebSvcSync.Operations.CallSyncOp(webMethod);
+            webMethod.Response = call.Work();
+
+            Assert.AreEqual("201 Created", webMethod.Response.Status);
+        }
+
 //mex bindings are not currently supported on mono
 #if !__MonoCS__
        

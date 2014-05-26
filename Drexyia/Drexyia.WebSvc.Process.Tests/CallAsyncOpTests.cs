@@ -19,8 +19,9 @@ namespace Drexyia.WebSvc.Process.Tests {
 
         const int RETRIEVE_TIMEOUT = 60;
         model.Proxy _proxy;
-
+     
         process.WebSvcAsync.Result.CallAsyncResult _testHelloWorldResult;
+        process.WebSvcAsync.Result.CallAsyncResult _testHelloWorldStatus201Result;
 
         [SetUp]
         public void Init() {
@@ -57,10 +58,41 @@ namespace Drexyia.WebSvc.Process.Tests {
             Assert.AreEqual(_testHelloWorldResult.Response.Status, "200 OK");
         }
 
+        [Test]
+        public void TestHelloWorldStatus201()
+        {
+
+            var webMethod = new model.WebSvcMethod("HelloWorldStatus201", TestDataReader.Instance.ServiceUri);
+            webMethod.Request = new model.WebSvcMessageRequest();
+            webMethod.Request.Headers[model.WebSvcMessage.HEADER_NAME_CONTENT_TYPE] = "text/xml; charset=utf-8";
+            webMethod.Request.Headers[model.WebSvcMessageRequest.HEADER_NAME_SOAP_ACTION] = "http://tempuri.org/ICallSyncOpService/HelloWorldStatus201";
+            webMethod.Request.Body = TestDataReader.Instance.RequestResponseMessages["HelloWorld201Request"];
+
+            var call = new process.WebSvcAsync.Operations.CallAsyncOp(webMethod);
+            call.OnComplete += call_OnCompleteStatus201;
+
+            var thread = new Thread(() =>
+            {
+                call.Start();
+            });
+            thread.Name = "TestHelloWorldStatus201 Thread";
+            thread.Start();
+            thread.Join();
+
+            Assert.AreEqual("201 Created", _testHelloWorldStatus201Result.Response.Status);
+        }
+
         void call_OnComplete(object sender, WebSvcAsync.EventParams.AsyncArgsCompleteCall e) {
             
             _testHelloWorldResult = e.Result;
         }
+
+        void call_OnCompleteStatus201(object sender, WebSvcAsync.EventParams.AsyncArgsCompleteCall e) {
+            
+            _testHelloWorldStatus201Result = e.Result;
+        }
+     
+
 
     }
 }

@@ -72,6 +72,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="TestData\Drexyia.WebSvc.Process.Tests\hello-world-201-request.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TestData\Drexyia.WebSvc.Process.Tests\hello-world-response.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
