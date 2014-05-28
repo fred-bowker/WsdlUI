@@ -61,10 +61,10 @@ namespace WsdlUI.TextEditor {
 
 		ITextEditorProperties InitializeProperties() {
 			var properties = new DefaultTextEditorProperties();
-			properties.IndentStyle = IndentStyle.Smart;
-			properties.ShowSpaces = false;
+			properties.IndentStyle = IndentStyle.Auto;
+			properties.ShowSpaces = true;
 			properties.LineTerminator = Environment.NewLine;
-			properties.ShowTabs = false;
+			properties.ShowTabs = true;
 			properties.ShowInvalidLines = false;
 			properties.ShowEOLMarker = false;
 			properties.TabIndent = 2;
