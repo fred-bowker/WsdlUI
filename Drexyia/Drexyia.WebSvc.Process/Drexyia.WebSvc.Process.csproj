@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SvcDescsNotFoundException.cs" />
     <Compile Include="WebSvcSync\Operations\CallSyncOp.cs" />
     <Compile Include="WebSvcSync\Operations\SyncOp.cs" />
     <Compile Include="WebSvcSync\Operations\RetrieveSyncOp.cs" />

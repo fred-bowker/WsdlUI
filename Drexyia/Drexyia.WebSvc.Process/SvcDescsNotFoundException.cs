@@ -6,23 +6,12 @@
     You should have received a copy of the GNU General Public License along with Foobar. If not, see http://www.gnu.org/licenses/.
 */
 
-using System.ServiceModel;
+using System;
 
-namespace Drexyia.WebSvc.Process.Tests.Server {
-    [ServiceContract]
-    public interface ICallSyncOpService {
-        [OperationContract]
-        string HelloWorld();
-
-        [OperationContract]
-        string HelloWorldStatus201();
-
-        [OperationContract]
-        string HelloWorldTimeout(int pausePeriod); 
-
-        [OperationContract]
-        CompositeType HelloWorldUsingDataContract(CompositeType composite);
+namespace Drexyia.WebSvc.Process {
+    internal class SvcDescsNotFoundException : Exception {
+        internal SvcDescsNotFoundException()
+            : base("no service descriptions found") {
+        }
     }
-
 }
-

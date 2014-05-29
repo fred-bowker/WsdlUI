@@ -107,6 +107,17 @@ namespace Drexyia.WebSvc.Process.WebSvcAsync.Operations {
                 HandleWebException(ex);
 
             } //if the url does not contain a valid wsdl
+            //if no service descriptions are found at the endpoint 
+            catch (SvcDescsNotFoundException ex) {
+
+                Log.Error(ex.ToString());
+
+                if (OnWebException != null) {
+                    OnWebException(this,
+                        new process.WebSvcAsync.EventParams.ExceptionAsyncArgs(Name, ex));
+                }
+            }
+            //if the url does not contain a valid wsdl
             catch (InvalidOperationException ex) {
 
                 Log.Error(ex.ToString());
@@ -115,14 +126,14 @@ namespace Drexyia.WebSvc.Process.WebSvcAsync.Operations {
                 System.Net.WebException webException = ex.InnerException as System.Net.WebException;
                 if (webException != null) {
                     HandleWebException(webException);
-                    return;
                 }
-
-                //the user should handle these events in the same way as a web exception, ot does not have a timeout status
-                if (OnWebException != null) {
-                    OnWebException(this,
-                        new process.WebSvcAsync.EventParams.ExceptionAsyncArgs(Name, ex));
-                }            
+                else {
+                    //the user should handle these events in the same way as a web exception, ot does not have a timeout status
+                    if (OnWebException != null) {
+                        OnWebException(this,
+                            new process.WebSvcAsync.EventParams.ExceptionAsyncArgs(Name, ex));
+                    }
+                }
             }
             catch (Exception ex) {
 

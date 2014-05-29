@@ -27,7 +27,9 @@ namespace Drexyia.WebSvc.Process {
             _timeoutInSeconds = timeoutInSeconds;
         }
 
-        internal void Download(model.IProxy proxy, out List<wsdlDescription.ServiceDescription> descriptions, out List<XmlSchema> schemas) {
+        //returns true if service descriptions are retrieved
+        //returns false if 0 service descriptions found, this signifies that the end point is not a web service description
+        internal bool Download(model.IProxy proxy, out List<wsdlDescription.ServiceDescription> descriptions, out List<XmlSchema> schemas) {
             
             descriptions = new List<wsdlDescription.ServiceDescription>();
             schemas = new List<XmlSchema>();
@@ -38,6 +40,8 @@ namespace Drexyia.WebSvc.Process {
             else {
                 DownloadWeb(proxy, out descriptions, out schemas);
             }
+
+            return (descriptions.Count > 0);
 
         }
 

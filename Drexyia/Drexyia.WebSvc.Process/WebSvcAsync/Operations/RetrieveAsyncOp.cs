@@ -51,10 +51,14 @@ namespace Drexyia.WebSvc.Process.WebSvcAsync.Operations {
 
             List<ServiceDescription> descriptions;
             List<XmlSchema> schemas;
-            _downloader.Download(base.Proxy, out descriptions, out schemas);
+            bool descriptionsFound = _downloader.Download(base.Proxy, out descriptions, out schemas);
 
             if (base.HasTimedOut) {
                 return;
+            }
+
+            if (!descriptionsFound) {
+                throw new SvcDescsNotFoundException();    
             }
 
             var webSvc = _parser.Generate(_webSvcPath, descriptions, schemas);

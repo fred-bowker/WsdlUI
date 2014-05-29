@@ -49,7 +49,10 @@ namespace Drexyia.WebSvc.Process.WebSvcSync.Operations {
 
             List<ServiceDescription> descriptions;
             List<XmlSchema> schemas;
-            _downloader.Download(base.Proxy, out descriptions, out schemas);
+            bool descriptionsFound = _downloader.Download(base.Proxy, out descriptions, out schemas);
+            if (!descriptionsFound) {
+                throw new SvcDescsNotFoundException();
+            }
 
             return _parser.Generate(_webSvcPath, descriptions, schemas);
 

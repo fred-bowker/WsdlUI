@@ -7,6 +7,7 @@
 */
 
 using System;
+using System.Threading;
 using System.ServiceModel.Web;
 
 namespace Drexyia.WebSvc.Process.Tests.Server {
@@ -19,6 +20,14 @@ namespace Drexyia.WebSvc.Process.Tests.Server {
         public string HelloWorldStatus201()
         {
             WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.Created;
+
+            return "Hello World";
+        }
+
+        //pass in the number of seconds that the operation pauses, this can be used to simulate a timeout
+        public string HelloWorldTimeout(int pausePeriod) {
+
+            Thread.Sleep(pausePeriod * 1000);
 
             return "Hello World";
         }

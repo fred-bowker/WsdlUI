@@ -157,7 +157,7 @@ namespace WsdlUI.App.UI {
 
             Invoke((MethodInvoker)(() => {
 
-                uc_log1.LogErrorMessage(e.Message);
+                uc_log1.LogErrorMessage("error adding wsdl - " + e.Message + " - " + e.Name);
                 uc_log1.LogInfoMessage("finish adding wsdl - " + e.Name);
 
             }));
