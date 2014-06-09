@@ -24,21 +24,35 @@ namespace WsdlUI.App.UI.UserControls {
         public void LogErrorMessage(string message) {
             string logMessage = string.Format(LOG_FORMAT_STRING, DateTime.Now.ToString("hh:mm:ss.fff"), message);
 
-            rtb_log.SelectionColor = Color.Red;
-            rtb_log.AppendText(logMessage + "\n");
+            SetText(logMessage + "\n", Color.Red);
         }
 
         public void LogInfoMessage(string message) {
             string logMessage = string.Format(LOG_FORMAT_STRING, DateTime.Now.ToString("hh:mm:ss.fff"), message);
 
-            rtb_log.SelectionColor = Color.Green;
-            rtb_log.AppendText(logMessage + "\n");
-
+            SetText(logMessage + "\n", Color.Green);
         }
 
         public void LogSystemMessage(string message) {
-            rtb_log.SelectionColor = Color.Blue;
-            rtb_log.AppendText(message + "\n");
+            SetText(message + "\n", Color.Blue);
+        }
+
+        void SetText(string logMessage, Color color)
+        {
+            // Store current selection.
+            int lastSelectionStart = rtb_log.SelectionStart;
+            int lastSelectionLength = rtb_log.SelectionLength;
+
+            rtb_log.AppendText(logMessage);
+
+            // Select the added message and set forecolor and font.
+            rtb_log.SelectionStart = rtb_log.TextLength - logMessage.Length;
+            rtb_log.SelectionLength = logMessage.Length;
+            rtb_log.SelectionColor = color;
+
+            // Reset the selection.
+            rtb_log.SelectionStart = lastSelectionStart;
+            rtb_log.SelectionLength = lastSelectionLength;
         }
 
         void clearToolStripMenuItem_Click(object sender, EventArgs e) {
