@@ -66,6 +66,14 @@
     <Content Include="TestData\Drexyia.WebSvc.Wsdl.Tests\helloworld.wsdl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="TestData\Drexyia.WebSvc.Wsdl.Tests\test-union-type-response.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="TestData\Drexyia.WebSvc.Wsdl.Tests\test-union-type.wsdl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

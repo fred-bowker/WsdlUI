@@ -492,7 +492,8 @@ namespace Drexyia.WebSvc.Wsdl.Sample {
                 string utype = null;
 
                 // Anonymous types are unique
-                if (uni.BaseTypes.Count != 0 && uni.MemberTypes.Length != 0)
+                if (uni.BaseTypes.Count != 0 &&
+                    (uni.MemberTypes == null || uni.MemberTypes.Length != 0))
                     return "string";
 
                 foreach (XmlQualifiedName mt in uni.MemberTypes) {

@@ -6,6 +6,7 @@
     You should have received a copy of the GNU General Public License along with Foobar. If not, see http://www.gnu.org/licenses/.
 */
 
+using System;
 using System.IO;
 using System.Text.RegularExpressions;
 using NUnit.Framework;
@@ -36,6 +37,22 @@ namespace Drexyia.WebSvc.Wsdl.Tests
             var webMethod = webSvc.WebSvcMethods["HelloWorld"];
             Assert.AreEqual(webMethod.Name, "HelloWorld");
             Assert.AreEqual(FlattenXml(webMethod.Request.Body), FlattenXml(File.ReadAllText(testDataPathRequest)));
+        }
+
+        [Test]
+        public void TestUnionType() {
+
+            try {
+                string testDataPath = _testDataDirectory + Path.DirectorySeparatorChar + @"test-union-type.wsdl";
+                string testDataPathRequest = _testDataDirectory + Path.DirectorySeparatorChar + @"test-union-type-response.xml";
+                var webSvc = _parser.Generate(testDataPath);
+
+                var webMethod = webSvc.WebSvcMethods["TestUnionType"];
+                Assert.AreEqual(FlattenXml(webMethod.Response.Body), FlattenXml(File.ReadAllText(testDataPathRequest)));
+            }
+            catch (Exception ex) {
+                Assert.Fail(ex.Message);
+            }
         }
 
         [Test]
