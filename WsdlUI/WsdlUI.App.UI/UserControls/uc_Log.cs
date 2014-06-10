@@ -19,6 +19,7 @@ namespace WsdlUI.App.UI.UserControls {
             InitializeComponent();
 
             rtb_log.BackColor = Consts.DisabledBGColor;
+			rtb_log.WordWrap = false;
         }
 
         public void LogErrorMessage(string message) {
