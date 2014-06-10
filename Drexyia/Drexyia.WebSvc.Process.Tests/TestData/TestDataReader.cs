@@ -64,7 +64,7 @@ namespace Drexyia.WebSvc.Process.Tests {
             ServiceUriProxy = ConfigurationManager.AppSettings["TestServiceUriProxy"];
             WsdlUri = ServiceUri + "?wsdl";
             ServiceUriMex = ConfigurationManager.AppSettings["TestServiceUriMex"];
-            MexUri = ServiceUriMex + @"/mex";
+            MexUri = ServiceUriMex + "mex";
 
         }
 

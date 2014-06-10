@@ -49,7 +49,9 @@ namespace Drexyia.WebSvc.Process.Tests {
         }
 
         [Test]
-        [Ignore("Mex tests are currently not working")]
+#if __MonoCS__
+        [Ignore("Using the mex url ending in /mex currently does not work on linux")]
+#endif
         public void TestHelloWorldMex() {
 
             var parser = new WebSvc.Wsdl.Parser();
@@ -62,10 +64,5 @@ namespace Drexyia.WebSvc.Process.Tests {
             Assert.AreEqual(webMethod.Name, "HelloWorld");
             Assert.AreEqual(TestDataReader.Instance.RequestResponseMessages["HelloWorldRequest"], webMethod.Request.BodyUnformatted);
         }
-
-        
-
-
-
     }
 }
