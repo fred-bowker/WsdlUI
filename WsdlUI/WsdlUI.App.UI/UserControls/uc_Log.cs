@@ -33,15 +33,15 @@ namespace WsdlUI.App.UI.UserControls {
             SetText(logMessage + "\n", Color.Green);
         }
 
-        public void LogSystemMessage(string message) {
+        public void LogSystemMessage(string message) {   
             SetText(message + "\n", Color.Blue);
         }
 
-        void SetText(string logMessage, Color color)
-        {
-            // Store current selection.
-            int lastSelectionStart = rtb_log.SelectionStart;
-            int lastSelectionLength = rtb_log.SelectionLength;
+        void clearToolStripMenuItem_Click(object sender, EventArgs e) {
+             rtb_log.ResetText();
+        }
+
+        void SetText(string logMessage, Color color) {
 
             rtb_log.AppendText(logMessage);
 
@@ -50,13 +50,9 @@ namespace WsdlUI.App.UI.UserControls {
             rtb_log.SelectionLength = logMessage.Length;
             rtb_log.SelectionColor = color;
 
-            // Reset the selection.
-            rtb_log.SelectionStart = lastSelectionStart;
-            rtb_log.SelectionLength = lastSelectionLength;
-        }
-
-        void clearToolStripMenuItem_Click(object sender, EventArgs e) {
-            rtb_log.ResetText();
+            //autoscroll
+            rtb_log.SelectionStart = rtb_log.Text.Length;
+            rtb_log.ScrollToCaret();
         }
 
         private void uc_Log_Load(object sender, EventArgs e) {
