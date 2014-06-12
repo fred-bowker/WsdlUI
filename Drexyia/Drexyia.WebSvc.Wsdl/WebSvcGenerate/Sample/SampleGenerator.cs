@@ -259,16 +259,9 @@ namespace Drexyia.WebSvc.Wsdl.Sample {
         }
 
         void WriteElementSample(XmlTextWriter xtw, string ns, XmlSchemaElement elem) {
-            XmlQualifiedName root;
-
-            if (!elem.RefName.IsEmpty) {
-                XmlSchemaElement refElem = FindRefElement(elem);
-                if (refElem == null) throw new InvalidOperationException("Global element not found: " + elem.RefName);
-                root = elem.RefName;
-                elem = refElem;
-            }
-            else
-                root = new XmlQualifiedName(elem.Name, ns);
+            XmlQualifiedName root = (elem.QualifiedName == null || elem.QualifiedName.IsEmpty)
+                   ? new XmlQualifiedName(elem.Name, ns)
+                   : elem.QualifiedName;
 
             if (!elem.SchemaTypeName.IsEmpty) {
                 XmlSchemaComplexType st = FindComplexTyype(elem.SchemaTypeName);

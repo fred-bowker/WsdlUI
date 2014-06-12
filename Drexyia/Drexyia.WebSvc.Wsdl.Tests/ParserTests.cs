@@ -56,7 +56,6 @@ namespace Drexyia.WebSvc.Wsdl.Tests
         }
 
         [Test]
-        [Ignore("Currently failing as does not include xml namespace for complex types")]
         public void TestHelloWorldUsingDataContract() {
 
             string testDataPath = _testDataDirectory + Path.DirectorySeparatorChar + @"helloworld.wsdl";
