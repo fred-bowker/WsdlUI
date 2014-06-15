@@ -62,15 +62,12 @@ namespace Drexyia.WebSvc.Process.Tests {
             var call = new process.WebSvcSync.Operations.CallSyncOp(webMethod);
             webMethod.Response = call.Work();
 
-            //the mono web server returns the xml version tag, the .net version does not, this is fine.
-            string responseRemovedXmlTag = webMethod.Response.BodyUnformatted.Replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "");
-
             var contentLengthResult = webMethod.Response.Headers[model.WebSvcMessage.HEADER_NAME_CONTENT_LENGTH];
             var contentTypeResult = webMethod.Response.Headers[model.WebSvcMessage.HEADER_NAME_CONTENT_TYPE];
 
             Assert.AreEqual("211", contentLengthResult);
             Assert.AreEqual("text/xml; charset=utf-8", contentTypeResult);
-            Assert.AreEqual(responseRemovedXmlTag, TestDataReader.Instance.RequestResponseMessages["HelloWorldResponse"]);
+            Assert.AreEqual(webMethod.Response.BodyUnformatted, TestDataReader.Instance.RequestResponseMessages["HelloWorldResponse"]);
             Assert.AreEqual(webMethod.Response.Status, "200 OK");
 		}
 
@@ -89,9 +86,6 @@ namespace Drexyia.WebSvc.Process.Tests {
 
             Assert.AreEqual("201 Created", webMethod.Response.Status);
         }
-
-//mex bindings are not currently supported on mono
-#if !__MonoCS__
        
         [Test]
         public void TestHelloWorldMex() {
@@ -113,7 +107,5 @@ namespace Drexyia.WebSvc.Process.Tests {
             Assert.AreEqual(webMethod.Response.BodyUnformatted, TestDataReader.Instance.RequestResponseMessages["HelloWorldResponse"]);
             Assert.AreEqual(webMethod.Response.Status, "200 OK");
         }
-
-#endif
     }
 }

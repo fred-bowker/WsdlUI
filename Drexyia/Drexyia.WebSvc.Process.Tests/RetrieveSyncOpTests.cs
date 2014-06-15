@@ -38,10 +38,7 @@ namespace Drexyia.WebSvc.Process.Tests {
             var retrieve = new process.WebSvcSync.Operations.RetrieveSyncOp(TestDataReader.Instance.WsdlUri, RETRIEVE_TIMEOUT, parser, _proxy, _log);
             var _webSvcData = retrieve.Work();
 
-//the mono test service returns the service name as service
-#if !__MonoCS__
             Assert.AreEqual("CallSyncOpService", _webSvcData.ServiceName);
-#endif
             var webMethod = _webSvcData.WebSvcMethods["HelloWorld"];
             Assert.AreEqual(webMethod.Name, "HelloWorld");
 
@@ -49,9 +46,6 @@ namespace Drexyia.WebSvc.Process.Tests {
         }
 
         [Test]
-#if __MonoCS__
-        [Ignore("Using the mex url ending in /mex currently does not work on linux")]
-#endif
         public void TestHelloWorldMex() {
 
             var parser = new WebSvc.Wsdl.Parser();

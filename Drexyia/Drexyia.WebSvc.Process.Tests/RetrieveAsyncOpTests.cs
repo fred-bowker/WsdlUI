@@ -48,10 +48,8 @@ namespace Drexyia.WebSvc.Process.Tests {
             thread.Start();
             thread.Join();
 
-            //the mono test service returns the service name as service
-#if !__MonoCS__
             Assert.AreEqual("CallSyncOpService", _testHelloWorldResult.WebSvcResult.ServiceName);
-#endif
+
             var webMethod = _testHelloWorldResult.WebSvcResult.WebSvcMethods["HelloWorld"];
             Assert.AreEqual(webMethod.Name, "HelloWorld");
             Assert.AreEqual(TestDataReader.Instance.RequestResponseMessages["HelloWorldRequest"], webMethod.Request.BodyUnformatted);

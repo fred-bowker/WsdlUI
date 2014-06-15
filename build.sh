@@ -87,11 +87,6 @@ if [ "$1" != "-c" ]; then
 	cp Drexyia/Drexyia.WebSvc.Wsdl.Tests/bin/Release/Drexyia.WebSvc.Wsdl.Tests.dll Release/Binary
 	cp WsdlUI/WsdlUI.App.Model.Tests/bin/Release/WsdlUI.App.Model.Tests.dll Release/Binary
 
-	# Copy accross the test web services and host
-	cp Drexyia/Drexyia.WebSvc.Process.Tests.Server.Host/bin/Release/Drexyia.WebSvc.Process.Tests.Server.Host.exe Release/Binary
-	cp Drexyia/Drexyia.WebSvc.Process.Tests.Server.Host/bin/Release/Drexyia.WebSvc.Process.Tests.Server.Host.exe.config Release/Binary
-	cp Drexyia/Drexyia.WebSvc.Process.Tests.Server.Host/bin/Release/Drexyia.WebSvc.Process.Tests.Server.dll Release/Binary
-
 	# Copy accross nunit console needed for running tests
 	cp External/nunit/nunit-console.exe Release/Binary
 	cp External/nunit/nunit-console-runner.dll Release/Binary
@@ -101,7 +96,6 @@ if [ "$1" != "-c" ]; then
 	cp External/nunit/nunit.framework.dll Release/Binary
 
 	cp WsdlUI/test.sh Release/Binary
-	cp WsdlUI/start-test-server.sh Release/Binary
 
 	# /p:DebugType=None argument can not be used with xbuild, this step deletes the mdb (pdb) files manually
 	rm -f Release/*.mdb

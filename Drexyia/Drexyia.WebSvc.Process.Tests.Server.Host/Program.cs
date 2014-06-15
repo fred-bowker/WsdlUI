@@ -9,13 +9,17 @@
 using System;
 using System.ServiceModel;
 
-
 namespace Drexyia.WebSvc.Process.Tests.Server.Host
 {
     class Program
     {
         static void Main(string[] args)
         {
+//The test host server should be run on a windows platform running on the clr not Mono
+//The reason for this is that if we are testing the responses from the server we want the server to return the same result whether testing on linux or windows.
+//To run the tests on linux run the test server on a seperate or virtual windows machine, then call test.bat
+#if !__MonoCS__
+
             ServiceHost mexHost = null;
             ServiceHost wsdlHost = null;
 
@@ -44,6 +48,10 @@ namespace Drexyia.WebSvc.Process.Tests.Server.Host
                     wsdlHost.Close();
                 }
             }
+#endif
         }
     }
 }
+
+
+

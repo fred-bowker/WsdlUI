@@ -6,6 +6,9 @@
     You should have received a copy of the GNU General Public License along with Foobar. If not, see http://www.gnu.org/licenses/.
 */
 
+//The test host server should be run on a windows platform running on the clr not Mono
+#if !__MonoCS__
+
 using System.Runtime.Serialization;
 using System.ServiceModel;
 
@@ -44,7 +47,6 @@ namespace Drexyia.WebSvc.Process.Tests.Server {
             }
         }
     }
-
-
-
 }
+
+#endif
