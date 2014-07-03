@@ -171,6 +171,8 @@ namespace WsdlUI.App.UI {
             if (exceptionOccurred)
                 return;
 
+            _addedWsdls.Remove(e.Name);
+
             Invoke((MethodInvoker)(() => {
 
                 uc_log1.LogErrorMessage("timeout adding wsdl - " + e.Name);
