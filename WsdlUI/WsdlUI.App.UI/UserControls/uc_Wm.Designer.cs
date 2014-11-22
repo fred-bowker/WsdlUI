@@ -119,7 +119,7 @@ namespace WsdlUI.App.UI.UserControls
             // uc_wm_request1
             // 
             this.uc_wm_request1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uc_wm_request1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uc_wm_request1.Font = DefaultFonts.Instance.Small;
             this.uc_wm_request1.Location = new System.Drawing.Point(0, 0);
             this.uc_wm_request1.Margin = new System.Windows.Forms.Padding(0);
             this.uc_wm_request1.Name = "uc_wm_request1";
@@ -140,7 +140,7 @@ namespace WsdlUI.App.UI.UserControls
             // uc_wm_response1
             // 
             this.uc_wm_response1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uc_wm_response1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uc_wm_response1.Font = DefaultFonts.Instance.Small;
             this.uc_wm_response1.Location = new System.Drawing.Point(0, 0);
             this.uc_wm_response1.Margin = new System.Windows.Forms.Padding(0);
             this.uc_wm_response1.Name = "uc_wm_response1";
@@ -150,7 +150,7 @@ namespace WsdlUI.App.UI.UserControls
             // uc_log1
             // 
             this.uc_log1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uc_log1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uc_log1.Font = DefaultFonts.Instance.Small;
             this.uc_log1.Location = new System.Drawing.Point(0, 0);
             this.uc_log1.Margin = new System.Windows.Forms.Padding(0);
             this.uc_log1.Name = "uc_log1";
@@ -160,7 +160,7 @@ namespace WsdlUI.App.UI.UserControls
             // toolStrip1
             // 
             this.toolStrip1.AutoSize = false;
-            this.toolStrip1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStrip1.Font = DefaultFonts.Instance.Small;
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbtn_Go,
@@ -177,7 +177,7 @@ namespace WsdlUI.App.UI.UserControls
             // tsbtn_Go
             // 
             this.tsbtn_Go.AutoSize = false;
-            this.tsbtn_Go.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsbtn_Go.Font = DefaultFonts.Instance.Small;
             this.tsbtn_Go.Image = global::WsdlUI.App.UI.Properties.Resources.arrow_right_3;
             this.tsbtn_Go.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbtn_Go.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -191,7 +191,7 @@ namespace WsdlUI.App.UI.UserControls
             // 
             this.tsbtn_Cancel.AutoSize = false;
             this.tsbtn_Cancel.Enabled = false;
-            this.tsbtn_Cancel.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsbtn_Cancel.Font = DefaultFonts.Instance.Small;
             this.tsbtn_Cancel.Image = global::WsdlUI.App.UI.Properties.Resources.process_stop_3;
             this.tsbtn_Cancel.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbtn_Cancel.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -204,7 +204,7 @@ namespace WsdlUI.App.UI.UserControls
             // uc_Status1
             // 
             this.uc_Status1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uc_Status1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uc_Status1.Font = DefaultFonts.Instance.Small;
             this.uc_Status1.Location = new System.Drawing.Point(0, 0);
             this.uc_Status1.Margin = new System.Windows.Forms.Padding(0);
             this.uc_Status1.Name = "uc_Status1";

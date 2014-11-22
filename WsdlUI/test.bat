@@ -2,6 +2,6 @@
 
 @echo off
 
-nunit-console.exe Drexyia.WebSvc.Wsdl.Tests.dll WsdlUI.App.Model.Tests.dll Drexyia.WebSvc.Process.Tests.dll Drexyia.Utils.Tests.dll
+nunit-console.exe Drexyia.WebSvc.Wsdl.Tests.dll WsdlUI.App.Model.Tests.dll Drexyia.WebSvc.Process.Tests.dll Drexyia.Utils.Tests.dll WsdlUI.App.UI.Tests.dll
 
 

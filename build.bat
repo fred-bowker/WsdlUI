@@ -54,6 +54,7 @@ RMDIR "WsdlUI\WsdlUI.App.Process\bin\" /s /q 2>NUL
 RMDIR "WsdlUI\WsdlUI.App.Model\bin\" /s /q 2>NUL
 RMDIR "WsdlUI\WsdlUI.App.Model.Tests\bin\" /s /q 2>NUL
 RMDIR "WsdlUI\WsdlUI.App.UI\bin\" /s /q 2>NUL
+RMDIR "WsdlUI\WsdlUI.App.UI.Tests\bin\" /s /q 2>NUL
 RMDIR "WsdlUI\WsdlUI.App.UI.Console\bin\" /s /q 2>NUL
 RMDIR "WsdlUI\WsdlUI.App.UI.Windows\bin\" /s /q 2>NUL
 RMDIR "WsdlUI\WsdlUI.TextEditor\bin\" /s /q 2>NUL
@@ -65,6 +66,7 @@ RMDIR "WsdlUI\WsdlUI.App.Process\obj\" /s /q 2>NUL
 RMDIR "WsdlUI\WsdlUI.App.Model\obj\" /s /q 2>NUL
 RMDIR "WsdlUI\WsdlUI.App.Model.Tests\obj\" /s /q 2>NUL
 RMDIR "WsdlUI\WsdlUI.App.UI\obj\" /s /q 2>NUL
+RMDIR "WsdlUI\WsdlUI.App.UI.Tests\obj\" /s /q 2>NUL
 RMDIR "WsdlUI\WsdlUI.App.UI.Console\obj\" /s /q 2>NUL
 RMDIR "WsdlUI\WsdlUI.App.UI.Windows\obj\" /s /q 2>NUL
 RMDIR "WsdlUI\WsdlUI.TextEditor\obj\" /s /q 2>NUL
@@ -149,6 +151,7 @@ IF NOT "%1"=="-c" (
    xcopy Drexyia\Drexyia.WebSvc.Process.Tests\bin\Release\Drexyia.WebSvc.Process.Tests.dll.config Release\Binary 2>NUL >NUL
    xcopy Drexyia\Drexyia.WebSvc.Wsdl.Tests\bin\Release\Drexyia.WebSvc.Wsdl.Tests.dll Release\Binary 2>NUL >NUL
    xcopy WsdlUI\WsdlUI.App.Model.Tests\bin\Release\WsdlUI.App.Model.Tests.dll Release\Binary 2>NUL >NUL
+   xcopy WsdlUI\WsdlUI.App.UI.Tests\bin\Release\WsdlUI.App.UI.Tests.dll Release\Binary 2>NUL >NUL
 
    :: Copy accross the test web services and host
    xcopy Drexyia\Drexyia.WebSvc.Process.Tests.Server.Host\bin\Release\Drexyia.WebSvc.Process.Tests.Server.Host.exe Release\Binary 2>NUL >NUL

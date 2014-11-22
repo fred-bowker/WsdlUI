@@ -62,7 +62,7 @@ namespace WsdlUI.App.UI.Dialogs
             this.ClientSize = new System.Drawing.Size(357, 47);
             this.Controls.Add(this.cb_Timeout);
             this.Controls.Add(this.lbl_Timeout);
-            this.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = DefaultFonts.Instance.Small;
             this.Name = "dg_ConfigTimout";
             this.Text = "  ";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.dg_ConfigTimeout_FormClosed);

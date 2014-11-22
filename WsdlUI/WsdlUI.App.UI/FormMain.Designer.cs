@@ -104,7 +104,7 @@ namespace WsdlUI.App.UI
             // uc_treeView1
             // 
             this.uc_treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uc_treeView1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.uc_treeView1.Font = DefaultFonts.Instance.Small;
             this.uc_treeView1.Location = new System.Drawing.Point(0, 0);
             this.uc_treeView1.Margin = new System.Windows.Forms.Padding(0);
             this.uc_treeView1.Name = "uc_treeView1";
@@ -124,7 +124,7 @@ namespace WsdlUI.App.UI
             // uc_log1
             // 
             this.uc_log1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uc_log1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.uc_log1.Font = DefaultFonts.Instance.Small;
             this.uc_log1.Location = new System.Drawing.Point(0, 0);
             this.uc_log1.Margin = new System.Windows.Forms.Padding(0);
             this.uc_log1.Name = "uc_log1";

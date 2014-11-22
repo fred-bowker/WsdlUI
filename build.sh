@@ -32,6 +32,7 @@ rm -rf "Drexyia/Drexyia.WebSvc.Process.Tests.Server.Host/obj/"
 rm -rf "Drexyia/Drexyia.WebSvc.Wsdl/obj/"
 rm -rf "Drexyia/Drexyia.WebSvc.Wsdl.Tests/obj/"
 rm -rf "WsdlUI/WsdlUI.App.UI/bin/"
+rm -rf "WsdlUI/WsdlUI.App.UI.Tests/bin/"
 rm -rf "WsdlUI/WsdlUI.App.Process/bin/"
 rm -rf "WsdlUI/WsdlUI.App.Model/bin/"
 rm -rf "WsdlUI/WsdlUI.App.Model.Tests/bin/"
@@ -42,6 +43,7 @@ rm -rf "WsdlUI/WsdlUI.TextEditor/bin/"
 rm -rf "WsdlUI/ICSharpCode.TextEditor/bin/"
 rm -rf "WsdlUI/WsdlUI.Windows.Installer/CustomActions/bin/"
 rm -rf "WsdlUI/WsdlUI.App.UI/obj/"
+rm -rf "WsdlUI/WsdlUI.App.UI.Tests/obj/"
 rm -rf "WsdlUI/WsdlUI.App.Process/obj/"
 rm -rf "WsdlUI/WsdlUI.App.Model/obj/"
 rm -rf "WsdlUI/WsdlUI.App.Model.Tests/obj/"
@@ -86,6 +88,7 @@ if [ "$1" != "-c" ]; then
 	cp Drexyia/Drexyia.WebSvc.Process.Tests/bin/Release/Drexyia.WebSvc.Process.Tests.dll.config Release/Binary
 	cp Drexyia/Drexyia.WebSvc.Wsdl.Tests/bin/Release/Drexyia.WebSvc.Wsdl.Tests.dll Release/Binary
 	cp WsdlUI/WsdlUI.App.Model.Tests/bin/Release/WsdlUI.App.Model.Tests.dll Release/Binary
+	cp WsdlUI/WsdlUI.App.UI.Tests/bin/Release/WsdlUI.App.UI.Tests.dll Release/Binary
 
 	# Copy accross nunit console needed for running tests
 	cp External/nunit/nunit-console.exe Release/Binary

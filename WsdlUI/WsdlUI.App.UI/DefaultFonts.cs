@@ -33,27 +33,39 @@ namespace WsdlUI.App.UI {
             private set;
         }
 
+		/// <summary>
+		/// takes a list of fonts to check for and returns the font that is available on the system
+		/// fonts are looked for in order they are passed in.
+		/// </summary>
+		/// <returns>first font found or default font</returns>
+		public string CheckForFonts(string[] availableFonts) {
+		
+			foreach (var fontName in availableFonts) {
+				using (Font fontTester = new Font(fontName, 12, FontStyle.Regular, GraphicsUnit.Pixel)) {
+					if (fontTester.Name == fontName) {
+						return fontName;
+					}
+				}
+			}
+				
+			using (Font defaultFont = new Font("not found", 12, FontStyle.Regular, GraphicsUnit.Pixel)) {
+				return defaultFont.Name;
+			}
+		}
+
         DefaultFonts() {
 
-            //Consolas is a windows font
-            //Inconsolata is an open font similar to Consolas it can be installed on Windows and Linux
-            //Courier New sould be installed on Windows and Linux
-            string fontName = "Consolas";
-            bool result = IsFontInstalled(fontName);
-            if (!result) {
-                fontName = "Inconsolata";
-                result = IsFontInstalled(fontName);
+			//Consolas is a windows font
+			//Inconsolata is an open font similar to Consolas it can be installed on Windows and Linux
+			//Courier default for linux Courier New default for windows
+			string[] availableFonts = new string[] {
+				"Consolas",
+				"Inconsolata",
+				"Courier",
+                "Courier New"
+			};
 
-                if (!result) {
-                    fontName = "Courier New";
-                    result = IsFontInstalled(fontName);
-                    if (!result) {
-                        //process.Logger.Instance.Log.Info("no default font found");
-                    }
-                }
-            }
-
-            //process.Logger.Instance.Log.Info("using font: " + fontName);
+			string fontName = CheckForFonts (availableFonts);
 
             Smaller = new System.Drawing.Font(fontName, 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             Small =  new System.Drawing.Font(fontName, 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -61,12 +73,7 @@ namespace WsdlUI.App.UI {
             Large = new System.Drawing.Font(fontName, 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         }
 
-        bool IsFontInstalled(string fontName) {
-            using (Font fontTester = new Font(fontName, 12, FontStyle.Regular, GraphicsUnit.Pixel)) {
-                return (fontTester.Name == fontName);
-            }
-        }
-
+  
         public static DefaultFonts Instance {
             get {
                 return Nested.instance;

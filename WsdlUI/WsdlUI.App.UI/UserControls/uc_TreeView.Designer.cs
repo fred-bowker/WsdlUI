@@ -121,7 +121,7 @@ namespace WsdlUI.App.UI.UserControls
             // toolStrip1
             // 
             this.toolStrip1.AutoSize = false;
-            this.toolStrip1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+	    this.toolStrip1.Font = DefaultFonts.Instance.Small;
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbButtonAdd,
@@ -137,7 +137,7 @@ namespace WsdlUI.App.UI.UserControls
             // tsbButtonAdd
             // 
             this.tsbButtonAdd.AutoSize = false;
-            this.tsbButtonAdd.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+	    this.tsbButtonAdd.Font = DefaultFonts.Instance.Small;
             this.tsbButtonAdd.Image = global::WsdlUI.App.UI.Properties.Resources.list_add_3;
             this.tsbButtonAdd.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbButtonAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -151,7 +151,7 @@ namespace WsdlUI.App.UI.UserControls
             // tsBtnRemove
             // 
             this.tsBtnRemove.AutoSize = false;
-            this.tsBtnRemove.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+	    this.tsBtnRemove.Font = DefaultFonts.Instance.Small;
             this.tsBtnRemove.Image = global::WsdlUI.App.UI.Properties.Resources.list_remove_3;
             this.tsBtnRemove.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsBtnRemove.ImageTransparentColor = System.Drawing.Color.Magenta;

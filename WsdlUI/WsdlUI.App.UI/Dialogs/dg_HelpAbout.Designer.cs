@@ -153,7 +153,7 @@ namespace WsdlUI.App.UI.Dialogs
             this.Controls.Add(this.rtb_WebSite);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txt_License);
-            this.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = DefaultFonts.Instance.Small;
             this.Name = "dg_HelpAbout";
             this.Load += new System.EventHandler(this.dg_HelpAbout_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pb_AppIcon)).EndInit();
