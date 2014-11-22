@@ -9,10 +9,8 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Drexyia.WebSvc.Process.Tests.Server.Host</RootNamespace>
     <AssemblyName>Drexyia.WebSvc.Process.Tests.Server.Host</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <ProductVersion>12.0.0</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -54,7 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Drexyia.WebSvc.Process.Tests.Server\Drexyia.WebSvc.Process.Tests.Server.csproj">
-      <Project>{233f44fe-eb70-4769-8ab4-2e8072cf6d65}</Project>
+      <Project>{233F44FE-EB70-4769-8AB4-2E8072CF6D65}</Project>
       <Name>Drexyia.WebSvc.Process.Tests.Server</Name>
     </ProjectReference>
   </ItemGroup>

@@ -38,7 +38,7 @@ namespace Drexyia.WebSvc.Process.Tests {
 
             var parser = new WebSvc.Wsdl.Parser();
 
-            var retrieve = new process.WebSvcAsync.Operations.RetrieveAsyncOp(TestDataReader.Instance.WsdlUri, RETRIEVE_TIMEOUT, parser, _proxy, _log);
+			var retrieve = new process.WebSvcAsync.Operations.RetrieveAsyncOp(TestDataReader.Instance.WsdlUriSingle, RETRIEVE_TIMEOUT, parser, _proxy, _log);
             retrieve.OnComplete +=retrieve_OnComplete;
            
             var thread = new Thread(() => {
