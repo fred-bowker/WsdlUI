@@ -19,9 +19,6 @@ using wsdlDescription = System.Web.Services.Description;
 namespace Drexyia.WebSvc.Process {
 
     internal class WsdlDownload {
-
-        const int MAX_MESSAGE_SIZE = 10485760; //10 MB
-        
         string _wsdlEndpoint;
         int _timeoutInSeconds;
 
@@ -124,7 +121,6 @@ namespace Drexyia.WebSvc.Process {
             if (_wsdlEndpoint.EndsWith("mex")) {
 
                 WSHttpBinding mexBinding = utils.BindingWrapper.GetMexBinding(proxy);
-                mexBinding.MaxReceivedMessageSize = MAX_MESSAGE_SIZE;
 
                 client = new MetadataExchangeClient(mexBinding);
                 exchangeMode = MetadataExchangeClientMode.MetadataExchange;
@@ -132,7 +128,6 @@ namespace Drexyia.WebSvc.Process {
             else {
 
                 BasicHttpBinding wsdlBinding = utils.BindingWrapper.GetWsdlBinding(proxy);
-                wsdlBinding.MaxReceivedMessageSize = MAX_MESSAGE_SIZE;
 
                 client = new MetadataExchangeClient(wsdlBinding);
                 exchangeMode = MetadataExchangeClientMode.HttpGet;

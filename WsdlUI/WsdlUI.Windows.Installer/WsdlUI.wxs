@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
 
-  <Product Id="*" Name="WsdlUI" Language="1033" Version="1.4.0" Manufacturer="DREXYIA" UpgradeCode="1D899DE0-4940-4255-97F6-47F27D1DE9A9">
+  <Product Id="*" Name="WsdlUI" Language="1033" Version="1.5.0" Manufacturer="DREXYIA" UpgradeCode="1D899DE0-4940-4255-97F6-47F27D1DE9A9">
 
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine"/>
 
@@ -14,6 +14,16 @@
     <!--See http://stackoverflow.com/questions/2260634/wix-problem-to-give-permissions-to-a-folder/5296967#5296967-->
     <Binary Id="WixCustomActions.CA.dll" SourceFile="WixCustomActions.CA.dll" />
     <CustomAction Id="TranslateUsersGroup" BinaryKey="WixCustomActions.CA.dll" DllEntry="GetGlobalGroupNames" Impersonate="no" />
+
+    <!-- when upgrading we copy the config files to a date stamped folder then copy them back this keeps the users config files and also makes a backup-->
+    <!-- see https://stackoverflow.com/questions/11233267/how-to-pass-customactiondata-to-a-customaction-using-wix-->
+    <CustomAction Id="StoreSessionData" Property="RestoreUserData" Value="OutputDirectory=[InstDir_OutputFolders]"/>
+    <CustomAction Id="BackupUserData" BinaryKey="WixCustomActions.CA.dll" DllEntry="BackupConfigFiles" Impersonate="no" />
+    <CustomAction Id="RestoreUserData" BinaryKey="WixCustomActions.CA.dll" DllEntry="RestoreConfigFiles" Impersonate="no" Execute="deferred" />
+
+    <!-- cleanup the output folder of any timestamped config folders only on uninstall -->
+    <!-- see https://stackoverflow.com/questions/320921/how-to-add-a-wix-custom-action-that-happens-only-on-uninstall-via-msi -->
+    <CustomAction Id="RemoveUserData" BinaryKey="WixCustomActions.CA.dll" DllEntry="RemoveConfigFiles" Impersonate="no" />
 
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="ProgramFilesFolder">
@@ -129,6 +139,11 @@
 
     <InstallExecuteSequence>
       <Custom Action='TranslateUsersGroup' Before='CreateFolders' />
+      
+      <Custom Action='StoreSessionData' Before='RemoveExistingProducts' />
+      <Custom Action='BackupUserData' Before='RemoveExistingProducts' />
+      <Custom Action='RestoreUserData' After='InstallFiles'  />
+      <Custom Action='RemoveUserData' Before='RemoveExistingProducts'>Installed AND NOT UPGRADINGPRODUCTCODE</Custom>
     </InstallExecuteSequence>
 
   </Product>
