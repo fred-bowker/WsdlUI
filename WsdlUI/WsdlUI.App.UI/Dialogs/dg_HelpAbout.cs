@@ -12,12 +12,12 @@ using System.Windows.Forms;
 
 using wsdlProcess = WsdlUI.App.Process;
 
-namespace WsdlUI.App.UI.Dialogs
-{
-    public partial class dg_HelpAbout : dg_BaseCancel
-    {
-        public dg_HelpAbout()
-        {
+namespace WsdlUI.App.UI.Dialogs {
+    public partial class dg_HelpAbout : dg_BaseCancel {
+
+        bool _formClosed = false;
+
+        public dg_HelpAbout() {
             InitializeComponent();
 
             lbl_Version.Text = AppInfo.Instance.Version;
@@ -63,6 +63,9 @@ namespace WsdlUI.App.UI.Dialogs
 
         void updateCheck_OnWebException(object sender, EventArgs e) {
             timer1.Stop();
+            if (_formClosed) {
+                return;
+            }
 
             this.Invoke(new MethodInvoker(delegate() {
                 pb_Update.Value = pb_Update.Maximum;
@@ -83,9 +86,12 @@ namespace WsdlUI.App.UI.Dialogs
 
         void updateCheck_OnComplete(object sender, wsdlProcess.WebSvcAsync.EventParams.UpdateAsyncArgs e) {
             timer1.Stop();
+            if (_formClosed) {
+                return;
+            }
 
             this.Invoke(new MethodInvoker(delegate() {
-             
+
                 pb_Update.Visible = false;
 
                 if (e.UpdateAvailable) {
@@ -103,5 +109,10 @@ namespace WsdlUI.App.UI.Dialogs
 
         }
 
+        //TODO: FB if the form is closed before the operation completes then do not update any dialogs when the form completes
+        //this implementation is a quick fix a better solution would be to handle this as a cancel at the async call level.
+        private void dg_HelpAbout_FormClosed(object sender, FormClosedEventArgs e) {
+            _formClosed = true;
+        }
     }
 }

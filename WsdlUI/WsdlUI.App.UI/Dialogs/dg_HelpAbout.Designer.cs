@@ -155,6 +155,7 @@ namespace WsdlUI.App.UI.Dialogs
             this.Controls.Add(this.txt_License);
             this.Font = DefaultFonts.Instance.Small;
             this.Name = "dg_HelpAbout";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.dg_HelpAbout_FormClosed);
             this.Load += new System.EventHandler(this.dg_HelpAbout_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pb_AppIcon)).EndInit();
             this.ResumeLayout(false);
