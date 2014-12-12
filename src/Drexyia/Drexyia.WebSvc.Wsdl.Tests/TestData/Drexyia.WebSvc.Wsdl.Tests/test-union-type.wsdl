@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="TestUnionType" xmlns:ng1="http://tempuri.org/TEST_UNION" xmlns:ng3="http://tempuri.org/TestUnionTypeResponse" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://tempuri.org/TEST_UNION.wsdl" xmlns:wsdl1="http://tempuri.org/TEST_UNION.wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ng3="http://tempuri.org/TestUnionTypeResponse" targetNamespace="http://tempuri.org/TestUnionTypeResponse" elementFormDefault="qualified" attributeFormDefault="qualified">
+      <xs:simpleType name="int8OrEmpty">
+        <xs:union>
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:length value="0"/>
+            </xs:restriction>
+          </xs:simpleType>
+          <xs:simpleType>
+            <xs:restriction base="xs:integer">
+              <xs:totalDigits value="8"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:union>
+      </xs:simpleType>
+      <xs:element name="TEST_UNION">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="UnionDetailResponse" type="ng3:UnionDetailResponseType" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="UnionDetailResponseType">
+        <xs:sequence>
+          <xs:element name="UnionDetail" type="ng3:UnionDetailType" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="UnionDetailType">
+        <xs:sequence>
+          <xs:element name="Union" type="ng3:UnionVarType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="UnionVarType">
+        <xs:sequence>
+          <xs:element name="UnionVar" type="ng3:int8OrEmpty" minOccurs="0">
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="UnionDetailRequestType">
+        <xs:complexType>
+          <xs:sequence>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="DoTestUnionTypeRequest">
+    <wsdl:part name="parameters" element="ng3:UnionDetailRequestType"/>
+  </wsdl:message>
+  <wsdl:message name="DoTestUnionTypeResponse">
+    <wsdl:part name="parameters" element="ng3:TEST_UNION"/>
+  </wsdl:message>
+  <wsdl:portType name="TestUnionTypePort">
+    <wsdl:operation name="TestUnionType">
+      <wsdl:input message="wsdl1:DoTestUnionTypeRequest"/>
+      <wsdl:output message="wsdl1:DoTestUnionTypeResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <!-- Binding defines serialization and limls into the port type which defines the opertaions that can happen-->
+  <wsdl:binding name="TestUnionTypeBinding" type="wsdl1:TestUnionTypePort">
+    <!-- Define document style -->
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <!-- define literal -->
+    <wsdl:operation name="TestUnionType">
+      <soap:operation soapAction="http://localhost"/>
+      <!-- furthur specify that the messages in the wsdl:operation "" use SOAP? @@@ -->
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <!-- Defines the service out in the big wide world -->
+  <wsdl:service name="TestUnionTypeService">
+    <wsdl:port name="TestUnionTypePort" binding="wsdl1:TestUnionTypeBinding">
+      <!-- give the binding an network address -->
+      <soap:address location="http://localhost"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
