@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<meta charset='utf-8'>
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="wsdlui, wsdl ui, soap, soa, web services, webservices, service oriented architecture," />
+	<meta name="description" content="WsdlUI is a program for quickly viewing and testing web services generated from a wsdl file." />
+
+
+	<link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/stylesheet.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="/stylesheets/pygment_trac.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="/stylesheets/print.css" media="print" />
+
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+	<script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<title> {{ page.title }} </title>
+
+	<style type="text/css">
+         .ui-dialog .ui-dialog-content
+         {
+             background: none repeat scroll 0 0 transparent;
+             border: 0 none;
+             overflow: hidden;
+             padding: 0.0em 0em;
+             position: relative;
+         }
+
+         .ui-dialog
+         {
+             left: 0;
+             outline: 0 none;
+             padding: 0.0em;
+             position: absolute;
+             top: 0;
+         }
+
+         .dialog-modal-image
+         {
+             border-style: solid;
+             border-color: #2F74C2;
+             border-width: thin;
+             margin: 10px;
+         }
+
+         .screenshot-minimized
+         {
+             border-style: solid;
+             border-color: #2F74C2;
+             border-width: medium;
+         }
+
+         .noTitle .ui-dialog-titlebar
+         {
+             display: none;
+         }
+	</style>
+
+
+	<script>
+
+         $(function () {
+             $("#display-request-btn").click(function () {
+
+                 $("#dialog-modal-request").dialog({
+                     position: "center",
+                     resizable: false,
+                     draggable: true,
+                     height: 620,
+                     width: 1320,
+                     modal: true,
+                     dialogClass: 'noTitle'
+                 });
+             });
+
+             $("#display-response-btn").click(function () {
+
+                 $("#dialog-modal-response").dialog({
+                     position: "center",
+                     resizable: false,
+                     draggable: true,
+                     height: 620,
+                     width: 1320,
+                     modal: true,
+                     dialogClass: 'noTitle'
+                 });
+             });
+
+             $("#display-wsdlFile-btn").click(function () {
+
+                 $("#dialog-modal-wsdlFile").dialog({
+                     position: "center",
+                     resizable: false,
+                     draggable: true,
+                     height: 620,
+                     width: 1320,
+                     modal: true,
+                     dialogClass: 'noTitle'
+                 });
+             });
+
+             $("#display-startupWSDL-btn").click(function () {
+
+                 $("#dialog-modal-startupWSDL").dialog({
+                     position: "center",
+                     resizable: false,
+                     draggable: true,
+                     height: 620,
+                     width: 1320,
+                     modal: true,
+                     dialogClass: 'noTitle'
+                 });
+             });
+
+         });
+
+	</script>
+
+
+
+
+    </head>
+
+    <body>
+	<header>
+	    <div class="inner">
+		<h1>
+		    {{ site.name }}
+		</h1>
+		
+		<h2>		    
+		    A program for generating web service requests
+		</h2>
+		<a href="https://github.com/drexyia/WsdlUI" class="button">
+		    <small>View project on
+		    </small>GitHub
+		</a>
+	    </div>
+	</header>
+
+	<div id="content-wrapper">
+	    <div class="inner clearfix">
+		<section id="main-content">
+		    
+		    {{ content }}
+
+		</section>
+
+		<aside id="sidebar">
+                    <a href="http://bit.ly/1qE6OUi" class="button">
+			Windows   
+			<small>.zip file</small>  
+                    </a>
+
+                    <a href="http://bit.ly/1IIKZsD" class="button">
+			Linux 
+			<small>.tar.gz file</small>
+                    </a>
+
+                    <p class="repo-owner">
+			<a href="https://github.com/drexyia/WsdlUI"></a>is maintained by
+			<a href="https://github.com/drexyia">drexyia
+			</a>.
+                    </p>
+
+		</aside>
+	    </div>
+	</div>
+
+    </body>
+</html>

@@ -1,307 +1,123 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset='utf-8' />
+---
+layout: default
+title: WsdlUI by drexyia
+description: hello
+---
 
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="robots" content="index, follow" />
-    <meta name="keywords" content="wsdlui, wsdl ui, soap, soa, web services, webservices, service oriented architecture," />
-    <meta name="description" content="WsdlUI is a program for quickly viewing and testing web services generated from a wsdl file." />
+<div id="home">
 
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css' />
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
-
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-    <script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
-    <script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-
-    <!--[if lt IE 9]>
-	    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js">
-	    </script>
-	    <![endif]-->
-
-    <style type="text/css">
-        .ui-dialog .ui-dialog-content
-        {
-            background: none repeat scroll 0 0 transparent;
-            border: 0 none;
-            overflow: hidden;
-            padding: 0.0em 0em;
-            position: relative;
-        }
-
-        .ui-dialog
-        {
-            left: 0;
-            outline: 0 none;
-            padding: 0.0em;
-            position: absolute;
-            top: 0;
-        }
-
-        .dialog-modal-image
-        {
-            border-style: solid;
-            border-color: #2F74C2;
-            border-width: thin;
-            margin: 10px;
-        }
-
-        .screenshot-minimized
-        {
-            border-style: solid;
-            border-color: #2F74C2;
-            border-width: medium;
-        }
-
-        .noTitle .ui-dialog-titlebar
-        {
-            display: none;
-        }
-    </style>
-
-    <script>
-
-        $(function () {
-            $("#display-request-btn").click(function () {
-
-                $("#dialog-modal-request").dialog({
-                    position: "center",
-                    resizable: false,
-                    draggable: true,
-                    height: 620,
-                    width: 1320,
-                    modal: true,
-                    dialogClass: 'noTitle'
-                });
-            });
-
-            $("#display-response-btn").click(function () {
-
-                $("#dialog-modal-response").dialog({
-                    position: "center",
-                    resizable: false,
-                    draggable: true,
-                    height: 620,
-                    width: 1320,
-                    modal: true,
-                    dialogClass: 'noTitle'
-                });
-            });
-
-            $("#display-wsdlFile-btn").click(function () {
-
-                $("#dialog-modal-wsdlFile").dialog({
-                    position: "center",
-                    resizable: false,
-                    draggable: true,
-                    height: 620,
-                    width: 1320,
-                    modal: true,
-                    dialogClass: 'noTitle'
-                });
-            });
-
-            $("#display-startupWSDL-btn").click(function () {
-
-                $("#dialog-modal-startupWSDL").dialog({
-                    position: "center",
-                    resizable: false,
-                    draggable: true,
-                    height: 620,
-                    width: 1320,
-                    modal: true,
-                    dialogClass: 'noTitle'
-                });
-            });
-
-        });
-
-    </script>
-
-    <title>WsdlUI by drexyia
-    </title>
-</head>
-
-<body>
-    <header>
-        <div class="inner">
-            <h1>WsdlUI
-            </h1>
-            <h2>A program for generating web service requests
-            </h2>
-            <a href="https://github.com/drexyia/WsdlUI" class="button">
-                <small>View project on
-                </small>GitHub
-            </a>
-        </div>
-    </header>
-
-    <div id="content-wrapper">
-        <div class="inner clearfix">
-            <section id="main-content">
-                <h2>
-                    <a class="anchor" href="#welcome-to-github-pages">
-                        <span class="octicon octicon-link"></span>
-                    </a>Welcome to WsdlUI.
-                </h2>
-
-                <div>
-                    WsdlUI is a program for quickly viewing and testing web services generated from a .wsdl file.
-
-        	        The program is designed to be fast and responsive implementing a small number of features needed for testing web services.
-                </div>
-                
-                <div style="margin-top: 10px">The project is free, open source (GPL v3) and being actively developed, if you have any feedback or feature requests please get in touch.</div>
-   
-                <div style="margin-top: 10px">
-                Checkout the screen shots below to see examples of WsdlUI functionality  
-                </div>
-                <div style="width: 100%; margin-top: 15px">
-                    <div style="float: left; width: 46.5%;" class="screenshot-minimized">
-                        <a href="#" id="display-request-btn">
-                            <img alt="request screenshot" title="View screenshot of a web service request" src="request.png" />
-                        </a>
-                    </div>
-                    <div style="float: left; width: 2%;">&nbsp</div>
-                    <div style="float: left; width: 46.5%;" class="screenshot-minimized">
-                        <a href="#" id="display-response-btn">
-                            <img alt="response screenshot" title="View screenshot of the response to a web service call" src="response.png" />
-                        </a>
-                    </div>
-                    <br style="clear: left;" />
-                </div>
-                <div style="width: 100%; margin-top: 15px">
-                    <div style="float: left; width: 46.5%;" class="screenshot-minimized">
-
-                        <a href="#" id="display-wsdlFile-btn">
-                            <img alt="wsdl file screenshot" title="View screenshot of the wsdl file display" src="wsdlFile.png" />
-                        </a>
-                    </div>
-                    <div style="float: left; width: 2%;">&nbsp</div>
-                    <div style="float: left; width: 46.5%;" class="screenshot-minimized">
-                        <a href="#" id="display-startupWSDL-btn">
-                            <img alt="startup wsdl screenshot" title="View screenshot adding wsdls to be loaded on startup" src="startupWSDL.png" />
-                        </a>
-                    </div>
-                    <br style="clear: left;" />
-                </div>
-
-                <div id="dialog-modal-request" style="display: none;">
-                    <img alt="request screenshot" src="request.png" class="dialog-modal-image" />
-                </div>
-
-                <div id="dialog-modal-response" style="display: none;">
-                    <img alt="response screenshot" src="response.png" class="dialog-modal-image" />
-                </div>
-
-                <div id="dialog-modal-wsdlFile" style="display: none;">
-                    <img alt="wsdl file screenshot" src="wsdlFile.png" class="dialog-modal-image" />
-                </div>
-
-                <div id="dialog-modal-startupWSDL" style="display: none;">
-                    <img alt="startup wsdl screenshot" src="startupWSDL.png" class="dialog-modal-image" />
-                </div>
-
-                <h3>
-                    <a class="anchor" href="#designer-templates">
-                        <span class="octicon octicon-link"></span>
-                    </a>Requirements Windows
-                </h3>
-
-       
-                <div>
-                    Windows XP SP2 (and above Windows 7, Windows 8)	    
-                </div>
-                <div>
-                    .NET v3.5
-                </div>
-
-                 <h3>
-                    <a class="anchor" href="#designer-templates">
-                        <span class="octicon octicon-link"></span>
-                    </a>Requirements Linux
-                </h3>
-
-       
-                <div>
-                    Mono 2.10.X or higher, Mono WinForms library.
-                     <br />
-                    <br />
-                    sudo apt-get install libmono-winforms2.0-cil
-                     <br />
-                    Install mono on Debian based systems (Ubuntu, Mint)
-                     <br />
-                    sudo yum install mono-winforms.x86_64
-                     <br />
-                    Install mono on RedHat based systems (Fedora)
-
-                </div>
-
-                <h3>
-                    <a class="anchor" href="#rather-drive-stick">
-                        <span class="octicon octicon-link"></span>
-                    </a>Installation Windows
-                </h3>
-
-                <p>
-                    Download the zip file, unzip then run the msi file its as simple as that.
-                    <br />
-                    Alternatively to run without installation, simply unzip and run WsdlUI.exe from the release folder.
-                </p>
-
-                 <h3>
-                    <a class="anchor" href="#rather-drive-stick">
-                        <span class="octicon octicon-link"></span>
-                    </a>Installation Linux
-                </h3>
-
-                <p>
-                    Download the tar file, extract then run mono WsdlUI.exe from the release folder.
-                    <br />
-                    WsdlUI uses the Inconsolata font if it is available, otherwise download and install it at <a href="http://www.levien.com/type/myfonts/inconsolata.html">Inconsolata</a>.
-                </p>
-
-                <h3>
-                    <a class="anchor" href="#authors-and-contributors">
-                        <span class="octicon octicon-link"></span>
-                    </a>Feedback
-                </h3>
-
-                <p>
-                    Having trouble with WsdlUI? Contact
-                    <a href="mailto:drexyia@fastmail.fm">drexyia@fastmail.fm
-                    </a>and i'll help you sort it out.
-                    <br />
-                    To contribute to WsdlUI visit the projects github page
-                    <a href="https://github.com/drexyia/WsdlUI">https://github.com/drexyia/WsdlUI
-                    </a>.   
-                </p>
-
-            </section>
-
-            <aside id="sidebar">
-                <a href="http://bit.ly/1qE6OUi" class="button">
-                    Windows   
-                    <small>.zip file</small>  
-                </a>
-
-                 <a href="http://bit.ly/1IIKZsD" class="button">
-                    Linux 
-                    <small>.tar.gz file</small>
-                </a>
-
-                <p class="repo-owner">
-                    <a href="https://github.com/drexyia/WsdlUI"></a>is maintained by
-                    <a href="https://github.com/drexyia">drexyia
-                    </a>.
-                </p>
-
-            </aside>
-        </div>
+    <h2>
+	Welcome to WsdlUI.
+    </h2>
+    <div>
+	WsdlUI is a program for quickly viewing and testing web services generated from a .wsdl file.
+	The program is designed to be fast and responsive implementing a small number of features needed for testing web services.
     </div>
-</body>
-</html>
+    <div style="margin-top: 10px">The project is free, open source (GPL v3) and being actively developed, if you have any feedback or feature requests please get in touch.</div>
+    <div style="margin-top: 10px">
+	Checkout the screen shots below to see examples of WsdlUI functionality
+    </div>
+    <div style="width: 100%; margin-top: 15px">
+	<div style="float: left; width: 46.5%;" class="screenshot-minimized">
+	    <a href="#" id="display-request-btn">
+		<img alt="request screenshot" title="View screenshot of a web service request" src="images/request.png" />
+	    </a>
+	</div>
+	<div style="float: left; width: 2%;">&nbsp</div>
+	<div style="float: left; width: 46.5%;" class="screenshot-minimized">
+	    <a href="#" id="display-response-btn">
+		<img alt="response screenshot" title="View screenshot of the response to a web service call" src="images/response.png" />
+	    </a>
+	</div>
+	<br style="clear: left;" />
+    </div>
+    <div style="width: 100%; margin-top: 15px">
+	<div style="float: left; width: 46.5%;" class="screenshot-minimized">
+	    <a href="#" id="display-wsdlFile-btn">
+		<img alt="wsdl file screenshot" title="View screenshot of the wsdl file display" src="images/wsdlFile.png" />
+	    </a>
+	</div>
+	<div style="float: left; width: 2%;">&nbsp</div>
+	<div style="float: left; width: 46.5%;" class="screenshot-minimized">
+	    <a href="#" id="display-startupWSDL-btn">
+		<img alt="startup wsdl screenshot" title="View screenshot adding wsdls to be loaded on startup" src="images/startupWSDL.png" />
+	    </a>
+	</div>
+	<br style="clear: left;" />
+    </div>
+    <div id="dialog-modal-request" style="display: none;">
+	<img alt="request screenshot" src="images/request.png" class="dialog-modal-image" />
+    </div>
+    <div id="dialog-modal-response" style="display: none;">
+	<img alt="response screenshot" src="response.png" class="dialog-modal-image" />
+    </div>
+    <div id="dialog-modal-wsdlFile" style="display: none;">
+	<img alt="wsdl file screenshot" src="wsdlFile.png" class="dialog-modal-image" />
+    </div>
+    <div id="dialog-modal-startupWSDL" style="display: none;">
+	<img alt="startup wsdl screenshot" src="startupWSDL.png" class="dialog-modal-image" />
+    </div>
+    <h3>
+	<a class="anchor" href="#designer-templates">
+	    <span class="octicon octicon-link"></span>
+	</a>Requirements Windows
+    </h3>
+    <div>
+	Windows XP SP2 (and above Windows 7, Windows 8)
+    </div>
+    <div>
+	.NET v3.5
+    </div>
+    <h3>
+	<a class="anchor" href="#designer-templates">
+	    <span class="octicon octicon-link"></span>
+	</a>Requirements Linux
+    </h3>
+    <div>
+	Mono 2.10.X or higher, Mono WinForms library.
+	<br />
+	<br />
+	sudo apt-get install libmono-winforms2.0-cil
+	<br />
+	Install mono on Debian based systems (Ubuntu, Mint)
+	<br />
+	sudo yum install mono-winforms.x86_64
+	<br />
+	Install mono on RedHat based systems (Fedora)
+    </div>
+    <h3>
+	<a class="anchor" href="#rather-drive-stick">
+	    <span class="octicon octicon-link"></span>
+	</a>Installation Windows
+    </h3>
+    <p>
+	Download the zip file, unzip then run the msi file its as simple as that.
+	<br />
+	Alternatively to run without installation, simply unzip and run WsdlUI.exe from the release folder.
+    </p>
+    <h3>
+	<a class="anchor" href="#rather-drive-stick">
+	    <span class="octicon octicon-link"></span>
+	</a>Installation Linux
+    </h3>
+    <p>
+	Download the tar file, extract then run mono WsdlUI.exe from the release folder.
+	<br />
+	WsdlUI uses the Inconsolata font if it is available, otherwise download and install it at <a href="http://www.levien.com/type/myfonts/inconsolata.html">Inconsolata</a>.
+    </p>
+    <h3>
+	<a class="anchor" href="#authors-and-contributors">
+	    <span class="octicon octicon-link"></span>
+	</a>Feedback
+    </h3>
+    <p>
+	Having trouble with WsdlUI? Contact
+	<a href="mailto:drexyia@fastmail.fm">drexyia@fastmail.fm
+	</a>and i'll help you sort it out.
+	<br />
+	To contribute to WsdlUI visit the projects github page
+	<a href="https://github.com/drexyia/WsdlUI">https://github.com/drexyia/WsdlUI
+	</a>.
+    </p>
+
+</div>
