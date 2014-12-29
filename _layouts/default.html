@@ -10,9 +10,9 @@
 
 
 	<link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="/WsdlUI/stylesheets/stylesheet.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="/WsdlUI/stylesheets/pygment_trac.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="/WsdlUI/stylesheets/print.css" media="print" />
+	<link rel="stylesheet" type="text/css" href="{{ site.url }}/stylesheets/stylesheet.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="{{ site.url }}stylesheets/pygment_trac.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="{{ site.url }}stylesheets/print.css" media="print" />
 
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 	<script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
@@ -25,6 +25,7 @@
 	<title> {{ page.title }} </title>
 
 	<style type="text/css">
+
          .ui-dialog .ui-dialog-content
          {
              background: none repeat scroll 0 0 transparent;
@@ -132,10 +133,11 @@
     <body>
 	<header>
 	    <div class="inner">
-		<h1>
-		    {{ site.name }}
-		</h1>
-		
+		    <a href="/">
+			<h1>
+			    {{ site.name }}
+			</h1>
+		    </a>
 		<h2>		    
 		    A program for generating web service requests
 		</h2>
@@ -170,6 +172,15 @@
 			<a href="https://github.com/drexyia">drexyia
 			</a>.
                     </p>
+
+		    <ul>
+			{% for post in site.posts %}
+			<li>
+			    <a href="{{ post.url }}">{{ post.title }}</a>
+			</li>
+			{% endfor %}
+		    </ul>
+
 
 		</aside>
 	    </div>

@@ -1,0 +1,168 @@
+---
+layout: post
+title:  "Released!"
+date:   2014-12-29 12:12:30
+categories: wsdlui
+---
+
+## Interrupted playing dunnet.
+
+About a year ago a business analyst at my work came over and asked if I could look at some 3rd party apis 
+then get back to them with what features they offered. I wasn't working on the project but I said if they 
+gave me some wsdls Id have a look.
+
+The next week a different analyst came up and asked if I could have a look at some 3rd party apis and get 
+back to them. By this time its getting annoying so I said to the analyst "do these 3rd parties not give you any documentation", The analyst replies I can ask them for some and send it over to you. I'm thinking ahh why cant they just do this themselves.
+
+Then it struck me that they can do it themselves all they have to do is load the wsdl into SOAPUI.
+
+## Why does SOAPUI make it so complicated
+
+OK so I figure I just have to tell the analyst to install SoapUI and then they will stop annoying me and let me get back to the important work of completing dunnet .
+
+I opened up SoapUI to see how easy it would be for the analyst to use, adding a service you get:
+
+![open][image-soapui-open]
+
+So id have to tell the analysts just copy the URL into the initial Wsdl section and click OK IGNORE everything else. Cant the developers of SoapUI just stick all of these extra options into an advance page or something, also why do I need to create a project I just what to see some requests for the URL.
+
+I get the following dialog:
+
+![exception][image-soapui-exception]
+
+What's it talking about java.lang.Exception I thought we were dealing with web services.
+
+It gives me a stack trace, I mean why do I want a stack trace in the log as a user I don't care
+what their code is doing I want to know why I couldn't load a wsdl.
+
+   com.eviware.soapui.impl.support.definition.support.InvalidDefinitionException
+   	at com.eviware.soapui.impl.wsdl.support.wsdl.WsdlLoader.loadXmlObject(WsdlLoader.java:138)
+   	at com.eviware.soapui.impl.wsdl.support.xsd.SchemaUtils.getDefinitionParts(SchemaUtils.java:535)
+   	at com.eviware.soapui.impl.wsdl.support.xsd.SchemaUtils.getDefinitionParts(SchemaUtils.java:524)
+   	at com.eviware.soapui.impl.support.definition.support.AbstractDefinitionCache.update(AbstractDefinitionCache.java:97)
+   	at com.eviware.soapui.impl.support.definition.support.AbstractDefinitionContext$Loader.construct(AbstractDefinitionContext.java:236)
+   	at com.eviware.soapui.support.swing.SwingWorkerDelegator.construct(SwingWorkerDelegator.java:46)
+   	at com.eviware.soapui.support.swing.SwingWorker$2.run(SwingWorker.java:149)
+   	at java.lang.Thread.run(Unknown Source)
+
+Ill never get dunnet complete if the analysts see a stack trace, they will be back over and tell me 
+that they cant use these programmer tools so ill have to do the work of looking at these 3rd party apis.
+
+Couldn't the error just say could not connect to endpoint check your proxy, at least that way the analyst 
+will go and hassle the sys admin.
+
+OK so ive put in the proxy option and we have the following (with tabs windows expanded).
+
+
+![complex][image-soapui-request]
+
+
+God that looks scary I mean this thing is nearly as convoluted as TOAD if only it made some sort of warning frog noise so you knew things were going to get mental when the program loaded.
+
+Ok when the analysts see this scary screen either they will give up and contact a different developer in the future or they will say that something is wrong and they have 2 copies of the wsdl. After explaining to them the difference between Soap 1.1 and 1.2 they will eventually simply use the first method and finally get down to seeing what functionality the web service offers.
+
+It seemed pretty obvious to me that I couldn't tell the analysts to download SOAPUI to use. Basically it just has far to much information on every screen when really all we want in the first instance is load wsdl using default proxy and show me a request. 
+
+I mean you can get certified in this thing so it must be complicated
+
+![certificate][image-soapui-certificate]
+
+I got to thinking hold on why the hell am I using SOAPUI I mean it takes a couple of months to load and the ui makes my headache trying to hunt out where in amongst all that info is my actual request.
+
+
+## Ok SOAPUI doesnt meet my requirements what to do now
+
+The alternatives for SOAPUI such as storm all seemed to copy its format of making it testing tool for web services in that they had a project format for saving test suites etc. I wanted something simple like a notepad for web service.
+
+Over the next couple of weeks I cobbled together something that could be used by the analysts, Id been wanting to use the Async features of .Net 4.5 anyway.
+
+I gave the analyst my tool and asked them to try it out straight away they tell me it doesnt even start up. Theyre still on Windows XP so not .Net 4.5 framework there goes the ease of using Async features. Another weekend spent on the thing rewriting the Async functionality and back to the Analyst.
+
+Great it works, they're using it. No this tool is brilliant or any criticism I mean it works so well that they don't even mention it.
+
+All of the time that I save waiting on SOAPUI to load I can now dedicate to reading arguments about functional vs OO development or important stuff like are Exceptions necessary in GO
+
+## Introducing WsdlUI.
+
+WsdlUI is a .Net application that runs on Windows and Linux. Its written using WinForms as it will run on both Windows and Linux (However it will look worse on Linux). The tools fuctionality is simple here is what it does:
+
+1: Load Wsdl:
+
+![open][image-wsdlui-open]
+
+2: Make Request:
+
+![request][image-wsdlui-request]
+ 
+It has about a 1000th of the features that SOAPUI has but the UI is clean and not cluttered with a million options and it doesn't feel clunky.
+
+## Components
+
+### Code Formatter.
+
+The initial version was pretty basic the request and response didnt have the fancy looking xml coloring and folding that the current version has. 
+
+Looking around I managed to 
+
+### Wsdl Parser
+
+Where is this taken from
+
+## Visual Studio Integration
+
+Visual Studio uses WCFTestClient as its client program for testing web services. I have the following problems with WcfTestClient.
+
+1. Its incredibly slow to startup this is basically because its using reflection to work out what web service methods are required.
+
+2. The interface for WCFTestClient does not allow you to send xml as the request. This means that every time you run your web services youll have to recreate the test data. A better approach would be for it to simply take in xml as the request.
+
+WsdlUI can be used to replace WCFTestClient by doing the following
+
+<pre><code>
+    Go to project properies -> Debug page
+
+    Change Command Line Arguments
+
+    From: /client:"WcfTestClient.exe"
+
+    To: /client:"[PATH]WsdlUI.exe"
+.
+</code></pre>
+
+Now when you run a WcfServiceLibrary project you get the following:
+
+![visualstudio][image-wsdlui-request]
+
+This is a stripped down version of WsdlUI with Add and Remove wsdl functionality removed.
+
+
+## What its missing.
+
+The wsdl parser needs rewritten this should completely implement the wsdl 1.1 spec and be fully unit tested this is the core of the application and at the moment is not feature complete or fully tested.
+
+Http headers the application should be able to send all common http headers in the request and the user should be able to add custom headers.
+
+Linux installers - The Linux version of WsdlUI needs installers written for it these are rpm packages and dpkg packaged. It would be great if I could install WsdlUI through zypper into OpenSuse (My OS of choice).
+
+Im looking for contributors for any of the above particularly creating the linux installers. If your interested get in touch.
+
+## Download it, use it send me your feedback.
+
+[Download Windows Release][link-windows-install]
+
+[Download Linux Release][link-linux-install]
+
+[Visti GitHub Page][link-github]
+
+[link-windows-install]: http://bit.ly/1qE6OUi
+[link-linux-install]: http://bit.ly/1IIKZsD
+[link-github]: https://github.com/drexyia/WsdlUI
+
+[image-soapui-open]: {{ site.url }}/images/2014-12-29-release/image-soapui-open.png
+[image-soapui-exception]: {{ site.url }}/images/2014-12-29-release/image-soapui-exception.png
+[image-soapui-config]: {{ site.url }}/images/2014-12-29-release/image-soapui-config.png
+[image-soapui-certificate]: {{ site.url }}/images/2014-12-29-release/image-soapui-certificate.png
+[image-soapui-request]: {{ site.url }}/images/2014-12-29-release/image-soapui-request.png
+[image-wsdlui-open]: {{ site.url }}/images/2014-12-29-release/image-wsdlui-open.png
+[image-wsdlui-request]: {{ site.url }}/images/2014-12-29-release/image-wsdlui-request.png
+[image-wsdlui-vs]: {{ site.url }}/images/2014-12-29-release/image-wsdlui-vs.png
