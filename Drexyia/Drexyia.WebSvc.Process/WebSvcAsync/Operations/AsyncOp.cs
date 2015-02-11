@@ -171,8 +171,6 @@ namespace Drexyia.WebSvc.Process.WebSvcAsync.Operations {
                 var streamReader = new StreamReader(ex.Response.GetResponseStream());
                 string body = streamReader.ReadToEnd();
 
-
-                
                 string status = ((HttpWebResponse)ex.Response).StatusCode.ToString();
                 Dictionary<string, string> headers = new Dictionary<string, string>();
                 foreach (string key in ex.Response.Headers.Keys)
@@ -195,14 +193,5 @@ namespace Drexyia.WebSvc.Process.WebSvcAsync.Operations {
             //in the event of user cancel the timout thread must be stopped
             _timeoutObject.Stop();
         }
-
-
-
-
-
-
-
-
-
     }
 }
