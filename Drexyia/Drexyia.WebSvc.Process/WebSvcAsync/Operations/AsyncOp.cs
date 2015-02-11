@@ -7,7 +7,11 @@
 */
 
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Net;
+using Drexyia.WebSvc.Process.WebSvcAsync.EventParams;
+using Drexyia.WebSvc.Process.WebSvcAsync.Result;
 using log4net;
 using model = Drexyia.WebSvc.Model;
 using process = Drexyia.WebSvc.Process;
@@ -157,7 +161,6 @@ namespace Drexyia.WebSvc.Process.WebSvcAsync.Operations {
         }
 
         void HandleWebException(System.Net.WebException ex) {
-
             //timeouts are handled by the timeout object.
             if (ex.Status == WebExceptionStatus.Timeout) {
                 Log.Info("Work Response Timeout " + Name);
@@ -165,8 +168,24 @@ namespace Drexyia.WebSvc.Process.WebSvcAsync.Operations {
             }
 
             if (OnWebException != null) {
-                OnWebException(this,
-                    new process.WebSvcAsync.EventParams.ExceptionAsyncArgs(Name, ex));
+                var streamReader = new StreamReader(ex.Response.GetResponseStream());
+                string body = streamReader.ReadToEnd();
+
+
+                
+                string status = ((HttpWebResponse)ex.Response).StatusCode.ToString();
+                Dictionary<string, string> headers = new Dictionary<string, string>();
+                foreach (string key in ex.Response.Headers.Keys)
+                {
+                    headers[key] = ex.Response.Headers[key];
+                }
+
+                ExceptionAsyncArgs args = new ExceptionAsyncArgs(Name, ex)
+                {
+                    Result = new CallAsyncResult(body, status, headers)
+                };
+
+                OnWebException(this, args);
             }
 
         }

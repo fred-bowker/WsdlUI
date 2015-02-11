@@ -9,9 +9,12 @@
 using System;
 using System.Net;
 using System.Net.Sockets;
+using Drexyia.WebSvc.Process.WebSvcAsync.Result;
 
 namespace Drexyia.WebSvc.Process.WebSvcAsync.EventParams {
     public class ExceptionAsyncArgs : AsyncArgs {
+
+        public CallAsyncResult Result { get; set; }
 
         public Exception Ex {
             get;

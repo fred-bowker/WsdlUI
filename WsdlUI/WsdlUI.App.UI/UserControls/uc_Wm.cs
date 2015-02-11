@@ -104,6 +104,8 @@ namespace WsdlUI.App.UI.UserControls {
 
             }));
 
+            Invoke((MethodInvoker)(() => uc_wm_response1.PopulateForm(e.Result)));
+
             SetReady("request end");
 
         }
