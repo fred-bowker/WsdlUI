@@ -7,7 +7,9 @@
 */
 
 using System;
+using System.Drawing;
 using System.Windows.Forms;
+using WsdlUI.App.UI.Windows.Properties;
 using process = Drexyia.WebSvc.Process;
 using utils = Drexyia.Utils;
 
@@ -37,12 +39,29 @@ namespace WsdlUI.App.UI.Windows {
                     ? new UI.FormMain(args[0])
                     : new UI.FormMain();
 
+                var settings = Settings.Default;
+                if (settings.WindowPosition != Point.Empty)
+                {
+                    mainForm.StartPosition = FormStartPosition.Manual;
+                    mainForm.Left = settings.WindowPosition.X;
+                    mainForm.Top = settings.WindowPosition.Y;    
+                }
+                if (settings.WindowSize != Size.Empty)
+                {
+                    mainForm.Size = settings.WindowSize;
+                }
+
                 mainForm.OnException += mainForm_OnException;
 
                 Application.Run(mainForm);
 
                 if (!_exceptionOccurred) {
                     mainForm.CleanUp();
+
+                    settings.WindowPosition = new Point(mainForm.Left, mainForm.Top);
+                    settings.WindowSize = mainForm.Size;
+
+                    settings.Save();
                 }
             }
             catch (Exception ex) //handle exception on startup
